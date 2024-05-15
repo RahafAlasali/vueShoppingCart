@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar>
+    <v-toolbar class="px-2">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>shopping</v-toolbar-title>
 
@@ -21,16 +21,7 @@
         </v-list-item>
       </v-list>
       <v-spacer></v-spacer>
-      <div>
-        <v-text-field
-          flat
-          solo
-          dense
-          background-color="#e9e9e9"
-          label="what are you looking for?"
-          append-icon="mdi-magnify"
-        ></v-text-field>
-      </div>
+
       <v-btn icon>
         <v-icon> mdi-cart</v-icon>
       </v-btn>

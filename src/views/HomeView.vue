@@ -1,33 +1,5 @@
 <template>
   <div>
-    <!-- <div calss="">
-      <v-row>
-        <v-col cols="3">
-          <v-list dense v-for="item in categories" :key="item">
-            <v-list-item class="my-0 py-0">
-              {{ item }}
-            </v-list-item>
-          </v-list>
-        </v-col>
-        <v-divider vertical></v-divider>
-        <v-col cols="8" class="mx-1">
-          <v-carousel
-            height="400"
-            show-arrows="hover"
-            cycle
-            hide-delimiter-background
-          >
-            <v-carousel-item v-for="(slide, i) in slides" :key="i">
-              <v-sheet :color="colors[i]" height="100%">
-                <div class="d-flex fill-height justify-center align-center">
-                  <div class="text-h2">{{ slide }} Slide</div>
-                </div>
-              </v-sheet>
-            </v-carousel-item>
-          </v-carousel></v-col
-        >
-      </v-row>
-    </div> -->
     <div class="mb-5 mt-8">
       <div class="">
         <div>
@@ -39,11 +11,6 @@
           class="pa-5 px-9 text-center"
           v-for="item in categories"
           :key="item.id"
-          style="
-            border: 1.5px solid #cdcdcd;
-            border-radius: 5px;
-            min-width: 90px;
-          "
         >
           <div><v-icon> mdi-cellphone</v-icon></div>
           <div class="my-1">{{ item }}</div>
@@ -83,14 +50,6 @@ export default {
     return {
       data: [],
       categories: [],
-      colors: [
-        "indigo",
-        "warning",
-        "pink darken-2",
-        "red lighten-1",
-        "deep-purple accent-4",
-      ],
-      slides: ["First", "Second", "Third", "Fourth", "Fifth"],
     };
   },
 
