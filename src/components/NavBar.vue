@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-toolbar class="px-2">
+    <v-toolbar class="px-2 primary--text text-uppercase">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>shopping</v-toolbar-title>
+      <v-toolbar-title class="text-h5">shopping</v-toolbar-title>
 
       <v-spacer></v-spacer>
       <v-list color="" flat class="d-flex">
@@ -27,7 +27,7 @@
       </v-btn>
     </v-toolbar>
     <v-navigation-drawer
-      class="py-8"
+      class="py-8 text-uppercase"
       v-model="drawer"
       absolute
       bottom
@@ -39,9 +39,9 @@
           :to="link.to"
           v-for="(link, index) in links"
           :key="index"
-          class="d-flex justify-center"
+          class="d-flex justify-center primary--text"
         >
-          <v-list-item-content>
+          <v-list-item-content class="text-center font-weight-bold">
             <v-list-item-title>{{ link.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>

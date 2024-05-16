@@ -2,11 +2,11 @@
   <v-app>
     <nav-bar />
     <Slide />
-    <v-container>
-      <v-main>
-        <router-view />
-      </v-main>
-    </v-container>
+    <!-- <v-container> -->
+    <v-main>
+      <router-view />
+    </v-main>
+    <!-- </v-container> -->
     <Footer />
   </v-app>
 </template>

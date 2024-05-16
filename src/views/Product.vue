@@ -1,11 +1,11 @@
 <template>
   <div class="ma-4">
-    <v-row>
-      <v-col cols="6">
-        <v-img height="300px" contain :src="product.image"> </v-img
-      ></v-col>
-      <v-col cols="6">
-        <v-container class="mx-2">
+    <v-container class="mx-2">
+      <v-row>
+        <v-col cols="6">
+          <v-img height="300px" contain :src="product.image"> </v-img
+        ></v-col>
+        <v-col cols="6">
           <div>
             <div>
               <h2 class="mb-4">{{ product.title }}</h2>
@@ -48,9 +48,9 @@
               </v-list>
             </v-card>
           </div>
-        </v-container>
-      </v-col>
-    </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
