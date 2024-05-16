@@ -34,7 +34,7 @@
       <div>
         <v-row>
           <v-col cols="3" v-for="(item, index) in data" :key="index">
-            <product-item :item="item" />
+            <!-- <product-item :item="item" /> -->
           </v-col>
         </v-row>
       </div>
@@ -80,19 +80,19 @@ export default {
         .catch((e) => {});
     },
   },
-  mounted() {
-    axios
-      .get("https://fakestoreapi.com/products?limit=8")
-      .then((res) => {
-        return (this.data = res.data);
-      })
-      .catch((e) => {});
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((res) => {
-        return (this.categories = res.data);
-      })
-      .catch((e) => {});
-  },
+  // mounted() {
+  //   axios
+  //     .get("https://fakestoreapi.com/products?limit=8")
+  //     .then((res) => {
+  //       return (this.data = res.data);
+  //     })
+  //     .catch((e) => {});
+  //   axios
+  //     .get("https://fakestoreapi.com/products/categories")
+  //     .then((res) => {
+  //       return (this.categories = res.data);
+  //     })
+  //     .catch((e) => {});
+  // },
 };
 </script>

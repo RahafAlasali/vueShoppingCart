@@ -2,7 +2,11 @@
   <div>
     <v-toolbar class="px-2 primary--text text-uppercase">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title class="text-h5">shopping</v-toolbar-title>
+      <v-toolbar-title class="text-h5">
+        <router-link to="/" style="text-decoration: none">
+          shopping
+        </router-link>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
       <v-list color="" flat class="d-flex">

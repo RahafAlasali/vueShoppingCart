@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <nav-bar />
-    <Slide />
+    <Slide v-if="$route.path == '/'" />
     <!-- <v-container> -->
     <v-main>
       <router-view />
@@ -28,3 +28,20 @@ export default {
   }),
 };
 </script>
+
+<style>
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #025048;
+  border-radius: 2px;
+}
+</style>
