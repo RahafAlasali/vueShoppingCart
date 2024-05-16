@@ -31,6 +31,9 @@ export default {
         {
           src: "3.jpg",
         },
+        {
+          src: "7.jpg",
+        },
       ],
     };
   },
