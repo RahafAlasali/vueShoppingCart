@@ -17,20 +17,20 @@
               <v-icon class="blue-grey--text"> mdi-heart</v-icon>
             </v-btn>
           </div>
-          <div class="mt-3">
+          <div class="m1-3">
             <v-btn icon>
               <v-icon class="blue-grey--text"> mdi-cart</v-icon>
             </v-btn>
           </div>
         </div>
-        <v-img height="200" contain :src="item.image" style="ma-auto"> </v-img>
+        <v-img height="200" contain :src="item.image"> </v-img>
       </div>
 
-      <v-card-title class="pb-3 px-0" style="min-height: 150px">{{
+      <v-card-title class="pb-3 px-0" style="height: 150px">{{
         item.title
       }}</v-card-title>
 
-      <v-card-text class="m-auto">
+      <v-card-text class="m-auto px-0">
         <v-row align="center" class="mx-0">
           <v-rating
             :value="item.rating.rate"
@@ -42,7 +42,9 @@
             size="23"
           ></v-rating>
         </v-row>
-        <v-card-subtitle class="px-0 my-2"> ${{ item.price }} </v-card-subtitle>
+        <v-card-subtitle class="px-0 my-2 px-0">
+          ${{ item.price }}
+        </v-card-subtitle>
       </v-card-text>
       <!-- <v-card-actions class="d-flex justify-end">
           <v-btn color="deep-purple lighten-2" text>

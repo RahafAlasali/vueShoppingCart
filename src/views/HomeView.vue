@@ -29,7 +29,7 @@
           class="text-h3 text-center my-3 primary--text font-weight-bold"
           style="font-family: cursive"
         >
-          gallary
+          Product
         </div>
 
         <v-row class="mt-4">

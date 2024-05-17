@@ -1,6 +1,6 @@
 <template>
-  <div class="ma-4">
-    <v-container class="mx-2">
+  <div>
+    <v-container class="mx-2 my-4">
       <v-row>
         <v-col cols="6">
           <v-img height="300px" contain :src="product.image"> </v-img
@@ -11,6 +11,8 @@
               <h2 class="mb-4">{{ product.title }}</h2>
               <h4 class="mb-3 mt-2">${{ product.price }}</h4>
               <h3 class="mb-4 subtitle-1">{{ product.description }}</h3>
+              <h3 class="mb-4 subtitle-1">category:{{ product.category }}</h3>
+
               <v-divider class="mb-3"></v-divider>
             </div>
             <div class="d-flex my-4">
@@ -49,8 +51,22 @@
             </v-card>
           </div>
         </v-col>
+      </v-row></v-container
+    >
+    <div class="pa-5" style="background-color: #fafafa">
+      <div
+        class="text-h3 my-3 primary--text font-weight-bold"
+        style="font-family: cursive"
+      >
+        Related Product
+      </div>
+
+      <v-row class="mt-4">
+        <v-col cols="3" v-for="(item, index) in items" :key="index">
+          <product-item :item="item" />
+        </v-col>
       </v-row>
-    </v-container>
+    </div>
   </div>
 </template>
 
@@ -66,13 +82,7 @@ export default {
   data() {
     return {
       product: null,
-      itemPrd: [
-        {
-          title: "John Hardy",
-          price: 200,
-          image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-        },
-      ],
+      items: [],
     };
   },
   mounted() {
@@ -82,7 +92,14 @@ export default {
       .then((res) => {
         return (this.product = res.data);
       })
-      .catch((e) => {});
+      .then((res) => {
+        axios
+          .get(`https://fakestoreapi.com/products/category/${res.category}`)
+          .then((res) => {
+            return (this.items = res.data);
+          })
+          .catch((e) => {});
+      });
   },
 };
 </script>

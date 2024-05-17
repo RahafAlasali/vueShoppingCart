@@ -9,15 +9,40 @@
               <div class="mb-4">
                 <h1>create an account</h1>
                 <h6 class="subtitle-1">Enter your ditails below</h6>
-                <v-text-field placeholder="Name"></v-text-field>
-                <v-text-field placeholder="Email"></v-text-field>
-                <v-text-field placeholder="password"></v-text-field>
+                <v-form @submit.prevent>
+                  <v-text-field
+                    v-model="name"
+                    :rules="[(v) => !!v || 'Requird']"
+                    label="Name"
+                  >
+                  </v-text-field>
+                  <v-text-field
+                    v-model="email"
+                    label="Email"
+                    :rules="[(v) => !!v || 'Requird']"
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="password"
+                    label="password"
+                    type="password"
+                    :rules="[(v) => !!v || 'Requird']"
+                  ></v-text-field>
+
+                  <div class="mt-7">
+                    <v-btn
+                      block
+                      dark
+                      x-large
+                      color="primary"
+                      class="mb-2"
+                      @submit="submit"
+                    >
+                      Create Account
+                    </v-btn>
+                  </div>
+                </v-form>
               </div>
-              <div class="mt-7">
-                <v-btn block dark x-large color="primary" class="mb-2">
-                  Create Account
-                </v-btn>
-              </div>
+
               <h6 class="subtitle-1 text-center mt-3">
                 Allredy have account? <span> <a>log in </a></span>
               </h6>
@@ -28,3 +53,18 @@
     </v-container>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: "",
+      email: null,
+      password: null,
+    };
+  },
+  methods: {
+    submit() {},
+  },
+};
+</script>
