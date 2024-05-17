@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import productItem from "@/components/product.vue";
 export default {
   components: {
@@ -33,7 +34,12 @@ export default {
     };
   },
   mounted() {
-    this.products = this.$props.items;
+    axios
+      .get("https://fakestoreapi.com/products?limit=8")
+      .then((res) => {
+        return (this.products = res.data);
+      })
+      .catch((e) => {});
   },
 };
 </script>

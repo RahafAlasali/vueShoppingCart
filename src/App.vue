@@ -29,7 +29,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2family=Poppins:wght@400;700&display=swap");
+$body-font-family: "Poppins", sans-serif;
+
 ::-webkit-scrollbar {
   width: 10px;
 }

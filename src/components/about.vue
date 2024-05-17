@@ -1,5 +1,5 @@
 <template>
-  <div class="py-4 d-flex align-center" style="height: 800px">
+  <div class="py-4 d-flex align-center" style="height: 600px">
     <v-row style="height: 90%">
       <v-col cols="6">
         <div class="d-flex justify-end px-6 text-right alighn-center">
@@ -13,7 +13,7 @@
           </div>
         </div></v-col
       >
-      <v-divider vertical inset></v-divider>
+      <v-divider vertical></v-divider>
       <v-col cols="6" class="d-flex align-end">
         <div class="mx-6">
           <div class="text-h3 mb-8" style="font-family: cursive">

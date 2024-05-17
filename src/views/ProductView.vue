@@ -3,7 +3,8 @@
     <v-container class="mx-2 my-4">
       <v-row>
         <v-col cols="6">
-          <v-img height="300px" contain :src="product.image"> </v-img
+          <div class="mx-7 px-3">
+            <v-img height="300px" contain :src="product.image"> </v-img></div
         ></v-col>
         <v-col cols="6">
           <div>
@@ -11,7 +12,10 @@
               <h2 class="mb-4">{{ product.title }}</h2>
               <h4 class="mb-3 mt-2">${{ product.price }}</h4>
               <h3 class="mb-4 subtitle-1">{{ product.description }}</h3>
-              <h3 class="mb-4 subtitle-1">category:{{ product.category }}</h3>
+              <h3 class="mb-4 subtitle-1">
+                category:
+                <span class="primary--text">{{ product.category }}</span>
+              </h3>
 
               <v-divider class="mb-3"></v-divider>
             </div>
@@ -53,19 +57,21 @@
         </v-col>
       </v-row></v-container
     >
-    <div class="pa-5" style="background-color: #fafafa">
-      <div
-        class="text-h3 my-3 primary--text font-weight-bold"
-        style="font-family: cursive"
-      >
-        Related Product
-      </div>
+    <div class="py-5" style="background-color: #fafafa">
+      <v-container>
+        <div
+          class="text-h3 my-3 primary--text font-weight-bold"
+          style="font-family: cursive"
+        >
+          Related Product
+        </div>
 
-      <v-row class="mt-4">
-        <v-col cols="3" v-for="(item, index) in items" :key="index">
-          <product-item :item="item" />
-        </v-col>
-      </v-row>
+        <v-row class="mt-4">
+          <v-col cols="3" v-for="(item, index) in items" :key="index">
+            <product-item :item="item" />
+          </v-col>
+        </v-row>
+      </v-container>
     </div>
   </div>
 </template>

@@ -26,11 +26,13 @@
         <v-img height="200" contain :src="item.image"> </v-img>
       </div>
 
-      <v-card-title class="pb-3 px-0" style="height: 150px">{{
-        item.title
-      }}</v-card-title>
+      <v-card-title class="pb-3 px-0" style="height: 110px">
+        <span class="body" style="line-height: 1.2">{{
+          item.title
+        }}</span></v-card-title
+      >
 
-      <v-card-text class="m-auto px-0">
+      <v-card-text class="m-auto pa-0 mt-1">
         <v-row align="center" class="mx-0">
           <v-rating
             :value="item.rating.rate"
@@ -42,20 +44,15 @@
             size="23"
           ></v-rating>
         </v-row>
-        <v-card-subtitle class="px-0 my-2 px-0">
-          ${{ item.price }}
-        </v-card-subtitle>
+        <v-card-subtitle class="px-0 mt-2"> ${{ item.price }} </v-card-subtitle>
       </v-card-text>
-      <!-- <v-card-actions class="d-flex justify-end">
-          <v-btn color="deep-purple lighten-2" text>
-            <router-link
-              style="text-decoration: none"
-              :to="`/product/${item.id}`"
-            >
-              details
-            </router-link>
-          </v-btn>
-        </v-card-actions> -->
+      <v-card-actions class="mx-0 pa-0">
+        <v-btn class="px-0" color="primary" text>
+          <router-link style="" :to="`/product/${item.id}`">
+            view details
+          </router-link>
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </div>
 </template>

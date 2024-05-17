@@ -8,7 +8,7 @@
             <div>
               <div class="mb-4">
                 <h1>create an account</h1>
-                <h6 class="subtitle-1">Enter your ditails below</h6>
+                <h6 class="subtitle-1">Enter your details below</h6>
                 <v-form @submit.prevent>
                   <v-text-field
                     v-model="name"
