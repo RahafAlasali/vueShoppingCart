@@ -41,7 +41,7 @@ export default {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #025048;
+  background: #616161;
   border-radius: 2px;
 }
 </style>

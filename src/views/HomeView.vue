@@ -4,8 +4,7 @@
       <div class="about text-h3 primary--text py-6 mx-auto" style="width: 60%">
         <div class="text-center" style="font-family: cursive">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-          repellendus architecto quos nesciunt culpa facilis rem, mollitia nihil
-          dolorum eaque veritatis assumenda
+          repellendus architecto quos nesciunt culpa
         </div>
       </div>
     </v-container>
@@ -39,7 +38,7 @@
         </v-row>
       </div>
       <div class="text-center my-4">
-        <v-btn
+        <!-- <v-btn
           depressed
           dark
           color="primary"
@@ -47,9 +46,10 @@
           :disabled="AllPrd"
         >
           view all products
-        </v-btn>
+        </v-btn> -->
       </div>
     </v-container>
+    <Category />
   </div>
 </template>
 
@@ -57,10 +57,11 @@
 import axios from "axios";
 import productItem from "@/components/product.vue";
 import gallary from "@/components/gallary.vue";
+import Category from "@/components/category.vue";
 
 export default {
   name: "Home",
-  components: { productItem, gallary },
+  components: { productItem, gallary, Category },
   data() {
     return {
       data: [],

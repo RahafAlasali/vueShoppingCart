@@ -1,41 +1,28 @@
 <template>
   <div calss="">
-    <v-carousel
-      height="400"
-      show-arrows="hover"
-      cycle
-      hide-delimiter-background
-    >
-      <v-carousel-item
-        v-for="(item, i) in sliceImages"
-        :key="i"
-        v-bind:src="item.src"
-        reverse-transition="fade-transition"
-        transition="fade-transition"
-      >
-      </v-carousel-item>
-    </v-carousel>
+    <v-img height="600" src="head.jpg"
+      ><v-overlay absolute>
+        <v-container>
+          <div style="width: 80%">
+            <div class="my-5 text-h2">Title Intro Shopping</div>
+            <div class="my-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+              velit distinctio blanditiis quam sit amet consectetur adipisicing
+              elit
+            </div>
+            <div class="mt-9">
+              <v-btn elevation="1" large outlined text>view collection</v-btn>
+            </div>
+          </div>
+        </v-container>
+      </v-overlay>
+    </v-img>
   </div>
 </template>
 <script>
 export default {
   data() {
-    return {
-      sliceImages: [
-        {
-          src: "1.jpg",
-        },
-        {
-          src: "2.jpg",
-        },
-        {
-          src: "3.jpg",
-        },
-        {
-          src: "7.jpg",
-        },
-      ],
-    };
+    return {};
   },
 };
 </script>

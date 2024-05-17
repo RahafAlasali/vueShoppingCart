@@ -2,7 +2,7 @@
   <div class="ma-3">
     <v-container>
       <v-row>
-        <v-col cols="6"> <v-img src="@/assets/placeholder.png"> </v-img></v-col>
+        <v-col cols="6"> <v-img src="12.jpg"> </v-img></v-col>
         <v-col cols="6">
           <v-container class="mx-2">
             <div>

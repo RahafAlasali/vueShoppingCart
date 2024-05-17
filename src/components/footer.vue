@@ -42,7 +42,7 @@
     <v-divider></v-divider>
    </v-footer> -->
   <v-footer dark padless>
-    <v-card class="primary white--text text-center" width="100%">
+    <v-card class="grey darken-2 white--text text-center" width="100%">
       <v-card-text>
         <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
           <v-icon size="24px">
