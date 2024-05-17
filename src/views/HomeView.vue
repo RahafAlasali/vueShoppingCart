@@ -1,12 +1,7 @@
 <template>
   <div>
     <v-container>
-      <div class="about text-h3 primary--text py-6 mx-auto" style="width: 60%">
-        <div class="text-center" style="font-family: cursive">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-          repellendus architecto quos nesciunt culpa
-        </div>
-      </div>
+      <About />
     </v-container>
     <v-parallax src="1.jpg"
       ><v-overlay :absolute="true"
@@ -25,28 +20,7 @@
     <gallary />
     <div class="py-5" style="background-color: #fafafa">
       <v-container>
-        <div
-          class="text-h3 text-center my-3 primary--text font-weight-bold"
-          style="font-family: cursive"
-        >
-          Product
-        </div>
-
-        <v-row class="mt-4">
-          <v-col cols="3" v-for="(item, index) in data" :key="index">
-            <product-item :item="item" />
-          </v-col>
-        </v-row>
-
-        <!-- <v-btn
-          depressed
-          dark
-          color="primary"
-          @click="showAll"
-          :disabled="AllPrd"
-        >
-          view all products
-        </v-btn> -->
+        <Product :items="data" />
       </v-container>
     </div>
     <Category />
@@ -55,13 +29,14 @@
 
 <script>
 import axios from "axios";
-import productItem from "@/components/product.vue";
 import gallary from "@/components/gallary.vue";
 import Category from "@/components/category.vue";
+import Product from "@/components/productsList.vue";
+import About from "@/components/about.vue";
 
 export default {
   name: "Home",
-  components: { productItem, gallary, Category },
+  components: { gallary, Category, Product, About },
   data() {
     return {
       data: [],
