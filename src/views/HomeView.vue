@@ -23,21 +23,21 @@
     </v-parallax>
 
     <gallary />
-    <v-container>
-      <div class="">
-        <div>
-          <h2 class="my-4">Products</h2>
+    <div class="py-5" style="background-color: #fafafa">
+      <v-container>
+        <div
+          class="text-h3 text-center my-3 primary--text font-weight-bold"
+          style="font-family: cursive"
+        >
+          gallary
         </div>
-      </div>
 
-      <div>
-        <v-row>
+        <v-row class="mt-4">
           <v-col cols="3" v-for="(item, index) in data" :key="index">
-            <!-- <product-item :item="item" /> -->
+            <product-item :item="item" />
           </v-col>
         </v-row>
-      </div>
-      <div class="text-center my-4">
+
         <!-- <v-btn
           depressed
           dark
@@ -47,8 +47,8 @@
         >
           view all products
         </v-btn> -->
-      </div>
-    </v-container>
+      </v-container>
+    </div>
     <Category />
   </div>
 </template>
@@ -81,19 +81,19 @@ export default {
         .catch((e) => {});
     },
   },
-  // mounted() {
-  //   axios
-  //     .get("https://fakestoreapi.com/products?limit=8")
-  //     .then((res) => {
-  //       return (this.data = res.data);
-  //     })
-  //     .catch((e) => {});
-  //   axios
-  //     .get("https://fakestoreapi.com/products/categories")
-  //     .then((res) => {
-  //       return (this.categories = res.data);
-  //     })
-  //     .catch((e) => {});
-  // },
+  mounted() {
+    axios
+      .get("https://fakestoreapi.com/products?limit=4")
+      .then((res) => {
+        return (this.data = res.data);
+      })
+      .catch((e) => {});
+    axios
+      .get("https://fakestoreapi.com/products/categories")
+      .then((res) => {
+        return (this.categories = res.data);
+      })
+      .catch((e) => {});
+  },
 };
 </script>

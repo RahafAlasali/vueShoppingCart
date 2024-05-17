@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center my-7 py-4" style="position: relative">
+  <div class="text-center mt-7 pt-4" style="position: relative">
     <div
       class="text-h3 primary--text font-weight-bold"
       style="font-family: cursive"
