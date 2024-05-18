@@ -9,7 +9,7 @@
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-list color="" flat class="d-flex">
+      <v-list color="" flat class="d-md-flex d-none">
         <v-list-item
           v-for="link in links"
           :ripple="false"

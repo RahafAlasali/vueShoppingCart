@@ -12,7 +12,8 @@
     </div>
 
     <v-container
-      style="position: absolute; top: 20%; z-index: 99999; right: 5%; left: 5%"
+      class="gallarypos"
+      style="top: 20%; z-index: 99999; right: 5%; left: 5%"
     >
       <v-row class="mx-4">
         <v-col md="4" sm="10" class="px-0 py-0">
@@ -56,8 +57,16 @@
       </v-row>
     </v-container>
 
-    <v-img height="500" opacity="0.7" src="4.jpg">
+    <v-img class="hidden-sm-and-down" height="500" opacity="0.7" src="4.jpg">
       <v-overlay absolute></v-overlay
     ></v-img>
   </div>
 </template>
+
+<style scoped>
+@media only screen and (min-width: 1024px) {
+  .gallarypos {
+    position: absolute;
+  }
+}
+</style>

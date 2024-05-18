@@ -67,7 +67,13 @@
         </div>
 
         <v-row class="mt-4">
-          <v-col cols="3" v-for="(item, index) in items" :key="index">
+          <v-col
+            cols="3"
+            md="4"
+            sm="6"
+            v-for="(item, index) in items"
+            :key="index"
+          >
             <product-item :item="item" />
           </v-col>
         </v-row>
