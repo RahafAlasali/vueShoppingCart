@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <nav-bar />
-    <Slide v-if="$route.path == '/'" />
+    <Slide />
     <!-- <v-container> -->
     <v-main>
       <router-view />

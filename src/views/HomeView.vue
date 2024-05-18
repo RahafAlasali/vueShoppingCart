@@ -9,7 +9,7 @@
     <gallary />
     <div class="py-5" style="background-color: #f1eeea">
       <v-container>
-        <Product />
+        <Product :isFilter="false" />
       </v-container>
     </div>
     <Category />

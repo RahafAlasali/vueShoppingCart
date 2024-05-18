@@ -1,43 +1,42 @@
 <template>
   <div>
     <v-row>
-      <v-col class="px-0" cols="3">
-        <v-img height="400" src="7.jpg"
-          ><v-overlay absolute>
-            <div class="text-h3 text-center grey--text text--lighten-1">
-              Women's clothing
-            </div></v-overlay
+      <v-col
+        v-for="(item, index) in categories"
+        :key="index"
+        class="px-0"
+        cols="3"
+      >
+        <v-img height="400" :src="imagesCategory[index]"
+          ><router-link :to="{ name: 'products', query: { cat: item } }"
+            ><v-overlay absolute>
+              <div class="text-h3 text-center grey--text text--lighten-1">
+                {{ item }}
+              </div></v-overlay
+            ></router-link
           >
         </v-img>
-      </v-col>
-
-      <v-col class="px-0" cols="3">
-        <v-img height="400" src="1.jpg"
-          ><v-overlay absolute>
-            <div class="text-h3 text-center grey--text text--lighten-1">
-              Jewelery
-            </div></v-overlay
-          >
-        </v-img>
-      </v-col>
-
-      <v-col class="px-0" cols="3">
-        <v-img height="400" src="2.jpg"
-          ><v-overlay absolute>
-            <div class="text-h3 grey--text text--lighten-1">Electronics</div>
-          </v-overlay>
-        </v-img>
-      </v-col>
-
-      <v-col class="px-0" cols="3">
-        <v-img height="400" src="7.jpg">
-          <v-overlay absolute>
-            <div class="text-h3 grey--text text--lighten-1">
-              Men's clothing
-            </div></v-overlay
-          ></v-img
-        >
       </v-col>
     </v-row>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      categories: [],
+      imagesCategory: ["2.jpg", "7.jpg", "1.jpg", "9.jpg"],
+    };
+  },
+  mounted() {
+    axios
+      .get("https://fakestoreapi.com/products/categories")
+      .then((res) => {
+        return (this.categories = res.data);
+      })
+      .catch((e) => {});
+  },
+};
+</script>

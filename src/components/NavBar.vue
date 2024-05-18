@@ -61,6 +61,7 @@ export default {
       drawer: false,
       links: [
         { title: "Home", to: "/" },
+        { title: "Shop", to: "/products" },
         { title: "Contact", to: "/" },
         { title: "About", to: "/" },
         { title: "Sign up", to: "/login" },

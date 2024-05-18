@@ -11,13 +11,13 @@
         class="d-flex align-center"
         style="background-color: white; height: 300px; position: relative"
       >
-        <div style="right: 2px; top: 2px; position: absolute">
+        <div style="right: 2px; top: 1px; position: absolute">
           <div>
             <v-btn icon>
               <v-icon class="blue-grey--text"> mdi-heart</v-icon>
             </v-btn>
           </div>
-          <div class="m1-3">
+          <div>
             <v-btn icon>
               <v-icon class="blue-grey--text"> mdi-cart</v-icon>
             </v-btn>
@@ -26,13 +26,13 @@
         <v-img height="200" contain :src="item.image"> </v-img>
       </div>
 
-      <v-card-title class="pb-3 px-0" style="height: 110px">
+      <v-card-title class="pb-3 px-0" style="height: 120px">
         <span class="body" style="line-height: 1.2">{{
           item.title
         }}</span></v-card-title
       >
 
-      <v-card-text class="m-auto pa-0 mt-1">
+      <v-card-text class="m-auto pa-0 mt-2">
         <v-row align="center" class="mx-0">
           <v-rating
             :value="item.rating.rate"
