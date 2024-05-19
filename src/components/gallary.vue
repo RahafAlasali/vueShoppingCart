@@ -6,7 +6,7 @@
     >
       gallary
     </div>
-    <div class="my-3 mx-auto" style="width: 600px; height: 300px">
+    <div class="my-sm-3 gallary-header mx-auto">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi accusamus
       dolorum amet, consectetur adipisicing elit. Modi accusamus dolorum
     </div>
@@ -67,6 +67,14 @@
 @media only screen and (min-width: 1024px) {
   .gallarypos {
     position: absolute;
+  }
+  .gallary-header {
+    height: 300px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .gallary-header {
+    width: 600px;
   }
 }
 </style>
