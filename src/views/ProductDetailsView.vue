@@ -2,11 +2,11 @@
   <div>
     <v-container class="mx-2 my-4">
       <v-row>
-        <v-col cols="6">
+        <v-col cols="12" sm="6">
           <div class="mx-7 px-3">
             <v-img height="300px" contain :src="product.image"> </v-img></div
         ></v-col>
-        <v-col cols="6">
+        <v-col cols="12" sm="6">
           <div>
             <div>
               <h2 class="mb-4">{{ product.title }}</h2>
@@ -60,7 +60,7 @@
     <div class="py-5" style="background-color: #fafafa">
       <v-container>
         <div
-          class="text-h3 my-3 primary--text font-weight-bold"
+          class="text-sm-h3 my-3 primary--text font-weight-bold"
           style="font-family: cursive"
         >
           Related Product
@@ -68,7 +68,7 @@
 
         <v-row class="mt-4">
           <v-col
-            cols="3"
+            cols="12"
             md="4"
             sm="6"
             v-for="(item, index) in items"
