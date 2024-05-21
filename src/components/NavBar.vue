@@ -26,9 +26,32 @@
       </v-list>
       <v-spacer></v-spacer>
 
+      <!-- <select v-model="$i18n.locale">
+        <option
+          v-for="locale in lang"
+          :key="`locale-${locale}`"
+          :value="locale"
+        >
+          {{ locale }}
+        </option>
+      </select> -->
+
+      <v-select
+        dense
+        outlined
+        v-model="$i18n.locale"
+        :items="lang"
+        placeholder="language"
+        style="max-width: 100px"
+      >
+      </v-select>
+
       <v-btn icon>
         <v-icon> mdi-cart</v-icon>
       </v-btn>
+      <router-link to="/login">
+        <v-btn icon> <v-icon> mdi-account</v-icon> </v-btn></router-link
+      >
     </v-toolbar>
     <v-navigation-drawer
       class="py-8 text-uppercase"
@@ -59,14 +82,20 @@ export default {
   data() {
     return {
       drawer: false,
+      lang: ["ar", "en"],
       links: [
         { title: "Home", to: "/" },
         { title: "Shop", to: "/products" },
         { title: "Contact", to: "/" },
         { title: "About", to: "/" },
-        { title: "Sign up", to: "/login" },
       ],
     };
+  },
+
+  methods: {
+    changeRTL() {
+      this.$vuetify.rtl = true;
+    },
   },
 };
 </script>
