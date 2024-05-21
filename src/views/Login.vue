@@ -9,23 +9,30 @@
           <v-container class="mx-2">
             <div>
               <div class="mb-4">
-                <h1>create an account</h1>
-                <h6 class="subtitle-1">Enter your details below</h6>
-                <v-form @submit.prevent>
+                <h1>Create Account</h1>
+                <v-form
+                  @submit.prevent="submit"
+                  ref="form"
+                  v-model="valid"
+                  lazy-validation
+                >
                   <v-text-field
                     v-model="name"
                     :rules="[(v) => !!v || 'Requird']"
-                    label="Name"
+                    :label="$t('name')"
                   >
                   </v-text-field>
                   <v-text-field
                     v-model="email"
-                    label="Email"
-                    :rules="[(v) => !!v || 'Requird']"
+                    :label="$t('email')"
+                    :rules="[
+                      (v) => !!v || 'Requird',
+                      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+                    ]"
                   ></v-text-field>
                   <v-text-field
                     v-model="password"
-                    label="password"
+                    :label="$t('password')"
                     type="password"
                     :rules="[(v) => !!v || 'Requird']"
                   ></v-text-field>
@@ -37,9 +44,9 @@
                       x-large
                       color="primary"
                       class="mb-2"
-                      @submit="submit"
+                      type="submit"
                     >
-                      Create Account
+                      Sign Up
                     </v-btn>
                   </div>
                 </v-form>
@@ -63,10 +70,13 @@ export default {
       name: "",
       email: null,
       password: null,
+      valid: true,
     };
   },
   methods: {
-    submit() {},
+    submit() {
+      this.$refs.form.validate();
+    },
   },
 };
 </script>

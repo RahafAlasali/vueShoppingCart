@@ -1,5 +1,15 @@
 {
     "intro": {
         "title": "Title Intro Shopping"
-    }
+    },
+    "gallary": "gallary",
+    "details": "view details",
+    "product": "product",
+    "home": "home",
+    "shop": "Shop",
+    "contact": "Contact",
+    "about": "About",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password"
 }

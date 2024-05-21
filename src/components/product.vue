@@ -23,7 +23,7 @@
             </v-btn>
           </div>
         </div>
-        <v-img height="200" contain :src="item.image"> </v-img>
+        <v-img height="150" contain :src="item.image"> </v-img>
       </div>
 
       <v-card-title class="pb-3 px-0" style="height: 120px">
@@ -49,7 +49,7 @@
       <v-card-actions class="mx-0 pa-0">
         <v-btn class="px-0" color="primary" text>
           <router-link style="" :to="`/product/${item.id}`">
-            view details
+            {{ $t("details") }}
           </router-link>
         </v-btn>
       </v-card-actions>

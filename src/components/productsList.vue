@@ -4,7 +4,7 @@
       class="text-h3 text-center my-3 primary--text font-weight-bold"
       style="font-family: cursive"
     >
-      Product
+      {{ $t("product") }}
     </div>
 
     <div v-if="isFilter" class="my-3 d-flex justify-end">

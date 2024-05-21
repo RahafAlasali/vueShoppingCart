@@ -4,7 +4,7 @@
       class="text-h3 primary--text font-weight-bold"
       style="font-family: cursive"
     >
-      gallary
+      {{ $t("gallary") }}
     </div>
     <div class="my-sm-3 gallary-header mx-auto">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi accusamus

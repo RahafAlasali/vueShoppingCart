@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <nav-bar />
-    <Slide />
+    <Slide v-if="$route.name != 'login'" />
     <!-- <v-container> -->
     <v-main>
       <router-view />
@@ -15,6 +15,7 @@
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/footer.vue";
 import Slide from "@/components/slide.vue";
+import router from "./router";
 
 export default {
   name: "App",
