@@ -28,7 +28,16 @@
           </v-card>
         </v-col>
         <v-col tile md="4" sm="10" class="px-0 py-0"
-          ><v-card tile> <v-img height="250" src="2.jpg"></v-img> </v-card
+          ><v-card tile>
+            <v-img height="250" src="2.jpg"
+              ><template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    indeterminate
+                    color="primary"
+                  ></v-progress-circular>
+                </v-row> </template
+            ></v-img> </v-card
         ></v-col>
         <v-col md="4" sm="10" class="px-0 py-0">
           <v-card tile class="px-2" height="100%">
@@ -41,7 +50,15 @@
         >
         <v-col tile md="4" sm="10" class="px-0 py-0">
           <v-card tile>
-            <v-img height="250" src="5.jpg"></v-img>
+            <v-img height="250" src="5.jpg"
+              ><template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    indeterminate
+                    color="primary"
+                  ></v-progress-circular>
+                </v-row> </template
+            ></v-img>
           </v-card>
         </v-col>
         <v-col md="4" sm="10" class="px-0 py-0"
@@ -54,7 +71,16 @@
           </v-card></v-col
         >
         <v-col md="4" sm="10" class="px-0 py-0"
-          ><v-card> <v-img height="250" src="6.jpg"></v-img> </v-card
+          ><v-card>
+            <v-img height="250" src="6.jpg"
+              ><template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    indeterminate
+                    color="primary"
+                  ></v-progress-circular>
+                </v-row> </template
+            ></v-img> </v-card
         ></v-col>
       </v-row>
     </v-container>

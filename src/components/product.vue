@@ -11,19 +11,27 @@
       class="d-flex align-center"
       style="background-color: white; height: 250px; position: relative"
     >
-      <div style="right: 2px; top: 1px; position: absolute">
+      <div style="right: 3px; top: 1px; position: absolute">
         <div>
-          <v-btn icon>
-            <v-icon class="blue-grey--text"> mdi-heart</v-icon>
+          <v-btn class="my-1" small elevation="2" icon outlined>
+            <v-icon class="blue-grey--text" dark small> mdi-heart</v-icon>
           </v-btn>
         </div>
         <div>
-          <v-btn icon>
-            <v-icon class="blue-grey--text"> mdi-cart</v-icon>
+          <v-btn small elevation="2" icon outlined>
+            <v-icon class="blue-grey--text" dark small> mdi-cart</v-icon>
           </v-btn>
         </div>
       </div>
-      <v-img height="150" contain :src="item.image"> </v-img>
+      <v-img height="150" contain :src="item.image">
+        <template v-slot:placeholder>
+          <v-row class="fill-height ma-0" align="center" justify="center">
+            <v-progress-circular
+              indeterminate
+              color="primary"
+            ></v-progress-circular>
+          </v-row> </template
+      ></v-img>
     </div>
 
     <v-card-title class="pb-3 px-0" style="height: 100px">

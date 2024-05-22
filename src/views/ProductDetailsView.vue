@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container class="mx-2 my-4">
-      <v-row>
+      <v-row v-if="product">
         <v-col cols="12" sm="6">
           <div class="mx-7 px-3">
             <v-img height="300px" contain :src="product.image"> </v-img></div
@@ -55,8 +55,11 @@
             </v-card>
           </div>
         </v-col>
-      </v-row></v-container
-    >
+      </v-row>
+      <div v-else class="text-center my-auto" style="min-height: 400px">
+        <Loader />
+      </div>
+    </v-container>
     <div class="py-5" style="background-color: #fafafa">
       <v-container>
         <div
@@ -66,7 +69,7 @@
           Related Product
         </div>
 
-        <v-row class="mt-4">
+        <!-- <v-row class="mt-4">
           <v-col
             cols="12"
             md="4"
@@ -76,7 +79,22 @@
           >
             <product-item :item="item" />
           </v-col>
-        </v-row>
+        </v-row> -->
+        <div>
+          <v-slide-group show-arrows>
+            <v-slide-item v-for="(item, index) in items" :key="index">
+              <v-card
+                flat
+                color="transparent"
+                :height="500"
+                class="mx-3 my-2"
+                max-width="212"
+              >
+                <product-item :item="item" />
+              </v-card>
+            </v-slide-item>
+          </v-slide-group>
+        </div>
       </v-container>
     </div>
   </div>
@@ -86,10 +104,12 @@
 import productItem from "@/components/product.vue";
 
 import axios from "axios";
+import Loader from "@/components/loader.vue";
 
 export default {
   components: {
     productItem,
+    Loader,
   },
   data() {
     return {

@@ -48,29 +48,35 @@
       <v-btn depressed dark color="primary"> view all products </v-btn>
     </div>
     -->
-
-    <v-slide-group show-arrows>
-      <v-slide-item v-for="(item, index) in products" :key="index">
-        <v-card
-          flat
-          color="transparent"
-          :height="500"
-          class="mx-3 my-2"
-          max-width="212"
-        >
-          <product-item :item="item" />
-        </v-card>
-      </v-slide-item>
-    </v-slide-group>
+    <div v-if="!products" class="text-center my-auto" style="min-height: 400px">
+      <Loader />
+    </div>
+    <div>
+      <v-slide-group show-arrows>
+        <v-slide-item v-for="(item, index) in products" :key="index">
+          <v-card
+            flat
+            color="transparent"
+            :height="500"
+            class="mx-3 my-2"
+            max-width="212"
+          >
+            <product-item :item="item" />
+          </v-card>
+        </v-slide-item>
+      </v-slide-group>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import productItem from "@/components/product.vue";
+import Loader from "@/components/loader.vue";
 export default {
   components: {
     productItem,
+    Loader,
   },
   props: ["items", "isFilter"],
   data() {
@@ -93,7 +99,7 @@ export default {
     },
     allPrd() {
       axios
-        .get("https://fakestoreapi.com/products?limit=12")
+        .get("https://fakestoreapi.com/products")
         .then((res) => {
           return (this.products = res.data);
         })
