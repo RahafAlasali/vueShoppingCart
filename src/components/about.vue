@@ -8,8 +8,11 @@
           <div>
             <div class="primary--text">ABOUT US</div>
             <div class="mt-4">
-              <h2 class="about-header" style="font-family: cursive">
-                WELCOME TO FURNITURE HAVEN
+              <h2
+                class="about-header"
+                style="font-family: cursive; font-size: xx-large"
+              >
+                A Few Words About Our Store
               </h2>
             </div>
           </div>
@@ -19,17 +22,11 @@
       <v-col cols="12" sm="6" class="d-flex align-end" xs="12">
         <div class="mx-6">
           <div class="text-md-h3 mb-8" style="font-family: cursive">
-            We believe that your home is more than just a place; it's a canvas
-            for self-expression
             <!-- and a reflection of your unique style and personality -->
+            {{ $t("aboutTitle") }}
           </div>
           <div class="subtitle-1">
-            At Furniture Haven, we're not just in the business of selling
-            furniture; we're in the business of transforming spaces, enhancing
-            comfort, and creating an atmosphere of warmth and elegance. Our
-            journey began with a simple idea – to offer a diverse range of
-            high-quality furniture that caters to the diverse tastes and needs
-            of our customers.
+            {{ $t("aboutDescription") }}
           </div>
         </div></v-col
       >

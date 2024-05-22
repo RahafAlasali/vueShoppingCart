@@ -2,13 +2,15 @@
   <div class="text-center mt-7 pt-4" style="position: relative">
     <div
       class="text-h3 primary--text font-weight-bold"
-      style="font-family: cursive"
+      style="
+        font-family: 'Cormorant Garamond', serif !important ;
+        font-style: italic;
+      "
     >
       {{ $t("gallary") }}
     </div>
     <div class="my-sm-3 gallary-header mx-auto">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi accusamus
-      dolorum amet, consectetur adipisicing elit. Modi accusamus dolorum
+      {{ $t("gallaryDesc") }}
     </div>
 
     <v-container

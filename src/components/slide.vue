@@ -3,12 +3,18 @@
     <v-img height="600" src="head.jpg"
       ><v-overlay absolute>
         <v-container>
-          <div style="width: 80%">
-            <div class="my-5 text-h2">{{ $t("intro.title") }}</div>
-            <div class="my-5" style="width: 60%">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-              velit distinctio blanditiis quam sit amet consectetur adipisicing
-              elit
+          <div class="text-center mx-auto" style="width: 80%">
+            <div
+              class="my-5 text-sm-h3 text-h5"
+              style="
+                font-family: 'Cormorant Garamond', serif !important ;
+                font-style: italic;
+              "
+            >
+              {{ $t("intro.title") }}
+            </div>
+            <div class="my-5">
+              {{ $t("intro.description") }}
             </div>
             <div class="mt-9">
               <v-btn elevation="1" large outlined text>view collection</v-btn>

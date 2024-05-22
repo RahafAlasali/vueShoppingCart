@@ -2,21 +2,24 @@
   <div>
     <div
       class="text-h3 text-center my-3 primary--text font-weight-bold"
-      style="font-family: cursive"
+      style="
+        font-family: 'Cormorant Garamond', serif !important ;
+        font-style: italic;
+      "
     >
       {{ $t("product") }}
     </div>
 
-    <div v-if="isFilter" class="my-3 d-flex justify-end">
+    <div v-if="isFilter" class="my-3 py-2 d-flex justify-start ml-4">
       <div class="mx-3">
         <v-btn color="primary" outlined dark v-bind="attrs" @click="allPrd()">
-          All
+          {{ $t("all") }}
         </v-btn>
       </div>
       <v-menu left offset-x>
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" outlined dark v-bind="attrs" v-on="on">
-            Filter By
+            {{ $t("filterBy") }}
           </v-btn>
         </template>
 
@@ -29,6 +32,7 @@
         </v-list>
       </v-menu>
     </div>
+    <!--
     <v-row class="mt-4">
       <v-col
         cols="12"
@@ -43,6 +47,21 @@
     <div class="text-center">
       <v-btn depressed dark color="primary"> view all products </v-btn>
     </div>
+    -->
+
+    <v-slide-group show-arrows>
+      <v-slide-item v-for="(item, index) in products" :key="index">
+        <v-card
+          flat
+          color="transparent"
+          :height="500"
+          class="mx-3 my-2"
+          max-width="212"
+        >
+          <product-item :item="item" />
+        </v-card>
+      </v-slide-item>
+    </v-slide-group>
   </div>
 </template>
 
@@ -86,7 +105,7 @@ export default {
       this.filter(this.$route.query.cat);
     }
     axios
-      .get("https://fakestoreapi.com/products?limit=8")
+      .get("https://fakestoreapi.com/products")
       .then((res) => {
         return (this.products = res.data);
       })

@@ -4,7 +4,7 @@
       ><v-overlay :absolute="true"
         ><div class="text-h4 text-center">
           <div class="py-4" style="font-family: cursive">
-            Explore Our Exquisite Bag Collection Now!
+            {{ $t("exploreProduct") }}
           </div>
 
           <div class="mt-8">

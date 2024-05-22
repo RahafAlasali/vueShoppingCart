@@ -18,7 +18,7 @@
                 >
                   <v-text-field
                     v-model="name"
-                    :rules="[(v) => !!v || 'Requird']"
+                    :rules="[(v) => !!v || 'This field is required']"
                     :label="$t('name')"
                   >
                   </v-text-field>
@@ -26,7 +26,7 @@
                     v-model="email"
                     :label="$t('email')"
                     :rules="[
-                      (v) => !!v || 'Requird',
+                      (v) => !!v || 'This field is required',
                       (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
                     ]"
                   ></v-text-field>
@@ -34,7 +34,7 @@
                     v-model="password"
                     :label="$t('password')"
                     type="password"
-                    :rules="[(v) => !!v || 'Requird']"
+                    :rules="[(v) => !!v || 'This field is required']"
                   ></v-text-field>
 
                   <div class="mt-7">

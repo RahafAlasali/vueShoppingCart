@@ -10,7 +10,9 @@
         <v-img height="400" :src="imagesCategory[index]"
           ><router-link :to="{ name: 'products', query: { cat: item } }"
             ><v-overlay absolute>
-              <div class="text-sm-h3 text-center grey--text text--lighten-1">
+              <div
+                class="text-sm-h3 text-center grey--text text--lighten-1 text-capitalize"
+              >
                 {{ item }}
               </div></v-overlay
             ></router-link
