@@ -1,6 +1,8 @@
 {
     "intro": {
-        "title": "Title Intro Shopping"
+        "title": "Explore our comprehensive range of products ",
+        "description": "world of endless possibilities for online shopping.",
+        "D": "Explore our vast collection of products ranging from electronics and fashion to home essentials and more. we make your online shopping experience convenient and enjoyable."
     },
     "gallary": "gallary",
     "details": "view details",
@@ -11,5 +13,12 @@
     "about": "About",
     "name": "Name",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "category": "Category",
+    "all": "All",
+    "filterBy": "Filter By",
+    "exploreProduct": "Explore Our Exquisite Bag Collection Now!",
+    "aboutTitle": "Our goal is to create a space where you can explore, discover and find exactly what you are looking for.",
+    "aboutDescription": " Our mission  offering a diverse selection of products and exceptional customer service.  we strive to be your go-to destination for all your online shopping needs.",
+    "gallaryDesc": "Find exactly what you're looking for  Find the items you need and discover new products in your area of ​​interest."
 }

@@ -34,6 +34,7 @@
         :items="lang"
         placeholder="language"
         style="max-width: 80px"
+        class="d-md-flex d-none"
       >
       </v-select>
 
@@ -81,12 +82,6 @@ export default {
         { title: "about", to: "/" },
       ],
     };
-  },
-
-  methods: {
-    changeRTL() {
-      this.$vuetify.rtl = true;
-    },
   },
 };
 </script>

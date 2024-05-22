@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <nav-bar />
+
     <Slide v-if="$route.name != 'login'" />
     <!-- <v-container> -->
     <v-main>
@@ -27,6 +28,17 @@ export default {
   data: () => ({
     //
   }),
+  computed: {
+    isRtl() {
+      return this.$i18n.locale == "ar";
+    },
+  },
+  watch: {
+    isRtl(value) {
+      if (value) this.$vuetify.rtl = true;
+      else this.$vuetify.rtl = false;
+    },
+  },
 };
 </script>
 
@@ -35,7 +47,7 @@ export default {
 $body-font-family: "Poppins", sans-serif;
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 9px;
 }
 
 /* Track */

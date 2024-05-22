@@ -13,7 +13,7 @@
               <h4 class="mb-3 mt-2">${{ product.price }}</h4>
               <h3 class="mb-4 subtitle-1">{{ product.description }}</h3>
               <h3 class="mb-4 subtitle-1">
-                category:
+                {{ $t("category") }} :
                 <span class="primary--text">{{ product.category }}</span>
               </h3>
 
