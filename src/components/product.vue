@@ -1,12 +1,5 @@
 <template>
-  <div>
-    <!-- <v-card
-      flat
-      color="transparent"
-      :height="600"
-      class="mx-auto my-2"
-      max-width="374"
-    > -->
+  <div class="">
     <div
       class="d-flex align-center justify-center"
       style="background-color: white; height: 190px; position: relative"
@@ -79,7 +72,6 @@
         </router-link>
       </v-btn>
     </v-card-actions>
-    <!-- </v-card> -->
   </div>
 </template>
 

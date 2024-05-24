@@ -15,7 +15,7 @@
             >
               <v-text-field
                 v-model="name"
-                :rules="[(v) => !!v || 'This field is required']"
+                :rules="[(v) => !!v || $t('fieldRequired')]"
                 :label="$t('name')"
               >
               </v-text-field>
@@ -23,7 +23,7 @@
                 v-model="email"
                 :label="$t('email')"
                 :rules="[
-                  (v) => !!v || 'This field is required',
+                  (v) => !!v || $t('fieldRequired'),
                   (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
                 ]"
               ></v-text-field>
@@ -31,7 +31,7 @@
                 v-model="password"
                 :label="$t('password')"
                 type="password"
-                :rules="[(v) => !!v || 'This field is required']"
+                :rules="[(v) => !!v || $t('fieldRequired')]"
               ></v-text-field>
 
               <v-card-actions class="d-flex justify-center">

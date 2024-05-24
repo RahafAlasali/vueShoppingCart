@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-7">
     <div
       class="text-h3 text-center my-3 primary--text font-weight-bold"
       style="
@@ -25,33 +25,17 @@
 
         <v-list>
           <v-list-item v-for="(item, index) in categories" :key="index">
-            <v-list-item-title @click="() => filter(item)">{{
+            <v-list-item-title @click="() => filterBy(item)">{{
               item
             }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
     </div>
-    <!--
-    <v-row class="mt-4">
-      <v-col
-        cols="12"
-        md="4"
-        sm="6"
-        v-for="(item, index) in products"
-        :key="index"
-      >
-        <product-item :item="item" />
-      </v-col>
-    </v-row>
-    <div class="text-center">
-      <v-btn depressed dark color="primary"> view all products </v-btn>
-    </div>
-    -->
     <div v-if="!products" class="text-center my-auto" style="min-height: 400px">
       <Loader />
     </div>
-    <div>
+    <div class="mb-7">
       <v-slide-group show-arrows class="slider" center-active>
         <v-slide-item
           v-for="(item, index) in products"
@@ -61,9 +45,10 @@
           <v-card
             flat
             color="transparent"
-            :height="500"
+            :max-height="400"
             class="mx-3 my-2"
             max-width="212"
+            ripple="false"
             @click="toggle"
           >
             <product-item :item="item" />
@@ -94,7 +79,7 @@ export default {
   },
 
   methods: {
-    filter(item) {
+    filterBy(item) {
       axios
         .get(`https://fakestoreapi.com/products/category/${item}`)
         .then((res) => {
@@ -113,7 +98,7 @@ export default {
   },
   mounted() {
     if (this.$route.query.cat) {
-      this.filter(this.$route.query.cat);
+      this.filterBy(this.$route.query.cat);
     }
     axios
       .get("https://fakestoreapi.com/products")
