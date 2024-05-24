@@ -2,7 +2,7 @@
   <div>
     <v-container class="mx-2 my-4">
       <v-row v-if="product">
-        <v-col cols="12" sm="6">
+        <v-col cols="12" sm="6" class="d-flex align-center justify-center">
           <div class="mx-7 px-3">
             <v-img height="300px" contain :src="product.image"> </v-img></div
         ></v-col>

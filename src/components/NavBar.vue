@@ -1,7 +1,10 @@
 <template>
   <div>
     <v-toolbar class="px-2 primary--text text-uppercase">
-      <!-- <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon> -->
+      <v-app-bar-nav-icon
+        class="d-block d-md-none"
+        @click="drawer = !drawer"
+      ></v-app-bar-nav-icon>
       <v-toolbar-title class="text-h5">
         <router-link to="/" style="text-decoration: none">
           shopping
@@ -46,7 +49,7 @@
       </v-btn>
     </v-toolbar>
     <v-navigation-drawer
-      class="py-8 text-uppercase"
+      class="text-uppercase"
       v-model="drawer"
       absolute
       bottom

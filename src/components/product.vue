@@ -8,8 +8,8 @@
       max-width="374"
     > -->
     <div
-      class="d-flex align-end"
-      style="background-color: white; height: 230px; position: relative"
+      class="d-flex align-center justify-center"
+      style="background-color: white; height: 190px; position: relative"
     >
       <div style="right: 3px; top: 1px; position: absolute">
         <div>
@@ -18,12 +18,25 @@
           </v-btn>
         </div>
         <div>
-          <v-btn class="mt-1" small elevation="2" icon outlined>
-            <v-icon class="blue-grey--text" dark small> mdi-cart</v-icon>
-          </v-btn>
+          <v-tooltip left>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                class="mt-1"
+                small
+                elevation="2"
+                icon
+                outlined
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-icon class="blue-grey--text" dark small> mdi-cart</v-icon>
+              </v-btn>
+            </template>
+            <span>Add to cart</span>
+          </v-tooltip>
         </div>
       </div>
-      <v-img height="150" contain :src="item.image">
+      <v-img height="150" max-width="120" contain :src="item.image">
         <template v-slot:placeholder>
           <v-row class="fill-height ma-0" align="center" justify="center">
             <v-progress-circular

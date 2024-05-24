@@ -28,10 +28,14 @@ const routes = [
     name: "productDetails",
     component: ProductDetails,
   },
+  { path: "*", redirect: "/" },
 ];
 
 const router = new VueRouter({
   mode: "history",
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   base: process.env.BASE_URL,
   routes,
 });

@@ -52,14 +52,19 @@
       <Loader />
     </div>
     <div>
-      <v-slide-group show-arrows class="slider">
-        <v-slide-item v-for="(item, index) in products" :key="index">
+      <v-slide-group show-arrows class="slider" center-active>
+        <v-slide-item
+          v-for="(item, index) in products"
+          :key="index"
+          v-slot="{ toggle }"
+        >
           <v-card
             flat
             color="transparent"
             :height="500"
             class="mx-3 my-2"
             max-width="212"
+            @click="toggle"
           >
             <product-item :item="item" />
           </v-card>
@@ -133,6 +138,6 @@ export default {
 }
 .v-slide-group__prev,
 .v-slide-group__next {
-  min-width: 30px !important;
+  min-width: 40px !important;
 }
 </style>
