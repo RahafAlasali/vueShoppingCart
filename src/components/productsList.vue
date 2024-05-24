@@ -12,7 +12,7 @@
 
     <div v-if="isFilter" class="my-3 py-2 d-flex justify-start ml-4">
       <div class="mx-3">
-        <v-btn color="primary" outlined dark v-bind="attrs" @click="allPrd()">
+        <v-btn color="primary" outlined dark @click="filterBy('all')">
           {{ $t("all") }}
         </v-btn>
       </div>
@@ -35,10 +35,11 @@
     <div v-if="!products" class="text-center my-auto" style="min-height: 400px">
       <Loader />
     </div>
+
     <div class="mb-7">
       <v-slide-group show-arrows class="slider" center-active>
         <v-slide-item
-          v-for="(item, index) in products"
+          v-for="(item, index) in productsFilter"
           :key="index"
           v-slot="{ toggle }"
         >
@@ -48,7 +49,6 @@
             :max-height="400"
             class="mx-3 my-2"
             max-width="212"
-            ripple="false"
             @click="toggle"
           >
             <product-item :item="item" />
@@ -72,28 +72,22 @@ export default {
   data() {
     return {
       offset: true,
-      products: "",
-      productsFilter: [],
+      filter: null,
+      products: [],
       categories: [],
     };
   },
 
+  computed: {
+    productsFilter() {
+      return this.filter
+        ? this.products.filter((prd) => prd.category == this.filter)
+        : this.products;
+    },
+  },
   methods: {
     filterBy(item) {
-      axios
-        .get(`https://fakestoreapi.com/products/category/${item}`)
-        .then((res) => {
-          return (this.products = res.data);
-        })
-        .catch((e) => {});
-    },
-    allPrd() {
-      axios
-        .get("https://fakestoreapi.com/products")
-        .then((res) => {
-          return (this.products = res.data);
-        })
-        .catch((e) => {});
+      item == "all" ? (this.filter = null) : (this.filter = item);
     },
   },
   mounted() {
