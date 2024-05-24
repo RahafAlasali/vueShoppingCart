@@ -12,6 +12,10 @@
             ><v-overlay absolute>
               <div
                 class="text-sm-h3 text-center grey--text text--lighten-1 text-capitalize"
+                style="
+                  font-family: 'Cormorant Garamond', serif !important ;
+                  font-style: italic;
+                "
               >
                 {{ item }}
               </div></v-overlay

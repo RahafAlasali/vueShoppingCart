@@ -1,18 +1,18 @@
 <template>
   <div>
+    <gallary />
     <div style="background-color: #f1eeea">
       <v-container>
         <About />
       </v-container>
     </div>
-    <Section />
-    <gallary />
+    <Category />
     <div class="py-5" style="background-color: #f1eeea">
       <v-container>
         <Product :isFilter="false" />
       </v-container>
     </div>
-    <Category />
+    <Section />
   </div>
 </template>
 

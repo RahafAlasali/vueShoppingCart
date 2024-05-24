@@ -8,8 +8,8 @@
       max-width="374"
     > -->
     <div
-      class="d-flex align-center"
-      style="background-color: white; height: 250px; position: relative"
+      class="d-flex align-end"
+      style="background-color: white; height: 230px; position: relative"
     >
       <div style="right: 3px; top: 1px; position: absolute">
         <div>
@@ -18,7 +18,7 @@
           </v-btn>
         </div>
         <div>
-          <v-btn small elevation="2" icon outlined>
+          <v-btn class="mt-1" small elevation="2" icon outlined>
             <v-icon class="blue-grey--text" dark small> mdi-cart</v-icon>
           </v-btn>
         </div>
@@ -59,7 +59,7 @@
         ${{ item.price }}
       </v-card-subtitle>
     </v-card-text>
-    <v-card-actions class="mx-0 pa-0">
+    <v-card-actions class="ma-0 pa-0">
       <v-btn class="px-0" color="primary" text>
         <router-link style="" :to="`/product/${item.id}`">
           {{ $t("details") }}

@@ -52,7 +52,7 @@
       <Loader />
     </div>
     <div>
-      <v-slide-group show-arrows>
+      <v-slide-group show-arrows class="slider">
         <v-slide-item v-for="(item, index) in products" :key="index">
           <v-card
             flat
@@ -125,3 +125,14 @@ export default {
   },
 };
 </script>
+
+<style>
+.v-slide-group__prev .v-icon.v-icon,
+.v-slide-group__next .v-icon.v-icon {
+  font-size: 50px !important;
+}
+.v-slide-group__prev,
+.v-slide-group__next {
+  min-width: 30px !important;
+}
+</style>
