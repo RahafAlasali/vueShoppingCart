@@ -21,6 +21,7 @@
                 outlined
                 v-bind="attrs"
                 v-on="on"
+                @click="add"
               >
                 <v-icon class="blue-grey--text" dark small> mdi-cart</v-icon>
               </v-btn>
@@ -78,5 +79,13 @@
 <script>
 export default {
   props: ["item"],
+  methods: {
+    add() {
+      this.$toast("Added to cart successfully", {
+        timeout: 1500,
+        pauseOnHover: false,
+      });
+    },
+  },
 };
 </script>

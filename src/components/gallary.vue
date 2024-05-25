@@ -15,7 +15,7 @@
 
     <v-container
       class="gallarypos"
-      style="top: 20%; z-index: 99999; right: 5%; left: 5%"
+      style="top: 20%; z-index: 80; right: 5%; left: 5%"
     >
       <v-row class="ma-4" justify="center">
         <v-col md="4" sm="10" class="px-0 py-0">

@@ -24,7 +24,7 @@
         </template>
 
         <v-list>
-          <v-list-item v-for="(item, index) in categories" :key="index">
+          <v-list-item link v-for="(item, index) in categories" :key="index">
             <v-list-item-title @click="() => filterBy(item)">{{
               item
             }}</v-list-item-title>

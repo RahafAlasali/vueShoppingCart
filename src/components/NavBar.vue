@@ -44,8 +44,11 @@
       <router-link to="/login">
         <v-btn icon> <v-icon> mdi-account</v-icon> </v-btn></router-link
       >
-      <v-btn icon>
-        <v-icon> mdi-cart</v-icon>
+
+      <v-btn icon @click="add()"
+        ><v-badge :content="count" :value="count" color="primary">
+          <v-icon> mdi-cart</v-icon>
+        </v-badge>
       </v-btn>
     </v-toolbar>
     <v-navigation-drawer
@@ -73,9 +76,14 @@
 </template>
 
 <script>
+import Vue from "vue";
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+Vue.use(Toast);
 export default {
   data() {
     return {
+      count: 8,
       drawer: false,
       lang: ["ar", "en"],
       links: [

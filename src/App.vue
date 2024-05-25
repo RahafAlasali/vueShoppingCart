@@ -89,4 +89,9 @@ $body-font-family: "Poppins", sans-serif;
   background: #616161;
   border-radius: 2px;
 }
+.Vue-Toastification__toast--default {
+  color: #05453e !important;
+  background-color: white !important;
+  z-index: 9999999;
+}
 </style>
