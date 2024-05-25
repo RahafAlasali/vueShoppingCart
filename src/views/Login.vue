@@ -42,7 +42,7 @@
             </v-form>
 
             <h6 class="subtitle-1 text-center mt-3">
-              Allredy have account? <span> <a>log in </a></span>
+              Alredy have account? <span> <a>log in </a></span>
             </h6>
           </v-container>
         </v-card>
