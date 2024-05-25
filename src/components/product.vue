@@ -6,9 +6,23 @@
     >
       <div style="right: 3px; top: 1px; position: absolute">
         <div>
-          <v-btn class="my-1" small elevation="2" icon outlined>
-            <v-icon class="blue-grey--text" dark small> mdi-heart</v-icon>
-          </v-btn>
+          <v-tooltip left>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                class="my-1"
+                small
+                elevation="2"
+                icon
+                outlined
+                v-bind="attrs"
+                v-on="on"
+                @click="() => view(item.image)"
+              >
+                <v-icon class="black--text" dark small> mdi-eye</v-icon>
+              </v-btn></template
+            >
+            <span>view</span>
+          </v-tooltip>
         </div>
         <div>
           <v-tooltip left>
@@ -23,7 +37,7 @@
                 v-on="on"
                 @click="add"
               >
-                <v-icon class="blue-grey--text" dark small> mdi-cart</v-icon>
+                <v-icon class="black--text" dark small> mdi-cart</v-icon>
               </v-btn>
             </template>
             <span>Add to cart</span>
@@ -77,14 +91,21 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   props: ["item"],
+  emits: ["viewPrd"],
   methods: {
+    ...mapMutations(["increaseCount"]),
     add() {
+      this.increaseCount();
       this.$toast("Added to cart successfully", {
         timeout: 1500,
         pauseOnHover: false,
       });
+    },
+    view(img) {
+      this.$emit("viewPrd", img);
     },
   },
 };

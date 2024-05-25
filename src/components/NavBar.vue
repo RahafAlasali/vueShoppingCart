@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar class="px-2 primary--text text-uppercase">
+    <v-toolbar class="px-4 primary--text text-uppercase">
       <v-app-bar-nav-icon
         class="d-block d-md-none"
         @click="drawer = !drawer"
@@ -40,16 +40,19 @@
         class="d-md-flex d-none"
       >
       </v-select>
+      <div class="mx-1">
+        <router-link to="/login">
+          <v-btn icon small>
+            <v-icon> mdi-account</v-icon>
+          </v-btn></router-link
+        >
 
-      <router-link to="/login">
-        <v-btn icon> <v-icon> mdi-account</v-icon> </v-btn></router-link
-      >
-
-      <v-btn icon @click="add()"
-        ><v-badge :content="count" :value="count" color="primary">
-          <v-icon> mdi-cart</v-icon>
-        </v-badge>
-      </v-btn>
+        <v-btn icon small @click="add()"
+          ><v-badge :content="count" :value="count" color="primary">
+            <v-icon> mdi-cart</v-icon>
+          </v-badge>
+        </v-btn>
+      </div>
     </v-toolbar>
     <v-navigation-drawer
       class="text-uppercase"
@@ -76,14 +79,11 @@
 </template>
 
 <script>
-import Vue from "vue";
-import Toast from "vue-toastification";
-import "vue-toastification/dist/index.css";
-Vue.use(Toast);
+import { mapState } from "vuex";
+
 export default {
   data() {
     return {
-      count: 8,
       drawer: false,
       lang: ["ar", "en"],
       links: [
@@ -93,6 +93,9 @@ export default {
         { title: "about", to: "/" },
       ],
     };
+  },
+  computed: {
+    ...mapState(["count"]),
   },
 };
 </script>

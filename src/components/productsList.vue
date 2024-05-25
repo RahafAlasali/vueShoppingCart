@@ -1,5 +1,19 @@
 <template>
   <div class="pb-7">
+    <v-overlay :value="overlay" z-index="999999">
+      <!-- <v-progress-circular indeterminate size="64" :v-model=""></v-progress-circular> -->
+      <div style="position: relative">
+        <v-img max-height="450" style="width: 100%" :src="img" contain> </v-img>
+        <v-icon
+          class="black--text"
+          dark
+          style="right: 0px; top: 1px; position: absolute"
+          @click="closed"
+        >
+          mdi-close</v-icon
+        >
+      </div>
+    </v-overlay>
     <div
       class="text-h3 text-center my-3 primary--text font-weight-bold"
       style="
@@ -51,7 +65,7 @@
             max-width="212"
             @click="toggle"
           >
-            <product-item :item="item" />
+            <product-item :item="item" @viewPrd="showPrd" />
           </v-card>
         </v-slide-item>
       </v-slide-group>
@@ -69,8 +83,11 @@ export default {
     Loader,
   },
   props: ["items", "isFilter"],
+
   data() {
     return {
+      overlay: false,
+      img: null,
       offset: true,
       filter: null,
       products: [],
@@ -88,6 +105,13 @@ export default {
   methods: {
     filterBy(item) {
       item == "all" ? (this.filter = null) : (this.filter = item);
+    },
+    showPrd(imgP) {
+      this.img = imgP;
+      this.overlay = !this.overlay;
+    },
+    closed() {
+      this.overlay = false;
     },
   },
   mounted() {

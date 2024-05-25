@@ -27,10 +27,13 @@
 </template>
 
 <script>
+import Vue from "vue";
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/footer.vue";
 import Slide from "@/components/slide.vue";
-import router from "./router";
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+Vue.use(Toast);
 
 export default {
   name: "App",
