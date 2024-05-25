@@ -1,18 +1,27 @@
 <template>
   <div class="pb-7">
     <v-overlay :value="overlay" z-index="999999">
-      <!-- <v-progress-circular indeterminate size="64" :v-model=""></v-progress-circular> -->
-      <div style="position: relative">
-        <v-img max-height="450" style="width: 100%" :src="img" contain> </v-img>
-        <v-icon
-          class="black--text"
-          dark
-          style="right: 0px; top: 1px; position: absolute"
-          @click="closed"
-        >
-          mdi-close</v-icon
-        >
+      <div style="height: 400px; width: 400px">
+        <v-img :src="img" contain max-width="500" max-height="400">
+          <template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular
+                indeterminate
+                color="red"
+                size="70"
+              ></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
       </div>
+      <v-icon
+        class="black--text"
+        dark
+        style="right: 0px; top: 1px; position: absolute"
+        @click="closed"
+      >
+        mdi-close</v-icon
+      >
     </v-overlay>
     <div
       class="text-h3 text-center my-3 primary--text font-weight-bold"
