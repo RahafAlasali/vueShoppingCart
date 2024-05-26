@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ shoppingCarts }}
     <img-prd :img="img" :overlay="overlay" @close="closed" />
     <v-container class="mx-2 my-4">
       <v-row v-if="product">
@@ -21,7 +22,31 @@
               <v-divider class="mb-3"></v-divider>
             </div>
             <div class="d-flex my-4">
-              <v-btn class="mx-1" depressed dark color="primary">
+              <v-btn
+                class="mx-1"
+                icon
+                tile
+                outlined
+                @click="() => incrementItem(product.id)"
+              >
+                <v-icon> mdi-plus </v-icon>
+              </v-btn>
+              <v-btn
+                class="mx-1"
+                icon
+                tile
+                outlined
+                @click="() => decreaseItem(product.id)"
+              >
+                <v-icon> mdi-minus </v-icon>
+              </v-btn>
+              <v-btn
+                class="mx-1"
+                depressed
+                dark
+                color="primary"
+                @click="() => add(product.id)"
+              >
                 Buy Now
               </v-btn>
               <v-btn class="mx-1" icon tile outlined>
@@ -30,27 +55,18 @@
             </div>
             <v-card class="rounded-lg">
               <v-list>
-                <v-list-item>
+                <v-list-item v-for="(item, index) in array" :key="index">
                   <v-list-item-avatar>
-                    <v-icon> mdi-cart </v-icon>
+                    <v-icon>{{ item.icon }}</v-icon>
                   </v-list-item-avatar>
                   <v-list-item-content>
-                    <v-list-item-title>Free Delivery</v-list-item-title>
-                    <v-list-item-subtitle>Enter your code</v-list-item-subtitle>
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item-subtitle>{{
+                      item.subtitle
+                    }}</v-list-item-subtitle>
                   </v-list-item-content>
-                </v-list-item>
-                <v-divider></v-divider>
-                <v-list-item>
-                  <v-list-item-avatar>
-                    <v-icon> mdi-cart </v-icon>
-                  </v-list-item-avatar>
-                  <v-list-item-content>
-                    <v-list-item-title>Return Delivery</v-list-item-title>
-                    <v-list-item-subtitle
-                      >Free 30 days Delivery Returns
-                      <span>Ditails</span></v-list-item-subtitle
-                    >
-                  </v-list-item-content>
+
+                  <!-- <v-divider></v-divider> -->
                 </v-list-item>
               </v-list>
             </v-card>
@@ -70,17 +86,6 @@
           Related Product
         </div>
 
-        <!-- <v-row class="mt-4">
-          <v-col
-            cols="12"
-            md="4"
-            sm="6"
-            v-for="(item, index) in items"
-            :key="index"
-          >
-            <product-item :item="item" />
-          </v-col>
-        </v-row> -->
         <div>
           <v-slide-group show-arrows>
             <v-slide-item v-for="(item, index) in items" :key="index">
@@ -106,6 +111,7 @@ import productItem from "@/components/product.vue";
 import ImgPrd from "@/components/imgPrd.vue";
 import axios from "axios";
 import Loader from "@/components/loader.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
   components: {
@@ -119,7 +125,22 @@ export default {
       items: [],
       img: null,
       overlay: false,
+      array: [
+        {
+          icon: "mdi-cart",
+          title: "Return Delivery",
+          subtitle: "Free 30 days Delivery Returns",
+        },
+        {
+          icon: "mdi-cart",
+          title: "Return Delivery",
+          subtitle: "Free 30 days Delivery Returns",
+        },
+      ],
     };
+  },
+  computed: {
+    ...mapState("cart", ["shoppingCarts"]),
   },
   mounted() {
     const id = this.$route.params.id;
@@ -138,12 +159,34 @@ export default {
       });
   },
   methods: {
+    ...mapActions("cart", ["addItemToCart", "increment", "decrease"]),
     showPrd(imgP) {
       this.img = imgP;
       this.overlay = !this.overlay;
     },
     closed() {
       this.overlay = false;
+    },
+    add(id) {
+      this.addItemToCart(id);
+      this.$toast("Added to cart successfully", {
+        timeout: 1500,
+        pauseOnHover: false,
+      });
+    },
+    incrementItem(id) {
+      this.increment(id);
+      this.$toast("Added to cart successfully", {
+        timeout: 1500,
+        pauseOnHover: false,
+      });
+    },
+    decreaseItem(id) {
+      this.decrease(id);
+      this.$toast("Added to cart successfully", {
+        timeout: 1500,
+        pauseOnHover: false,
+      });
     },
   },
 };

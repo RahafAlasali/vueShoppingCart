@@ -48,7 +48,7 @@
         >
 
         <v-btn icon small @click="add()"
-          ><v-badge :content="count" :value="count" color="primary">
+          ><v-badge :content="quantity" :value="quantity" color="primary">
             <v-icon> mdi-cart</v-icon>
           </v-badge>
         </v-btn>
@@ -95,7 +95,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("cart", ["count"]),
+    ...mapState("cart", ["quantity"]),
   },
 };
 </script>
