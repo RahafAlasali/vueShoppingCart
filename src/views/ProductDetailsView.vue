@@ -80,6 +80,13 @@
             <product-item :item="item" />
           </v-col>
         </v-row> -->
+        <div
+          v-if="!products"
+          class="text-center my-auto"
+          style="min-height: 400px"
+        >
+          <Loader />
+        </div>
         <div>
           <v-slide-group show-arrows>
             <v-slide-item v-for="(item, index) in items" :key="index">

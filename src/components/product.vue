@@ -96,7 +96,7 @@ export default {
   props: ["item"],
   emits: ["viewPrd"],
   methods: {
-    ...mapMutations(["increaseCount"]),
+    ...mapMutations("cart", ["increaseCount"]),
     add() {
       this.increaseCount();
       this.$toast("Added to cart successfully", {

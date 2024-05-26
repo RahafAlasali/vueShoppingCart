@@ -1,12 +1,7 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import cart from "@/store/cart";
-
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default {
+  namespaced: true,
   state: {
-    // count: 0,
+    count: 0,
   },
   getters: {
     getCount(state) {
@@ -19,7 +14,4 @@ export default new Vuex.Store({
     },
   },
   actions: {},
-  modules: {
-    cart,
-  },
-});
+};

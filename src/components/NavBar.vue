@@ -95,7 +95,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["count"]),
+    ...mapState("cart", ["count"]),
   },
 };
 </script>
