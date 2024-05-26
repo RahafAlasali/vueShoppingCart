@@ -21,8 +21,10 @@
       <v-divider vertical class="d-none d-sm-block"></v-divider>
       <v-col cols="12" sm="6" class="d-flex align-end" xs="12">
         <div class="mx-6">
-          <div class="text-md-h3 mb-8" style="font-family: cursive">
-            <!-- and a reflection of your unique style and personality -->
+          <div
+            class="text-md-h4 mb-8 font-weight-bolde"
+            style="font-family: cursive"
+          >
             {{ $t("aboutTitle") }}
           </div>
           <div class="subtitle-1">

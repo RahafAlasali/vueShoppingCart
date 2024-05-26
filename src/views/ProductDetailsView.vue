@@ -1,5 +1,6 @@
 <template>
   <div>
+    <img-prd :img="img" :overlay="overlay" @close="closed" />
     <v-container class="mx-2 my-4">
       <v-row v-if="product">
         <v-col cols="12" sm="6" class="d-flex align-center justify-center">
@@ -80,13 +81,6 @@
             <product-item :item="item" />
           </v-col>
         </v-row> -->
-        <div
-          v-if="!products"
-          class="text-center my-auto"
-          style="min-height: 400px"
-        >
-          <Loader />
-        </div>
         <div>
           <v-slide-group show-arrows>
             <v-slide-item v-for="(item, index) in items" :key="index">
@@ -97,7 +91,7 @@
                 class="mx-3 my-2"
                 max-width="212"
               >
-                <product-item :item="item" />
+                <product-item :item="item" @viewPrd="showPrd" />
               </v-card>
             </v-slide-item>
           </v-slide-group>
@@ -109,7 +103,7 @@
 
 <script>
 import productItem from "@/components/product.vue";
-
+import ImgPrd from "@/components/imgPrd.vue";
 import axios from "axios";
 import Loader from "@/components/loader.vue";
 
@@ -117,11 +111,14 @@ export default {
   components: {
     productItem,
     Loader,
+    ImgPrd,
   },
   data() {
     return {
       product: null,
       items: [],
+      img: null,
+      overlay: false,
     };
   },
   mounted() {
@@ -139,6 +136,15 @@ export default {
           })
           .catch((e) => {});
       });
+  },
+  methods: {
+    showPrd(imgP) {
+      this.img = imgP;
+      this.overlay = !this.overlay;
+    },
+    closed() {
+      this.overlay = false;
+    },
   },
 };
 </script>

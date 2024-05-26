@@ -1,33 +1,6 @@
 <template>
   <div class="pb-7">
-    <v-overlay :value="overlay" z-index="999999">
-      <div
-        class="pa-4"
-        style="max-width: 300px; max-height: 300px; position: relative"
-      >
-        <v-btn
-          fab
-          dark
-          x-small
-          color="white"
-          @click="closed"
-          style="top: 0; right: 0; position: absolute; z-index: 99999"
-        >
-          <v-icon class="black--text"> mdi-close</v-icon>
-        </v-btn>
-        <v-img :src="img" contain>
-          <template v-slot:placeholder>
-            <v-row class="fill-height ma-0" align="center" justify="center">
-              <v-progress-circular
-                indeterminate
-                color="red"
-                size="70"
-              ></v-progress-circular>
-            </v-row>
-          </template>
-        </v-img>
-      </div>
-    </v-overlay>
+    <img-prd :img="img" :overlay="overlay" @close="closed" />
     <div
       class="text-h3 text-center my-3 primary--text font-weight-bold"
       style="
@@ -91,10 +64,14 @@
 import axios from "axios";
 import productItem from "@/components/product.vue";
 import Loader from "@/components/loader.vue";
+
+import ImgPrd from "@/components/imgPrd.vue";
+
 export default {
   components: {
     productItem,
     Loader,
+    ImgPrd,
   },
   props: ["items", "isFilter"],
 
