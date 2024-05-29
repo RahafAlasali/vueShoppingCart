@@ -75,7 +75,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2family=Poppins:wght@400;700&display=swap");
 $body-font-family: "Poppins", sans-serif;
 
 ::-webkit-scrollbar {

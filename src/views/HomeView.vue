@@ -34,25 +34,5 @@ export default {
       AllPrd: false,
     };
   },
-
-  methods: {
-    showAll() {
-      axios
-        .get("https://fakestoreapi.com/products")
-        .then((res) => {
-          this.AllPrd = true;
-          return (this.data = res.data);
-        })
-        .catch((e) => {});
-    },
-  },
-  mounted() {
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((res) => {
-        return (this.categories = res.data);
-      })
-      .catch((e) => {});
-  },
 };
 </script>

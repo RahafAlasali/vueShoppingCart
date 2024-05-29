@@ -144,19 +144,21 @@ export default {
   },
   mounted() {
     const id = this.$route.params.id;
-    axios
-      .get(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => {
-        return (this.product = res.data);
-      })
-      .then((res) => {
-        axios
-          .get(`https://fakestoreapi.com/products/category/${res.category}`)
-          .then((res) => {
-            return (this.items = res.data);
-          })
-          .catch((e) => {});
-      });
+    async () => {
+      await axios
+        .get(`https://fakestoreapi.com/products/${id}`)
+        .then((res) => {
+          return (this.product = res.data);
+        })
+        .then((res) => {
+          axios
+            .get(`https://fakestoreapi.com/products/category/${res.category}`)
+            .then((res) => {
+              return (this.items = res.data);
+            })
+            .catch((e) => {});
+        });
+    };
   },
   methods: {
     ...mapActions("cart", ["addItemToCart", "increment", "decrease"]),

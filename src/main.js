@@ -6,9 +6,9 @@ import vuetify, { i18n } from "./plugins/vuetify";
 import axios from "axios";
 
 Vue.config.productionTip = false;
-Vue.use(axios);
+// Vue.use(axios);
 
-new Vue({
+const app = new Vue({
   router,
   store,
   vuetify,

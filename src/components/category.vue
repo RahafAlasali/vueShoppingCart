@@ -7,7 +7,6 @@
         class="px-0"
         cols="3"
       >
-        <!-- `@/assets/categ/${category.img}` -->
         <v-img height="400" :src="require(`@/assets/${imagesCategory[index]}`)"
           ><router-link :to="{ name: 'products', query: { cat: item } }"
             ><v-overlay absolute>
@@ -37,13 +36,18 @@ export default {
       imagesCategory: ["2.jpg", "7.jpg", "1.jpg", "9.jpg"],
     };
   },
+  methods: {
+    async getCategories() {
+      await axios
+        .get("https://fakestoreapi.com/products/categories")
+        .then((res) => {
+          return (this.categories = res.data);
+        })
+        .catch((e) => {});
+    },
+  },
   mounted() {
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((res) => {
-        return (this.categories = res.data);
-      })
-      .catch((e) => {});
+    this.getCategories();
   },
 };
 </script>
