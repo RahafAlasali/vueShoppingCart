@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ shoppingCarts }}
+    <!-- {{ shoppingCarts }} -->
     <img-prd :img="img" :overlay="overlay" @close="closed" />
     <v-container class="mx-2 my-4">
       <v-row v-if="product">
@@ -144,21 +144,20 @@ export default {
   },
   mounted() {
     const id = this.$route.params.id;
-    async () => {
-      await axios
-        .get(`https://fakestoreapi.com/products/${id}`)
-        .then((res) => {
-          return (this.product = res.data);
-        })
-        .then((res) => {
-          axios
-            .get(`https://fakestoreapi.com/products/category/${res.category}`)
-            .then((res) => {
-              return (this.items = res.data);
-            })
-            .catch((e) => {});
-        });
-    };
+
+    axios
+      .get(`https://fakestoreapi.com/products/${id}`)
+      .then((res) => {
+        return (this.product = res.data);
+      })
+      .then((res) => {
+        axios
+          .get(`https://fakestoreapi.com/products/category/${res.category}`)
+          .then((res) => {
+            return (this.items = res.data);
+          })
+          .catch((e) => {});
+      });
   },
   methods: {
     ...mapActions("cart", ["addItemToCart", "increment", "decrease"]),

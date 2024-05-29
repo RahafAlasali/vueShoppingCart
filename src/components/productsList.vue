@@ -26,7 +26,7 @@
 
         <v-list>
           <v-list-item link v-for="(item, index) in categories" :key="index">
-            <v-list-item-title @click="() => filterBy(item)">{{
+            <v-list-item-title @click="() => filterBycat(item)">{{
               item
             }}</v-list-item-title>
           </v-list-item>
@@ -94,7 +94,7 @@ export default {
     },
   },
   methods: {
-    filterBy(item) {
+    filterBycat(item) {
       item == "all" ? (this.filter = null) : (this.filter = item);
     },
     showPrd(imgP) {
