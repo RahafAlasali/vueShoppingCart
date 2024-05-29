@@ -47,7 +47,7 @@
           </v-btn></router-link
         >
 
-        <v-btn icon small @click="add()"
+        <v-btn icon small @click="drawerCart = !drawerCart"
           ><v-badge :content="quantity" :value="quantity" color="primary">
             <v-icon> mdi-cart</v-icon>
           </v-badge>
@@ -75,6 +75,41 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <v-navigation-drawer
+      width="350"
+      class="text-uppercase pa-2"
+      v-model="drawerCart"
+      absolute
+      bottom
+      right
+      temporary
+    >
+      <v-list nav flat>
+        <v-subheader class="text-h6 my-3 font-weight-bold">My cart</v-subheader>
+        <v-list-item v-for="(item, index) in shoppingCarts" :key="index">
+          <div style="width: 100px; height: 100px">
+            <v-img width="100%" src="@/assets/9.jpg"></v-img>
+          </div>
+          <v-list-item-content class="font-weight-bold mx-1">
+            <v-list-item-title>{{ item }}</v-list-item-title>
+            <v-list-item-subtitle
+              >$100 X{{ item.quantity }}</v-list-item-subtitle
+            >
+          </v-list-item-content>
+          <v-list-item-icon>
+            <v-icon> mdi-close </v-icon>
+          </v-list-item-icon>
+        </v-list-item>
+      </v-list>
+      <v-divider class="mx-auto" style="width: 80%"></v-divider>
+      <div class="d-flex justify-space-between my-4 mx-1 align-center">
+        <div class="text-h6">Subtotal</div>
+        <div>3000</div>
+      </div>
+      <div class="py-7 mx-auto" style="width: 90%">
+        <v-btn dark color="primary" block class="my-2"> checkout </v-btn>
+      </div>
+    </v-navigation-drawer>
   </div>
 </template>
 
@@ -85,6 +120,7 @@ export default {
   data() {
     return {
       drawer: false,
+      drawerCart: false,
       lang: ["ar", "en"],
       links: [
         { title: "home", to: "/" },
@@ -95,7 +131,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("cart", ["quantity"]),
+    ...mapState("cart", ["quantity", "shoppingCarts"]),
   },
 };
 </script>

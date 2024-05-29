@@ -35,7 +35,7 @@
                 outlined
                 v-bind="attrs"
                 v-on="on"
-                @click="add"
+                @click="add(item.id)"
               >
                 <v-icon class="black--text" dark small> mdi-cart</v-icon>
               </v-btn>
@@ -91,14 +91,15 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 export default {
   props: ["item"],
   emits: ["viewPrd"],
   methods: {
     ...mapMutations("cart", ["increaseCount"]),
-    add() {
-      this.increaseCount();
+    ...mapActions("cart", ["addItemToCart"]),
+    add(id) {
+      this.addItemToCart(id);
       this.$toast("Added to cart successfully", {
         timeout: 1500,
         pauseOnHover: false,

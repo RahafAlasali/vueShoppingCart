@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- {{ shoppingCarts }} -->
+    {{ shoppingCarts }}
     <img-prd :img="img" :overlay="overlay" @close="closed" />
     <v-container class="mx-2 my-4">
       <v-row v-if="product">
