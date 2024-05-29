@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-parallax src="1.jpg"
+    <v-parallax src="@/assets/1.jpg"
       ><v-overlay :absolute="true"
         ><div class="text-h4 text-center">
           <div class="py-4" style="font-family: cursive">

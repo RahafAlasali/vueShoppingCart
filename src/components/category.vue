@@ -7,7 +7,8 @@
         class="px-0"
         cols="3"
       >
-        <v-img height="400" :src="imagesCategory[index]"
+        <!-- `@/assets/categ/${category.img}` -->
+        <v-img height="400" :src="require(`@/assets/${imagesCategory[index]}`)"
           ><router-link :to="{ name: 'products', query: { cat: item } }"
             ><v-overlay absolute>
               <div

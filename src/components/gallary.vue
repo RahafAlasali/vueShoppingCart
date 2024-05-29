@@ -29,7 +29,7 @@
         </v-col>
         <v-col tile md="4" sm="10" class="px-0 py-0"
           ><v-card tile>
-            <v-img height="250" src="2.jpg"
+            <v-img height="250" src="@/assets/2.jpg"
               ><template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
                   <v-progress-circular
@@ -50,7 +50,7 @@
         >
         <v-col tile md="4" sm="10" class="px-0 py-0">
           <v-card tile>
-            <v-img height="250" src="5.jpg"
+            <v-img height="250" src="@/assets/5.jpg"
               ><template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
                   <v-progress-circular
@@ -72,7 +72,7 @@
         >
         <v-col md="4" sm="10" class="px-0 py-0"
           ><v-card>
-            <v-img height="250" src="6.jpg"
+            <v-img height="250" src="@/assets/6.jpg"
               ><template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
                   <v-progress-circular
@@ -85,7 +85,12 @@
       </v-row>
     </v-container>
 
-    <v-img class="hidden-sm-and-down" height="500" opacity="0.7" src="4.jpg">
+    <v-img
+      class="hidden-sm-and-down"
+      height="500"
+      opacity="0.7"
+      src="@/assets/4.jpg"
+    >
       <v-overlay absolute></v-overlay
     ></v-img>
   </div>
