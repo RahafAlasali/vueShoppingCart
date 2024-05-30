@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-toolbar class="px-4 primary--text text-uppercase">
-      <v-app-bar-nav-icon
+      <!-- <v-app-bar-nav-icon
         class="d-block d-md-none"
         @click="drawer = !drawer"
-      ></v-app-bar-nav-icon>
+      ></v-app-bar-nav-icon> -->
       <v-toolbar-title class="text-h5">
         <router-link to="/" style="text-decoration: none">
           shopping
@@ -45,16 +45,16 @@
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
         </v-avatar> -->
 
-        <router-link v-if="!isLogin" :to="{ name: 'login' }">
+        <router-link class="mx-1" v-if="!isLogin" :to="{ name: 'login' }">
           <v-btn icon small>
             <v-icon> mdi-login</v-icon>
           </v-btn></router-link
         >
 
-        <v-btn v-else icon small>
+        <v-btn class="mx-1" v-else icon small>
           <v-icon @click="logout"> mdi-logout</v-icon>
         </v-btn>
-        <v-btn icon small @click="drawerCart = !drawerCart"
+        <v-btn class="mx-1" icon small @click="drawerCart = !drawerCart"
           ><v-badge :content="quantity" :value="quantity" color="primary">
             <v-icon> mdi-cart</v-icon>
           </v-badge>
@@ -63,10 +63,10 @@
     </v-toolbar>
     <v-navigation-drawer
       class="text-uppercase"
+      style="max-width: 180px"
       v-model="drawer"
       absolute
       bottom
-      temporary
     >
       <v-list nav flat>
         <v-list-item
@@ -91,47 +91,18 @@
       right
       temporary
     >
-      <v-list nav flat>
-        <v-subheader class="text-h6 my-3 font-weight-bold"
-          >My cart
-        </v-subheader>
-        <v-list-item
-          class="py-2"
-          v-for="(item, index) in shoppingCarts"
-          :key="index"
-        >
-          <div style="width: 100px; height: 100px">
-            <v-img width="100%" height="100%" contain :src="item.image"></v-img>
-          </div>
-          <v-list-item-content class="font-weight-bold mx-1">
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-            <v-list-item-subtitle
-              >${{ item.price }} X{{ item.quantity }}</v-list-item-subtitle
-            >
-          </v-list-item-content>
-          <v-list-item-icon>
-            <v-icon @click="() => removePrd(item.id)"> mdi-close </v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </v-list>
-      <v-divider class="mx-auto" style="width: 80%"></v-divider>
-      <v-container>
-        <div class="d-flex justify-space-between my-4 mx-1 align-center">
-          <div class="text-h6">Subtotal</div>
-          <div>${{ totalPrd }}</div>
-        </div>
-      </v-container>
-      <div class="py-7 mx-auto" style="width: 90%">
-        <v-btn dark color="primary" block class="my-2"> checkout </v-btn>
-      </div>
+      <Cart :items="shoppingCarts" />
     </v-navigation-drawer>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from "vuex";
-
+import { mapState, mapMutations } from "vuex";
+import Cart from "@/components/cart.vue";
 export default {
+  components: {
+    Cart,
+  },
   data() {
     return {
       drawer: false,
@@ -146,18 +117,19 @@ export default {
     };
   },
   methods: {
-    ...mapActions("cart", ["removeItem"]),
     ...mapMutations("auth", ["setLogin"]),
-    removePrd(id) {
-      this.removeItem(id);
-    },
+
     logout() {
       this.setLogin(false);
+      this.$toast("Logout", {
+        timeout: 1500,
+        pauseOnHover: false,
+      });
       localStorage.setItem("token", null);
     },
   },
   computed: {
-    ...mapState("cart", ["quantity", "shoppingCarts", "products", "total"]),
+    ...mapState("cart", ["quantity", "shoppingCarts"]),
     ...mapState("auth", ["isLogin"]),
     totalPrd() {
       return this.shoppingCarts

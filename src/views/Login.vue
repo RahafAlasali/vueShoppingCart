@@ -63,6 +63,10 @@ export default {
         .then((res) => {
           this.setLogin(true);
           localStorage.setItem("token", JSON.stringify(res.data.token));
+          this.$toast("Login", {
+            timeout: 1500,
+            pauseOnHover: false,
+          });
           this.$router.push({ name: "home" });
         });
     },

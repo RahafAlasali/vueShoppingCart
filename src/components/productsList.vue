@@ -65,7 +65,6 @@ import axios from "axios";
 import productItem from "@/components/product.vue";
 import Loader from "@/components/loader.vue";
 import ImgPrd from "@/components/imgPrd.vue";
-import { mapMutations } from "vuex";
 
 export default {
   components: {
@@ -94,7 +93,6 @@ export default {
     },
   },
   methods: {
-    ...mapMutations("cart", ["setProductsArray"]),
     filterBycat(item) {
       item == "all" ? (this.filter = null) : (this.filter = item);
     },
@@ -113,7 +111,6 @@ export default {
     axios
       .get("https://fakestoreapi.com/products")
       .then((res) => {
-        this.setProductsArray(res.data);
         return (this.products = res.data);
       })
       .catch((e) => {});

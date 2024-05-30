@@ -3,6 +3,7 @@
     <nav-bar />
 
     <Slide v-if="!['login', 'register'].includes($route.name)" />
+
     <!-- <v-container> -->
     <v-main>
       <router-view />

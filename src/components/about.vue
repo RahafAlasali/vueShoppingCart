@@ -22,8 +22,8 @@
       <v-col cols="12" sm="6" class="d-flex align-end" xs="12">
         <div class="mx-6">
           <div
-            class="text-md-h4 mb-8 font-weight-bolde"
-            style="font-family: cursive"
+            class="text-md-h4 mb-8"
+            style="font-family: cursive; font-weight: bold"
           >
             {{ $t("aboutTitle") }}
           </div>

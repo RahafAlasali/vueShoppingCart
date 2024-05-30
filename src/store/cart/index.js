@@ -5,7 +5,6 @@ export default {
     // JSON.parse(localStorage.getItem("shoppingCarts"))
     quantity: 0,
     shoppingCarts: [],
-    products: [],
   },
   getters: {
     getCount(state) {
@@ -15,9 +14,6 @@ export default {
   mutations: {
     increaseCount(state) {
       state.quantity += 1;
-    },
-    setProductsArray: (state, payload) => {
-      state.products = payload;
     },
   },
   actions: {
