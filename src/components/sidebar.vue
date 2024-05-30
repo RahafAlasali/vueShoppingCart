@@ -1,7 +1,7 @@
 <template>
   <div
-    style="position: fixed; height: 100vh"
-    class="text-uppercase py-4 px-7 primary"
+    style="position: fixed; height: 100vh; width: 240px"
+    class="py-4 px-7 primary"
   >
     <div class="text-h6 text-center white--text">Shopping Cart</div>
 
@@ -25,12 +25,7 @@
 export default {
   data() {
     return {
-      links: [
-        { title: "Home", to: "/" },
-        { title: "Products", to: "/products" },
-        { title: "Contact", to: "/" },
-        { title: "About", to: "/" },
-      ],
+      links: [{ title: "Products" }, { title: "Setting" }, { title: "User" }],
     };
   },
 };

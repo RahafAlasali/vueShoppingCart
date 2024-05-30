@@ -7,6 +7,18 @@ import axios from "axios";
 
 Vue.config.productionTip = false;
 // Vue.use(axios);
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (!store.getters["auth/isLogin"]) {
+      next({
+        name: "login",
+      });
+    } else {
+      next();
+    }
+  }
+  next();
+});
 
 const app = new Vue({
   router,

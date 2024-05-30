@@ -9,7 +9,11 @@ export default new Vuex.Store({
   state: {
     // count: 0,
   },
-  getters: {},
+  // getters: {
+  //   isLogin(state) {
+  //     return false;
+  //   },
+  // },
   mutations: {},
   actions: {},
   modules: {

@@ -125,7 +125,7 @@ export default {
         timeout: 1500,
         pauseOnHover: false,
       });
-      localStorage.setItem("token", null);
+      localStorage.removeItem("token");
     },
   },
   computed: {
