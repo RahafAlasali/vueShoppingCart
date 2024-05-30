@@ -2,7 +2,7 @@
   <v-app>
     <nav-bar />
 
-    <Slide v-if="$route.name != 'login'" />
+    <Slide v-if="!['login', 'register'].includes($route.name)" />
     <!-- <v-container> -->
     <v-main>
       <router-view />

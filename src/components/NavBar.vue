@@ -41,12 +41,19 @@
       >
       </v-select>
       <div class="mx-1">
-        <router-link to="/login">
+        <!-- <v-avatar v-if="isLogin">
+          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+        </v-avatar> -->
+
+        <router-link v-if="!isLogin" :to="{ name: 'login' }">
           <v-btn icon small>
-            <v-icon> mdi-account</v-icon>
+            <v-icon> mdi-login</v-icon>
           </v-btn></router-link
         >
 
+        <v-btn v-else icon small>
+          <v-icon @click="logout"> mdi-logout</v-icon>
+        </v-btn>
         <v-btn icon small @click="drawerCart = !drawerCart"
           ><v-badge :content="quantity" :value="quantity" color="primary">
             <v-icon> mdi-cart</v-icon>
@@ -122,7 +129,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   data() {
@@ -140,13 +147,18 @@ export default {
   },
   methods: {
     ...mapActions("cart", ["removeItem"]),
+    ...mapMutations("auth", ["setLogin"]),
     removePrd(id) {
       this.removeItem(id);
+    },
+    logout() {
+      this.setLogin(false);
+      localStorage.setItem("token", null);
     },
   },
   computed: {
     ...mapState("cart", ["quantity", "shoppingCarts", "products", "total"]),
-
+    ...mapState("auth", ["isLogin"]),
     totalPrd() {
       return this.shoppingCarts
         .map((item) => {

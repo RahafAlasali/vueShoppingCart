@@ -5,7 +5,7 @@
         <v-card class="pa-4" elevation="4">
           <v-container>
             <v-card-title class="text-center justify-center text-md-h4"
-              >Login</v-card-title
+              >Create Account</v-card-title
             >
             <v-form
               @submit.prevent="submit"
@@ -14,14 +14,21 @@
               lazy-validation
             >
               <v-text-field
-                v-model="user.username"
+                v-model="name"
                 :rules="[(v) => !!v || $t('fieldRequired')]"
                 :label="$t('name')"
               >
               </v-text-field>
-
               <v-text-field
-                v-model="user.password"
+                v-model="email"
+                :label="$t('email')"
+                :rules="[
+                  (v) => !!v || $t('fieldRequired'),
+                  (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+                ]"
+              ></v-text-field>
+              <v-text-field
+                v-model="password"
                 :label="$t('password')"
                 type="password"
                 :rules="[(v) => !!v || $t('fieldRequired')]"
@@ -29,10 +36,17 @@
 
               <v-card-actions class="d-flex justify-center">
                 <v-btn dark large color="primary" width="200" type="submit">
-                  Login
+                  Sign Up
                 </v-btn>
               </v-card-actions>
             </v-form>
+
+            <h6 class="subtitle-1 text-center mt-3">
+              Alredy have account?
+              <span>
+                <router-link :to="{ name: 'login' }"> Login</router-link>
+              </span>
+            </h6>
           </v-container>
         </v-card>
       </v-col>
@@ -41,30 +55,18 @@
 </template>
 
 <script>
-import axios from "axios";
-import { mapMutations } from "vuex";
 export default {
   data() {
     return {
+      name: "",
+      email: null,
+      password: null,
       valid: true,
-      user: { username: null, password: null },
     };
   },
   methods: {
-    ...mapMutations("auth", ["setLogin"]),
     submit() {
       this.$refs.form.validate();
-      axios
-        .post("https://fakestoreapi.com/auth/login", this.user, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          this.setLogin(true);
-          localStorage.setItem("token", JSON.stringify(res.data.token));
-          this.$router.push({ name: "home" });
-        });
     },
   },
 };
