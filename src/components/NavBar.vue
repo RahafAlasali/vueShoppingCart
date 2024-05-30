@@ -103,7 +103,7 @@
             >
           </v-list-item-content>
           <v-list-item-icon>
-            <v-icon> mdi-close </v-icon>
+            <v-icon @click="() => removePrd(item.id)"> mdi-close </v-icon>
           </v-list-item-icon>
         </v-list-item>
       </v-list>
@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   data() {
@@ -137,6 +137,12 @@ export default {
         { title: "about", to: "/" },
       ],
     };
+  },
+  methods: {
+    ...mapActions("cart", ["removeItem"]),
+    removePrd(id) {
+      this.removeItem(id);
+    },
   },
   computed: {
     ...mapState("cart", ["quantity", "shoppingCarts", "products", "total"]),

@@ -39,14 +39,14 @@ export default {
       });
     },
 
-    // removeItemToCart: ({state}, payload) => {
-    //   state.quantity -= state.shoppingCarts.find(
-    //     (item) => item.id == payload
-    //   ).quantity;
-    //   state.shoppingCarts = state.shoppingCarts.filter(
-    //     (item) => +item.id != +payload
-    //   );
-    // },
+    removeItem: ({ state }, payload) => {
+      state.quantity -= state.shoppingCarts.find(
+        (item) => item.id == payload
+      ).quantity;
+      state.shoppingCarts = state.shoppingCarts.filter(
+        (item) => +item.id != +payload
+      );
+    },
     addItemToCart: ({ state }, payload) => {
       state.quantity += 1;
       state.shoppingCarts = [
