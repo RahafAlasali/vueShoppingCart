@@ -35,7 +35,7 @@
                 outlined
                 v-bind="attrs"
                 v-on="on"
-                @click="add(item.id)"
+                @click="add(item)"
               >
                 <v-icon class="black--text" dark small> mdi-cart</v-icon>
               </v-btn>
@@ -98,8 +98,8 @@ export default {
   methods: {
     ...mapMutations("cart", ["increaseCount"]),
     ...mapActions("cart", ["addItemToCart"]),
-    add(id) {
-      this.addItemToCart(id);
+    add(item) {
+      this.addItemToCart(item);
       this.$toast("Added to cart successfully", {
         timeout: 1500,
         pauseOnHover: false,

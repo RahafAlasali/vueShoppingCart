@@ -13,7 +13,7 @@
 
     <div v-if="isFilter" class="my-3 py-2 d-flex justify-start ml-4">
       <div class="mx-3">
-        <v-btn color="primary" outlined dark @click="filterBy('all')">
+        <v-btn color="primary" outlined dark @click="filterBycat('all')">
           {{ $t("all") }}
         </v-btn>
       </div>
@@ -64,8 +64,8 @@
 import axios from "axios";
 import productItem from "@/components/product.vue";
 import Loader from "@/components/loader.vue";
-
 import ImgPrd from "@/components/imgPrd.vue";
+import { mapMutations } from "vuex";
 
 export default {
   components: {
@@ -94,6 +94,7 @@ export default {
     },
   },
   methods: {
+    ...mapMutations("cart", ["setProductsArray"]),
     filterBycat(item) {
       item == "all" ? (this.filter = null) : (this.filter = item);
     },
@@ -107,11 +108,12 @@ export default {
   },
   mounted() {
     if (this.$route.query.cat) {
-      this.filterBy(this.$route.query.cat);
+      this.filterBycat(this.$route.query.cat);
     }
     axios
       .get("https://fakestoreapi.com/products")
       .then((res) => {
+        this.setProductsArray(res.data);
         return (this.products = res.data);
       })
       .catch((e) => {});

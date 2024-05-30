@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ shoppingCarts }}
     <img-prd :img="img" :overlay="overlay" @close="closed" />
     <v-container class="mx-2 my-4">
       <v-row v-if="product">
@@ -45,7 +44,7 @@
                 depressed
                 dark
                 color="primary"
-                @click="() => add(product.id)"
+                @click="() => add(product)"
               >
                 Buy Now
               </v-btn>

@@ -85,15 +85,21 @@
       temporary
     >
       <v-list nav flat>
-        <v-subheader class="text-h6 my-3 font-weight-bold">My cart</v-subheader>
-        <v-list-item v-for="(item, index) in shoppingCarts" :key="index">
+        <v-subheader class="text-h6 my-3 font-weight-bold"
+          >My cart
+        </v-subheader>
+        <v-list-item
+          class="py-2"
+          v-for="(item, index) in shoppingCarts"
+          :key="index"
+        >
           <div style="width: 100px; height: 100px">
-            <v-img width="100%" src="@/assets/9.jpg"></v-img>
+            <v-img width="100%" height="100%" contain :src="item.image"></v-img>
           </div>
           <v-list-item-content class="font-weight-bold mx-1">
-            <v-list-item-title>{{ item }}</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
             <v-list-item-subtitle
-              >$100 X{{ item.quantity }}</v-list-item-subtitle
+              >${{ item.price }} X{{ item.quantity }}</v-list-item-subtitle
             >
           </v-list-item-content>
           <v-list-item-icon>
@@ -102,10 +108,12 @@
         </v-list-item>
       </v-list>
       <v-divider class="mx-auto" style="width: 80%"></v-divider>
-      <div class="d-flex justify-space-between my-4 mx-1 align-center">
-        <div class="text-h6">Subtotal</div>
-        <div>3000</div>
-      </div>
+      <v-container>
+        <div class="d-flex justify-space-between my-4 mx-1 align-center">
+          <div class="text-h6">Subtotal</div>
+          <div>${{ totalPrd }}</div>
+        </div>
+      </v-container>
       <div class="py-7 mx-auto" style="width: 90%">
         <v-btn dark color="primary" block class="my-2"> checkout </v-btn>
       </div>
@@ -114,7 +122,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -131,7 +139,17 @@ export default {
     };
   },
   computed: {
-    ...mapState("cart", ["quantity", "shoppingCarts"]),
+    ...mapState("cart", ["quantity", "shoppingCarts", "products", "total"]),
+
+    totalPrd() {
+      return this.shoppingCarts
+        .map((item) => {
+          return item.price * item.quantity;
+        })
+        .reduce((accumulator, currentValue) => {
+          return accumulator + currentValue;
+        }, 0);
+    },
   },
 };
 </script>
