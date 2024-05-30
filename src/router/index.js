@@ -8,6 +8,7 @@ import Products from "../views/ProductsView.vue";
 import layoutHome from "@/layout/home.vue";
 import layoutDashboard from "@/layout/dashboard.vue";
 import productAdmin from "../views/admin/Product.vue";
+import Users from "../views/admin/Users.vue";
 
 Vue.use(VueRouter);
 
@@ -52,6 +53,13 @@ const routes = [
       {
         path: "",
         component: productAdmin,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: "users",
+        component: Users,
         meta: {
           requiresAuth: true,
         },

@@ -17,11 +17,10 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <div class="text-h4 mb-2">Products</div>
-
+    <div class="text-h4 mb-2">Users</div>
     <v-data-table
       :headers="headers"
-      :items="products"
+      :items="users"
       :page.sync="page"
       :items-per-page="itemsPerPage"
       hide-default-footer
@@ -49,16 +48,17 @@ import axios from "axios";
 export default {
   data() {
     return {
-      products: [],
+      users: [],
       page: 1,
       pageCount: 0,
       itemsPerPage: 8,
       dialogDelete: false,
       headers: [
-        { text: "id", value: "id", align: "center" },
-        { text: "Title", value: "title", align: "center" },
-        { text: "Price", value: "price", align: "center" },
-        { text: "Category", value: "category", align: "center" },
+        { text: "Id", value: "id", align: "center" },
+        { text: "First name", value: "name.firstname", align: "center" },
+        { text: "Last name", value: "name.lastname", align: "center" },
+        { text: "Email", value: "email", align: "center" },
+        // { text: "Category", value: "category", align: "center" },
         { text: "Actions", value: "actions", sortable: false },
       ],
     };
@@ -70,9 +70,10 @@ export default {
 
     async getProducts() {
       await axios
-        .get("https://fakestoreapi.com/products")
+        .get("https://fakestoreapi.com/users")
         .then((res) => {
-          return (this.products = res.data);
+          console.log(res.data);
+          return (this.users = res.data);
         })
         .catch((e) => {});
     },

@@ -25,7 +25,11 @@
 export default {
   data() {
     return {
-      links: [{ title: "Products" }, { title: "Setting" }, { title: "User" }],
+      links: [
+        { title: "Products", to: "/dashboard" },
+        { title: "Setting" },
+        { title: "User", to: "/dashboard/users" },
+      ],
     };
   },
 };
