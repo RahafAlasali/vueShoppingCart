@@ -5,7 +5,8 @@ import Register from "../views/Register.vue";
 import Login from "@/views/Login.vue";
 import ProductDetails from "../views/ProductDetailsView.vue";
 import Products from "../views/ProductsView.vue";
-import Admin from "../views/admin/Dashboard.vue";
+import layoutHome from "@/layout/home.vue";
+import layoutDashboard from "@/layout/dashboard.vue";
 import productAdmin from "../views/admin/Product.vue";
 
 Vue.use(VueRouter);
@@ -13,8 +14,24 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    component: layoutHome,
+    children: [
+      {
+        path: "",
+        name: "home",
+        component: HomeView,
+      },
+      {
+        path: "/products",
+        name: "products",
+        component: Products,
+      },
+      {
+        path: "/product/:id",
+        name: "productDetails",
+        component: ProductDetails,
+      },
+    ],
   },
   {
     path: "/login",
@@ -26,25 +43,14 @@ const routes = [
     name: "register",
     component: Register,
   },
+
   {
-    path: "/products",
-    name: "products",
-    component: Products,
-  },
-  {
-    path: "/product/:id",
-    name: "productDetails",
-    component: ProductDetails,
-  },
-  {
-    path: "/admin",
+    path: "/dashboard",
     name: "admin",
-    component: Admin,
+    component: layoutDashboard,
     children: [
       {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
-        path: "product",
+        path: "",
         component: productAdmin,
       },
     ],

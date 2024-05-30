@@ -12,17 +12,3 @@
     </v-col>
   </v-row>
 </template>
-
-<script>
-import { mapState } from "vuex";
-import SideBar from "@/components/sidebar.vue";
-export default {
-  name: "App",
-  components: {
-    SideBar,
-  },
-  computed: {
-    ...mapState("auth", ["isLogin"]),
-  },
-};
-</script>

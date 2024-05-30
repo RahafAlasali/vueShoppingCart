@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-3">
+  <div class="my-3">
     <v-data-table
       :headers="headers"
       :items="products"
@@ -8,7 +8,12 @@
       hide-default-footer
       class="elevation-1"
       @page-count="pageCount = $event"
-    ></v-data-table>
+    >
+      <template v-slot:item.actions>
+        <v-icon small class="mr-2"> mdi-pencil </v-icon>
+        <v-icon small> mdi-delete </v-icon>
+      </template></v-data-table
+    >
     <div class="text-center pt-2">
       <v-pagination
         v-model="page"
@@ -32,6 +37,7 @@ export default {
       headers: [
         { text: "id", value: "id", align: "center", class: "{color:'red'}" },
         { text: "title", value: "title", align: "center" },
+        { text: "Actions", value: "actions", sortable: false },
       ],
     };
   },
