@@ -58,7 +58,6 @@ export default {
         { text: "First name", value: "name.firstname", align: "center" },
         { text: "Last name", value: "name.lastname", align: "center" },
         { text: "Email", value: "email", align: "center" },
-        // { text: "Category", value: "category", align: "center" },
         { text: "Actions", value: "actions", sortable: false },
       ],
     };
