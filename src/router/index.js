@@ -47,7 +47,6 @@ const routes = [
 
   {
     path: "/dashboard",
-    name: "admin",
     component: layoutDashboard,
     children: [
       {
