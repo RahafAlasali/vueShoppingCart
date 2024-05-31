@@ -17,6 +17,86 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="dialog" max-width="500px">
+      <v-card>
+        <v-card-title>
+          <span class="text-h5">Edit Product</span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="6" md="6">
+                <v-text-field
+                  dense
+                  v-model="title"
+                  label="title"
+                  outlined
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6" md="6">
+                <v-text-field
+                  dense
+                  v-model="description"
+                  label="description"
+                  outlined
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="dialog = false">
+            Cancel
+          </v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false">
+            Save
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <v-dialog v-model="dialogCreate" max-width="500px">
+      <v-card>
+        <v-card-title>
+          <span class="text-h5">Create Products</span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="6" md="6">
+                <v-text-field
+                  dense
+                  v-model="title"
+                  label="title"
+                  outlined
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6" md="6">
+                <v-text-field
+                  dense
+                  v-model="description"
+                  label="description"
+                  outlined
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="dialogCreate = false">
+            Cancel
+          </v-btn>
+          <v-btn color="blue darken-1" text @click="dialogCreate = false">
+            Save
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <div class="text-h4 mb-2">Products</div>
 
     <v-data-table
@@ -25,11 +105,24 @@
       :page.sync="page"
       :items-per-page="itemsPerPage"
       hide-default-footer
-      class="elevation-1"
+      class="elevation-3"
       @page-count="pageCount = $event"
     >
+      <template v-slot:top>
+        <v-div class="d-flex justify-end pa-4">
+          <v-btn
+            color="primary"
+            dark
+            class="mb-2 pa-2"
+            @click="dialogCreate = true"
+          >
+            New Item
+          </v-btn>
+        </v-div>
+      </template>
+
       <template v-slot:item.actions>
-        <v-icon small class="mr-2"> mdi-pencil </v-icon>
+        <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
         <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
       </template></v-data-table
     >
@@ -53,7 +146,9 @@ export default {
       page: 1,
       pageCount: 0,
       itemsPerPage: 8,
+      dialog: false,
       dialogDelete: false,
+      dialogCreate: false,
       headers: [
         { text: "id", value: "id", align: "center" },
         { text: "Title", value: "title", align: "center" },
@@ -66,6 +161,9 @@ export default {
   methods: {
     deleteItem() {
       this.dialogDelete = true;
+    },
+    editItem(item) {
+      this.dialog = true;
     },
 
     async getProducts() {
