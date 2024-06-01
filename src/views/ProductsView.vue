@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Product from "@/components/productsList.vue";
+import Product from "@/components/home/productsList.vue";
 
 export default {
   components: {

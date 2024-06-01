@@ -27,9 +27,9 @@
   </div>
 </template>
 <script>
-import NavBar from "@/components/NavBar.vue";
-import Footer from "@/components/footer.vue";
-import Slide from "@/components/slide.vue";
+import NavBar from "@/components/home/NavBar.vue";
+import Footer from "@/components/home/footer.vue";
+import Slide from "@/components/home/slide.vue";
 export default {
   components: {
     NavBar,

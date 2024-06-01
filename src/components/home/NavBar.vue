@@ -98,7 +98,7 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import Cart from "@/components/cart.vue";
+import Cart from "@/components/home/cart.vue";
 export default {
   components: {
     Cart,

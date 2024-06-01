@@ -62,9 +62,9 @@
 
 <script>
 import axios from "axios";
-import productItem from "@/components/product.vue";
-import Loader from "@/components/loader.vue";
-import ImgPrd from "@/components/imgPrd.vue";
+import productItem from "@/components/home/product.vue";
+import Loader from "@/components/home/loader.vue";
+import ImgPrd from "@/components/home/imgPrd.vue";
 
 export default {
   components: {

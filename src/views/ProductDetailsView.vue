@@ -106,10 +106,10 @@
 </template>
 
 <script>
-import productItem from "@/components/product.vue";
-import ImgPrd from "@/components/imgPrd.vue";
+import productItem from "@/components/home/product.vue";
+import ImgPrd from "@/components/home/imgPrd.vue";
 import axios from "axios";
-import Loader from "@/components/loader.vue";
+import Loader from "@/components/home/loader.vue";
 import { mapActions, mapState } from "vuex";
 
 export default {

@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="3">
+      <v-col cols="2">
         <SideBar />
       </v-col>
-      <v-col cols="9">
+      <v-col cols="10">
         <v-container>
-          <div class="d-flex pa-2">
+          <div class="d-flex mb-2">
             <div class="text-h5">Welcome</div>
             <v-spacer></v-spacer>
             <v-btn class="mx-1" icon small fab elevation="4"
@@ -14,7 +14,7 @@
                 <v-icon> mdi-bell</v-icon>
               </v-badge>
             </v-btn>
-            <v-avatar size="45" class="mx-1">
+            <v-avatar size="43" class="mx-1">
               <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
             </v-avatar>
           </div>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import SideBar from "@/components/sidebar.vue";
+import SideBar from "@/components/auth/sidebar.vue";
 export default {
   name: "App",
   components: {

@@ -18,11 +18,11 @@
 
 <script>
 import axios from "axios";
-import gallary from "@/components/gallary.vue";
-import Category from "@/components/category.vue";
-import Product from "@/components/productsList.vue";
-import About from "@/components/about.vue";
-import Section from "@/components/section.vue";
+import gallary from "@/components/home/gallary.vue";
+import Category from "@/components/home/category.vue";
+import Product from "@/components/home/productsList.vue";
+import About from "@/components/home/about.vue";
+import Section from "@/components/home/section.vue";
 
 export default {
   name: "Home",
