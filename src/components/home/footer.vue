@@ -1,46 +1,4 @@
 <template>
-  <!-- <v-footer color="black">
-    <v-row justify="center">
-      <v-col cols="2" style="color: white">
-        <h3 class="my-1">Home</h3>
-        <div class="my-1">About</div>
-        <div class="my-1">Home</div>
-        <div>
-          <v-text-field
-            outlined
-            dense=""
-            solo
-            label="Home"
-            append-icon="mdi-magnify"
-            style="max-width: 80%"
-            background-color="grey darken-2"
-          ></v-text-field>
-        </div>
-      </v-col>
-      <v-col cols="2" style="color: white">
-        <h3 class="my-1">Support</h3>
-        <div class="my-1">About</div>
-        <div class="my-1">Home</div>
-      </v-col>
-      <v-col cols="2" style="color: white">
-        <h3 class="my-1">Account</h3>
-        <div class="my-1">About</div>
-        <div class="my-1">Home</div>
-      </v-col>
-      <v-col cols="2" style="color: white">
-        <h3 class="my-1">Account</h3>
-        <div class="my-1">About</div>
-        <div class="my-1">Home</div>
-      </v-col>
-      <v-col cols="2" style="color: white" class="d-flex">
-        <div class="mx-1"><v-icon color="white">mdi-instagram</v-icon></div>
-        <div class="mx-1"><v-icon color="white">mdi-facebook</v-icon></div>
-        <div class="mx-1"><v-icon color="white">mdi-facebook</v-icon></div>
-      </v-col>
-    </v-row>
-
-    <v-divider></v-divider>
-   </v-footer> -->
   <v-footer dark padless>
     <v-card
       class="white--text text-center"
