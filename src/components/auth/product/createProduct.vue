@@ -13,23 +13,32 @@
 
         <v-card-text>
           <v-container>
-            <v-row>
-              <v-col cols="12" sm="6" md="12">
-                <v-text-field
-                  dense
-                  label="Title"
-                  hide-details
-                  outlined
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="12">
-                <v-textarea
-                  outlined
-                  label="Descriptiona"
-                  hide-details
-                ></v-textarea>
-              </v-col>
-            </v-row>
+            <v-form
+              @submit.prevent="save"
+              ref="form"
+              v-model="valid"
+              lazy-validation
+            >
+              <v-row>
+                <v-col cols="12" sm="6" md="12">
+                  <v-text-field
+                    dense
+                    label="Title"
+                    v-model="product.title"
+                    hide-details
+                    outlined
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="6" md="12">
+                  <v-textarea
+                    outlined
+                    label="Description"
+                    v-model="product.description"
+                    hide-details
+                  ></v-textarea>
+                </v-col>
+              </v-row>
+            </v-form>
           </v-container>
         </v-card-text>
         <v-card-actions>
@@ -37,7 +46,7 @@
           <v-btn color="blue darken-1" text @click="createProduct">
             Cancel
           </v-btn>
-          <v-btn color="blue darken-1" text @click="createProduct">
+          <v-btn type="submit" color="blue darken-1" text @click="save">
             Save
           </v-btn>
         </v-card-actions>
@@ -47,18 +56,36 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   props: ["showDialog"],
   emits: ["colseDialogCreate"],
   data() {
     return {
-      title: null,
-      description: null,
+      product: {
+        title: null,
+        description: null,
+        price: 13.5,
+        image: "https://i.pravatar.cc",
+        category: "electronic",
+      },
+      valid: true,
     };
   },
   methods: {
     createProduct() {
       this.$emit("colseDialogCreate");
+    },
+    save() {
+      // this.$refs.form.validate();
+      axios
+        .post("https://fakestoreapi.com/products", this.product, {
+          Headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => console.log(res))
+        .finally(() => this.$emit("colseDialogCreate"));
     },
   },
 };

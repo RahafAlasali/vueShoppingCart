@@ -4,12 +4,13 @@
       :showDialog="dialogCreate"
       @colseDialogCreate="dialogCreate = false"
     />
+
     <edit-product
       :productEdit="prodItem"
       :showDialog="dialog"
       @colseDialog="dialog = false"
     />
-    <delete-product :showDialog="dialogDelete" @delete="deleteItem" />
+    <Delete :showDialog="dialogDelete" @delete="() => confirmDelete()" />
     <div class="text-h4 mb-2">Products</div>
 
     <v-data-table
@@ -18,25 +19,26 @@
       :page.sync="page"
       :items-per-page="itemsPerPage"
       hide-default-footer
+      :loading="loading"
       class="elevation-3"
       @page-count="pageCount = $event"
     >
       <template v-slot:top>
-        <v-div class="d-flex justify-end pa-4">
+        <div class="d-flex justify-end pa-4">
           <v-btn
             color="primary"
             dark
             class="mb-2 pa-2"
             @click="dialogCreate = true"
           >
-            New Item
+            Add
           </v-btn>
-        </v-div>
+        </div>
       </template>
 
       <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
-        <v-icon small @click="dialogDelete = true"> mdi-delete </v-icon>
+        <v-icon small @click="() => deleteItem(item.id)"> mdi-delete </v-icon>
       </template></v-data-table
     >
     <div class="text-center pt-2">
@@ -52,20 +54,22 @@
 <script>
 import axios from "axios";
 import EditProduct from "@/components/auth/product/editProduct.vue";
-import DeleteProduct from "@/components/auth/delete.vue";
+import Delete from "@/components/auth/delete.vue";
 import CreateProduct from "@/components/auth/product/createProduct.vue";
 
 export default {
   name: "products",
   components: {
     EditProduct,
-    DeleteProduct,
+    Delete,
     CreateProduct,
   },
   data() {
     return {
       products: [],
+      id: null,
       prodItem: null,
+      loading: false,
       page: 1,
       pageCount: 0,
       itemsPerPage: 8,
@@ -85,21 +89,33 @@ export default {
   },
 
   methods: {
-    deleteItem() {
-      this.dialogDelete = false;
+    deleteItem(id) {
+      this.dialogDelete = true;
+      this.id = id;
     },
     editItem(item) {
       this.prodItem = item;
       this.dialog = true;
     },
-
+    confirmDelete() {
+      axios
+        .delete(`https://fakestoreapi.com/products/${this.id}`, {
+          Headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => console.log(res));
+      this.dialogDelete = false;
+    },
     async getProducts() {
+      this.loading = true;
       await axios
         .get("https://fakestoreapi.com/products")
         .then((res) => {
           return (this.products = res.data);
         })
         .catch((e) => {});
+      this.loading = false;
     },
   },
   mounted() {

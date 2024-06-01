@@ -25,8 +25,8 @@ export default {
     return {
       links: [
         { title: "Products", to: "/dashboard" },
-        { title: "Setting" },
         { title: "User", to: "/dashboard/users" },
+        { title: "Setting" },
       ],
     };
   },

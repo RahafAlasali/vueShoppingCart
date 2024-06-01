@@ -1,11 +1,6 @@
 <template>
   <div>
-    <v-dialog
-      persistent
-      v-model="$props.showDialog"
-      max-width="500px"
-      hide-overlay
-    >
+    <v-dialog persistent v-model="show" max-width="500px" hide-overlay>
       <v-card>
         <v-card-title>
           <span class="text-h5">Edit Product</span>
@@ -18,7 +13,7 @@
                 <v-text-field
                   dense
                   label="Title"
-                  v-model="productEdit.title"
+                  v-model="PrdEdite.title"
                   hide-details
                   outlined
                 ></v-text-field>
@@ -27,8 +22,8 @@
                 <v-textarea
                   outlined
                   label="Descriptiona"
+                  v-model="PrdEdite.description"
                   hide-details
-                  v-model="productEdit.description"
                 ></v-textarea>
               </v-col>
             </v-row>
@@ -39,9 +34,7 @@
           <v-btn color="blue darken-1" text @click="closeDialog()">
             Cancel
           </v-btn>
-          <v-btn color="blue darken-1" text @click="closeDialog()">
-            Save
-          </v-btn>
+          <v-btn color="blue darken-1" text @click="save()"> Save </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -49,19 +42,39 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  props: ["productEdit", "showDialog"],
+  props: ["showDialog", "productEdit"],
   emits: ["colseDialog"],
   data() {
     return {
-      product: this.$props.productEdit,
-      title: null,
-      description: null,
+      // product: this.productEdit,
+      // show: this.showDialog,
+      // title: null,
+      // description: null,
     };
+  },
+  computed: {
+    show() {
+      return this.showDialog;
+    },
+    PrdEdite() {
+      return this.productEdit;
+    },
   },
   methods: {
     closeDialog() {
       this.$emit("colseDialog");
+    },
+    save() {
+      axios
+        .put("https://fakestoreapi.com/products/8", this.PrdEdite, {
+          Headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => console.log(res))
+        .finally(() => this.$emit("colseDialog"));
     },
   },
 };
