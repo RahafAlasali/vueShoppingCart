@@ -21,7 +21,7 @@
               <v-col cols="12" sm="6" md="6">
                 <v-text-field
                   dense
-                  label="First Name"
+                  label="Last Name"
                   v-model="lastname"
                   hide-details
                   outlined
@@ -30,7 +30,7 @@
               <v-col cols="12" sm="6" md="12">
                 <v-text-field
                   dense
-                  label="First Name"
+                  label="Email"
                   v-model="email"
                   hide-details
                   outlined
@@ -44,9 +44,7 @@
           <v-btn color="blue darken-1" text @click="closeDialog()">
             Cancel
           </v-btn>
-          <v-btn color="blue darken-1" text @click="closeDialog()">
-            Save
-          </v-btn>
+          <!-- <v-btn color="blue darken-1" text @click="save()"> Save </v-btn> -->
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -79,6 +77,20 @@ export default {
     closeDialog() {
       this.$emit("colseDialog");
     },
+    // save() {
+    //   this.loading = true;
+    //   axios
+    //     .put(`https://fakestoreapi.com/products/${id}`, this.PrdEdite, {
+    //       Headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     })
+    //     .then((res) => console.log(res))
+    //     .finally(() => {
+    //       this.$emit("colseDialog");
+    //       this.loading = false;
+    //     });
+    // },
   },
 };
 </script>

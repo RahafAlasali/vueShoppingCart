@@ -30,6 +30,16 @@
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="12">
+                  <v-select
+                    dense
+                    :items="categories"
+                    v-model="product.category"
+                    label="Category"
+                    outlined
+                    hide-details
+                  ></v-select>
+                </v-col>
+                <v-col cols="12" sm="6" md="12">
                   <v-textarea
                     outlined
                     label="Description"
@@ -46,7 +56,13 @@
           <v-btn color="blue darken-1" text @click="createProduct">
             Cancel
           </v-btn>
-          <v-btn type="submit" color="blue darken-1" text @click="save">
+          <v-btn
+            type="submit"
+            color="blue darken-1"
+            :loading="loading"
+            text
+            @click="save"
+          >
             Save
           </v-btn>
         </v-card-actions>
@@ -70,6 +86,8 @@ export default {
         category: "electronic",
       },
       valid: true,
+      loading: false,
+      categories: null,
     };
   },
   methods: {
@@ -78,6 +96,7 @@ export default {
     },
     save() {
       // this.$refs.form.validate();
+      this.loading = true;
       axios
         .post("https://fakestoreapi.com/products", this.product, {
           Headers: {
@@ -85,8 +104,19 @@ export default {
           },
         })
         .then((res) => console.log(res))
-        .finally(() => this.$emit("colseDialogCreate"));
+        .finally(() => {
+          this.$emit("colseDialogCreate");
+          this.loading = false;
+        });
     },
+  },
+  mounted() {
+    axios
+      .get("https://fakestoreapi.com/products/categories")
+      .then((res) => {
+        return (this.categories = res.data);
+      })
+      .catch((e) => {});
   },
 };
 </script>

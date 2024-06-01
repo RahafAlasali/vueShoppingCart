@@ -26,6 +26,16 @@
                   hide-details
                 ></v-textarea>
               </v-col>
+              <v-col cols="12" sm="6" md="12">
+                <v-select
+                  dense
+                  :items="categories"
+                  v-model="PrdEdite.category"
+                  label="Category"
+                  outlined
+                  hide-details
+                ></v-select>
+              </v-col>
             </v-row>
           </v-container>
         </v-card-text>
@@ -34,7 +44,9 @@
           <v-btn color="blue darken-1" text @click="closeDialog()">
             Cancel
           </v-btn>
-          <v-btn color="blue darken-1" text @click="save()"> Save </v-btn>
+          <v-btn color="blue darken-1" text :loading="loading" @click="save()">
+            Save
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -48,6 +60,8 @@ export default {
   emits: ["colseDialog"],
   data() {
     return {
+      loading: false,
+      categories: null,
       // product: this.productEdit,
       // show: this.showDialog,
       // title: null,
@@ -61,21 +75,36 @@ export default {
     PrdEdite() {
       return this.productEdit;
     },
+    id() {
+      return this.productEdit.id;
+    },
   },
   methods: {
     closeDialog() {
       this.$emit("colseDialog");
     },
     save() {
+      this.loading = true;
       axios
-        .put("https://fakestoreapi.com/products/8", this.PrdEdite, {
+        .put(`https://fakestoreapi.com/products/${id}`, this.PrdEdite, {
           Headers: {
             "Content-Type": "application/json",
           },
         })
         .then((res) => console.log(res))
-        .finally(() => this.$emit("colseDialog"));
+        .finally(() => {
+          this.$emit("colseDialog");
+          this.loading = false;
+        });
     },
+  },
+  mounted() {
+    axios
+      .get("https://fakestoreapi.com/products/categories")
+      .then((res) => {
+        return (this.categories = res.data);
+      })
+      .catch((e) => {});
   },
 };
 </script>
