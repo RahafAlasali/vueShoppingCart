@@ -1,22 +1,11 @@
 <template>
   <div class="my-3">
-    <v-dialog v-model="dialogDelete" max-width="500px">
-      <v-card>
-        <v-card-title class="text-h5"
-          >Are you sure you want to delete this item?</v-card-title
-        >
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialogDelete = false"
-            >Cancel</v-btn
-          >
-          <v-btn color="blue darken-1" text @click="dialogDelete = false"
-            >OK</v-btn
-          >
-          <v-spacer></v-spacer>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <delete-product :showDialog="dialogDelete" @delete="deleteItem" />
+    <edit-user
+      :userEdit="userItem"
+      :showDialog="dialog"
+      @colseDialog="dialog = false"
+    />
     <div class="text-h4 mb-2">Users</div>
     <v-data-table
       :headers="headers"
@@ -28,8 +17,8 @@
       @page-count="pageCount = $event"
     >
       <template v-slot:item.actions>
-        <v-icon small class="mr-2"> mdi-pencil </v-icon>
-        <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+        <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
+        <v-icon small @click="dialogDelete = true"> mdi-delete </v-icon>
       </template></v-data-table
     >
     <div class="text-center pt-2">
@@ -44,14 +33,23 @@
 
 <script>
 import axios from "axios";
+import DeleteProduct from "@/components/auth/delete.vue";
+import EditUser from "@/components/auth/product/editProduct.vue";
 
 export default {
+  components: {
+    DeleteProduct,
+    EditUser,
+  },
   data() {
     return {
       users: [],
+      userItem: null,
       page: 1,
       pageCount: 0,
       itemsPerPage: 8,
+      dialog: false,
+      dialogCreate: false,
       dialogDelete: false,
       headers: [
         { text: "Id", value: "id", align: "center" },
@@ -64,9 +62,12 @@ export default {
   },
   methods: {
     deleteItem() {
-      this.dialogDelete = true;
+      this.dialogDelete = false;
     },
-
+    editItem(item) {
+      this.userItem = item;
+      this.dialog = true;
+    },
     async getProducts() {
       await axios
         .get("https://fakestoreapi.com/users")
