@@ -1,7 +1,7 @@
 <template>
   <div
     style="position: fixed; height: 100vh; width: 200px"
-    class="py-4 px-7 primary"
+    class="py-4 primary"
   >
     <v-list dark nav flat class="align-center primary my-5">
       <v-list-item
@@ -11,11 +11,13 @@
         :key="index"
         class="d-flex justify-center"
       >
-        <v-list-item-content class="text-center font-weight-bold">
+        <v-list-item-icon>
+          <v-icon>{{ link.icon }}</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content class="font-weight-bold">
           <v-list-item-title>{{ link.title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-     
     </v-list>
   </div>
 </template>
@@ -25,9 +27,10 @@ export default {
   data() {
     return {
       links: [
-        { title: "Products", to: "/dashboard" },
-        { title: "User", to: "/dashboard/users" },
-        { title: "Setting" },
+        { title: "Dashboard", icon: "mdi-home", to: "/dashboard" },
+        { title: "Products", icon: "mdi-home", to: "/dashboard" },
+        { title: "Users", icon: "mdi-account", to: "/dashboard/users" },
+        { title: "Settings", icon: "mdi-cog-outline" },
       ],
     };
   },

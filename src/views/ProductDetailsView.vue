@@ -20,25 +20,31 @@
 
               <v-divider class="mb-3"></v-divider>
             </div>
-            <div class="d-flex my-4">
-              <v-btn
-                class="mx-1"
-                icon
-                tile
-                outlined
-                @click="() => incrementItem(product.id)"
-              >
-                <v-icon> mdi-plus </v-icon>
-              </v-btn>
-              <v-btn
-                class="mx-1"
-                icon
-                tile
-                outlined
-                @click="() => decreaseItem(product.id)"
-              >
-                <v-icon> mdi-minus </v-icon>
-              </v-btn>
+
+            <div class="d-flex justify-start my-4">
+              <div class="d-flex mx-2">
+                <v-btn
+                  class="mx-1"
+                  icon
+                  tile
+                  outlined
+                  @click="() => incrementItem(product.id)"
+                >
+                  <v-icon> mdi-plus </v-icon>
+                </v-btn>
+                <v-input hide-details readonly class="align-center px-1"
+                  >8
+                </v-input>
+                <v-btn
+                  class="mx-1"
+                  icon
+                  tile
+                  outlined
+                  @click="() => decreaseItem(product.id)"
+                >
+                  <v-icon> mdi-minus </v-icon>
+                </v-btn>
+              </div>
               <v-btn
                 class="mx-1"
                 depressed
@@ -46,10 +52,7 @@
                 color="primary"
                 @click="() => add(product)"
               >
-                Buy Now
-              </v-btn>
-              <v-btn class="mx-1" icon tile outlined>
-                <v-icon> mdi-cart </v-icon>
+                Add to cart
               </v-btn>
             </div>
             <v-card class="rounded-lg">

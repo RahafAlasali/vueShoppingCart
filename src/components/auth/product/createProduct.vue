@@ -120,6 +120,7 @@ export default {
           .finally(() => {
             this.$emit("colseDialogCreate");
             this.loading = false;
+            this.$refs.form.reset();
             this.$toast("Create product successfully", {
               timeout: 1500,
               pauseOnHover: false,
