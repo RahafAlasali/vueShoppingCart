@@ -20,30 +20,42 @@
               lazy-validation
             >
               <v-row>
-                <v-col cols="12" sm="6" md="12">
+                <v-col class="py-0" cols="12" sm="6" md="12">
                   <v-text-field
                     dense
                     label="Title"
                     v-model="product.title"
-                    hide-details
+                    :rules="[(v) => !!v || $t('fieldRequired')]"
                     outlined
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12" sm="6" md="12">
+                <v-col class="py-0" cols="12" sm="6" md="6">
                   <v-select
                     dense
                     :items="categories"
                     v-model="product.category"
                     label="Category"
+                    :rules="[(v) => !!v || $t('fieldRequired')]"
                     outlined
-                    hide-details
                   ></v-select>
                 </v-col>
-                <v-col cols="12" sm="6" md="12">
+                <v-col class="py-0" cols="12" sm="6" md="6">
+                  <v-text-field
+                    dense
+                    type="number"
+                    label="Price"
+                    v-model="product.price"
+                    :rules="[(v) => !!v || $t('fieldRequired')]"
+                    outlined
+                  ></v-text-field>
+                </v-col>
+
+                <v-col class="py-0" cols="12" sm="6" md="12">
                   <v-textarea
                     outlined
                     label="Description"
                     v-model="product.description"
+                    :rules="[(v) => !!v || $t('fieldRequired')]"
                     hide-details
                   ></v-textarea>
                 </v-col>
@@ -81,9 +93,9 @@ export default {
       product: {
         title: null,
         description: null,
-        price: 13.5,
+        price: null,
         image: "https://i.pravatar.cc",
-        category: "electronic",
+        category: null,
       },
       valid: true,
       loading: false,
@@ -95,19 +107,25 @@ export default {
       this.$emit("colseDialogCreate");
     },
     save() {
-      // this.$refs.form.validate();
-      this.loading = true;
-      axios
-        .post("https://fakestoreapi.com/products", this.product, {
-          Headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => console.log(res))
-        .finally(() => {
-          this.$emit("colseDialogCreate");
-          this.loading = false;
-        });
+      const validForm = this.$refs.form.validate();
+      if (validForm) {
+        this.loading = true;
+        axios
+          .post("https://fakestoreapi.com/products", this.product, {
+            Headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => console.log(res))
+          .finally(() => {
+            this.$emit("colseDialogCreate");
+            this.loading = false;
+            this.$toast("Create product successfully", {
+              timeout: 1500,
+              pauseOnHover: false,
+            });
+          });
+      }
     },
   },
   mounted() {

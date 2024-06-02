@@ -9,32 +9,39 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="12" sm="6" md="12">
+              <v-col class="py-0" cols="12" sm="6" md="12">
                 <v-text-field
                   dense
                   label="Title"
                   v-model="PrdEdite.title"
-                  hide-details
                   outlined
                 ></v-text-field>
               </v-col>
-              <v-col cols="12" sm="6" md="12">
-                <v-textarea
-                  outlined
-                  label="Descriptiona"
-                  v-model="PrdEdite.description"
-                  hide-details
-                ></v-textarea>
-              </v-col>
-              <v-col cols="12" sm="6" md="12">
+
+              <v-col class="py-0" cols="12" sm="6" md="6">
                 <v-select
                   dense
                   :items="categories"
                   v-model="PrdEdite.category"
                   label="Category"
                   outlined
-                  hide-details
                 ></v-select>
+              </v-col>
+              <v-col class="py-0" cols="12" sm="6" md="6">
+                <v-text-field
+                  dense
+                  type="number"
+                  label="Price"
+                  v-model="PrdEdite.price"
+                  outlined
+                ></v-text-field>
+              </v-col>
+              <v-col class="py-0" cols="12" sm="6" md="12">
+                <v-textarea
+                  outlined
+                  label="Descriptiona"
+                  v-model="PrdEdite.description"
+                ></v-textarea>
               </v-col>
             </v-row>
           </v-container>
@@ -86,7 +93,7 @@ export default {
     save() {
       this.loading = true;
       axios
-        .put(`https://fakestoreapi.com/products/${id}`, this.PrdEdite, {
+        .put(`https://fakestoreapi.com/products/${this.id}`, this.PrdEdite, {
           Headers: {
             "Content-Type": "application/json",
           },
@@ -95,6 +102,10 @@ export default {
         .finally(() => {
           this.$emit("colseDialog");
           this.loading = false;
+          this.$toast("Edit product successfully", {
+            timeout: 1500,
+            pauseOnHover: false,
+          });
         });
     },
   },

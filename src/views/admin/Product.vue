@@ -104,7 +104,12 @@ export default {
             "Content-Type": "application/json",
           },
         })
-        .then((res) => console.log(res));
+        .then(() =>
+          this.$toast("Create product successfully", {
+            timeout: 1500,
+            pauseOnHover: false,
+          })
+        );
       this.dialogDelete = false;
     },
     async getProducts() {
