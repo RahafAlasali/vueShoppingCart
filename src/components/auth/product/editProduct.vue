@@ -8,42 +8,53 @@
 
         <v-card-text>
           <v-container>
-            <v-row>
-              <v-col class="py-0" cols="12" sm="6" md="12">
-                <v-text-field
-                  dense
-                  label="Title"
-                  v-model="PrdEdite.title"
-                  outlined
-                ></v-text-field>
-              </v-col>
+            <v-form
+              @submit.prevent="save"
+              ref="form"
+              v-model="valid"
+              lazy-validation
+            >
+              <v-row>
+                <v-col class="py-0" cols="12" sm="6" md="12">
+                  <v-text-field
+                    dense
+                    label="Title"
+                    v-model="PrdEdite.title"
+                    :rules="[(v) => !!v || $t('fieldRequired')]"
+                    outlined
+                  ></v-text-field>
+                </v-col>
 
-              <v-col class="py-0" cols="12" sm="6" md="6">
-                <v-select
-                  dense
-                  :items="categories"
-                  v-model="PrdEdite.category"
-                  label="Category"
-                  outlined
-                ></v-select>
-              </v-col>
-              <v-col class="py-0" cols="12" sm="6" md="6">
-                <v-text-field
-                  dense
-                  type="number"
-                  label="Price"
-                  v-model="PrdEdite.price"
-                  outlined
-                ></v-text-field>
-              </v-col>
-              <v-col class="py-0" cols="12" sm="6" md="12">
-                <v-textarea
-                  outlined
-                  label="Descriptiona"
-                  v-model="PrdEdite.description"
-                ></v-textarea>
-              </v-col>
-            </v-row>
+                <v-col class="py-0" cols="12" sm="6" md="6">
+                  <v-select
+                    dense
+                    :items="categories"
+                    v-model="PrdEdite.category"
+                    :rules="[(v) => !!v || $t('fieldRequired')]"
+                    label="Category"
+                    outlined
+                  ></v-select>
+                </v-col>
+                <v-col class="py-0" cols="12" sm="6" md="6">
+                  <v-text-field
+                    dense
+                    type="number"
+                    label="Price"
+                    v-model="PrdEdite.price"
+                    :rules="[(v) => !!v || $t('fieldRequired')]"
+                    outlined
+                  ></v-text-field>
+                </v-col>
+                <v-col class="py-0" cols="12" sm="6" md="12">
+                  <v-textarea
+                    outlined
+                    label="Descriptiona"
+                    v-model="PrdEdite.description"
+                    :rules="[(v) => !!v || $t('fieldRequired')]"
+                  ></v-textarea>
+                </v-col>
+              </v-row>
+            </v-form>
           </v-container>
         </v-card-text>
         <v-card-actions>
@@ -69,6 +80,7 @@ export default {
     return {
       loading: false,
       categories: null,
+      valid: true,
       // product: this.productEdit,
       // show: this.showDialog,
       // title: null,
@@ -91,22 +103,25 @@ export default {
       this.$emit("colseDialog");
     },
     save() {
-      this.loading = true;
-      axios
-        .put(`https://fakestoreapi.com/products/${this.id}`, this.PrdEdite, {
-          Headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => console.log(res))
-        .finally(() => {
-          this.$emit("colseDialog");
-          this.loading = false;
-          this.$toast("Edit product successfully", {
-            timeout: 1500,
-            pauseOnHover: false,
+      const validForm = this.$refs.form.validate();
+      if (validForm) {
+        this.loading = true;
+        axios
+          .put(`https://fakestoreapi.com/products/${this.id}`, this.PrdEdite, {
+            Headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => console.log(res))
+          .finally(() => {
+            this.$emit("colseDialog");
+            this.loading = false;
+            this.$toast("Edit product successfully", {
+              timeout: 1500,
+              pauseOnHover: false,
+            });
           });
-        });
+      }
     },
   },
   mounted() {

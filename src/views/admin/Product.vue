@@ -39,8 +39,13 @@
       <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
         <v-icon small @click="() => deleteItem(item.id)"> mdi-delete </v-icon>
-      </template></v-data-table
-    >
+      </template>
+      <template v-slot:item.category="{ item }">
+        <v-chip color="primary" dark>
+          {{ item.category }}
+        </v-chip>
+      </template>
+    </v-data-table>
     <div class="text-center pt-2">
       <v-pagination
         v-model="page"
@@ -80,7 +85,7 @@ export default {
       description: null,
       headers: [
         { text: "id", value: "id", align: "center" },
-        { text: "Title", value: "title", align: "center" },
+        { text: "Title", value: "title", align: "center", width: "500px" },
         { text: "Price", value: "price", align: "center" },
         { text: "Category", value: "category", align: "center" },
         { text: "Actions", value: "actions", sortable: false },
