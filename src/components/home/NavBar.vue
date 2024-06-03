@@ -41,19 +41,37 @@
       >
       </v-select>
       <div class="mx-1">
-        <!-- <v-avatar v-if="isLogin">
-          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-        </v-avatar> -->
-
         <router-link class="mx-1" v-if="!isLogin" :to="{ name: 'login' }">
           <v-btn icon small>
-            <v-icon> mdi-login</v-icon>
+            <v-icon> mdi-account</v-icon>
           </v-btn></router-link
         >
+        <v-menu v-else open-on-hover bottom offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-on="on" v-bind="attrs">
+              <v-avatar size="40">
+                <img
+                  src="https://cdn.vuetifyjs.com/images/john.jpg"
+                  alt="John"
+                />
+              </v-avatar>
+            </v-btn>
+          </template>
 
-        <v-btn class="mx-1" v-else icon small>
+          <v-list>
+            <v-list-item link>
+              <v-list-item-title>Profile</v-list-item-title>
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-list-item link>
+              <v-list-item-title @click="logout">log out</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+
+        <!-- <v-btn class="mx-1" v-else icon small>
           <v-icon @click="logout"> mdi-logout</v-icon>
-        </v-btn>
+        </v-btn> -->
         <v-btn class="mx-1" icon small @click="drawerCart = !drawerCart"
           ><v-badge :content="quantity" :value="quantity" color="primary">
             <v-icon> mdi-cart</v-icon>

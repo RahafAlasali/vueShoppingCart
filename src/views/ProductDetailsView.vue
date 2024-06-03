@@ -146,7 +146,7 @@ export default {
   },
   mounted() {
     const id = this.$route.params.id;
-
+    // add axios into store insted
     axios
       .get(`https://fakestoreapi.com/products/${id}`)
       .then((res) => {
@@ -156,7 +156,7 @@ export default {
         axios
           .get(`https://fakestoreapi.com/products/category/${res.category}`)
           .then((res) => {
-            return (this.items = res.data);
+            return (this.items = res.data.filter((item) => item.id != id));
           })
           .catch((e) => {});
       });
