@@ -5,6 +5,7 @@ import Register from "../views/Register.vue";
 import Login from "@/views/Login.vue";
 import ProductDetails from "../views/ProductDetailsView.vue";
 import Products from "../views/ProductsView.vue";
+import Cart from "../views/Cart.vue";
 import layoutHome from "@/layout/home.vue";
 import layoutDashboard from "@/layout/dashboard.vue";
 import productAdmin from "../views/admin/Product.vue";
@@ -20,12 +21,17 @@ const routes = [
       {
         path: "",
         name: "home",
-        component: HomeView,
+        component: HomeView, // use Lazy load
       },
       {
         path: "/products",
         name: "products",
         component: Products,
+      },
+      {
+        path: "/cart",
+        name: "cart",
+        component: Cart,
       },
       {
         path: "/product/:id",
@@ -65,6 +71,7 @@ const routes = [
       },
     ],
   },
+
   { path: "*", redirect: "/" },
 ];
 

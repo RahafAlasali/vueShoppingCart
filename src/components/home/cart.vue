@@ -29,8 +29,21 @@
         <div>${{ totalPrd }}</div>
       </div>
     </v-container>
-    <div class="py-7 mx-auto" style="width: 90%">
-      <v-btn dark color="primary" block class="my-2"> checkout </v-btn>
+    <div>
+      <div class="py-2 mx-auto" style="width: 90%">
+        <v-btn
+          dark
+          color="primary"
+          block
+          class="my-2"
+          @click="$router.push({ name: 'cart' })"
+        >
+          View Cart
+        </v-btn>
+      </div>
+      <div class="py-2 mx-auto" style="width: 90%">
+        <v-btn dark color="primary" block class="my-2"> checkout </v-btn>
+      </div>
     </div>
   </div>
 </template>
