@@ -1,50 +1,75 @@
 <template>
   <div>
-    <v-list nav flat>
-      <v-subheader class="text-h6 mt-3 font-weight-bold">My cart </v-subheader>
-      <v-divider class="mx-auto" style="width: 90%"></v-divider>
-      <v-list-item
-        class="py-2"
-        v-for="(item, index) in $props.items"
-        :key="index"
-      >
-        <div style="width: 100px; height: 100px">
-          <v-img width="100%" height="100%" contain :src="item.image"></v-img>
-        </div>
-        <v-list-item-content class="font-weight-bold mx-1">
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-          <v-list-item-subtitle
-            >${{ item.price }} X{{ item.quantity }}</v-list-item-subtitle
-          >
-        </v-list-item-content>
-        <v-list-item-icon>
-          <v-icon @click="() => removePrd(item.id)">
-            mdi-close-circle-outline
-          </v-icon>
-        </v-list-item-icon>
-      </v-list-item>
-    </v-list>
-    <v-divider class="mx-auto" style="width: 80%"></v-divider>
-    <v-container>
-      <div class="d-flex justify-space-between my-4 mx-1 align-center">
-        <div class="text-h6 text-capitalize">Subtotal</div>
-        <div>${{ totalPrd }}</div>
+    <v-subheader class="text-h6 mt-3 font-weight-bold justify-space-between">
+      <div>My cart</div>
+      <div>
+        <v-icon @click="closeDrawer"> mdi-close </v-icon>
       </div>
-    </v-container>
+    </v-subheader>
+
+    <v-divider class="mx-auto" style="width: 90%"></v-divider>
+
+    <!-- <div >No products in the cart.</div> -->
     <div>
-      <div class="py-2 mx-auto" style="width: 90%">
-        <v-btn
-          dark
-          color="primary"
-          block
-          class="my-2"
-          @click="$router.push({ name: 'cart' })"
+      <v-list nav flat>
+        <v-list-item
+          class="py-2 align-center"
+          v-for="(item, index) in $props.items"
+          :key="index"
         >
-          View Cart
-        </v-btn>
-      </div>
-      <div class="py-2 mx-auto" style="width: 90%">
-        <v-btn dark color="primary" block class="my-2"> checkout </v-btn>
+          <div style="width: 100px; height: 100px">
+            <v-img width="100%" height="100%" contain :src="item.image"></v-img>
+          </div>
+          <v-list-item-content class="font-weight-bold mx-1">
+            <v-list-item-title style="white-space: unset">{{
+              item.title
+            }}</v-list-item-title>
+            <v-list-item-subtitle
+              >{{
+                item.price.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })
+              }}
+              X{{ item.quantity }}</v-list-item-subtitle
+            >
+          </v-list-item-content>
+          <div class="mx-1">
+            <v-icon @click="() => removePrd(item.id)">
+              mdi-close-circle-outline
+            </v-icon>
+          </div>
+        </v-list-item>
+      </v-list>
+      <v-divider class="mx-auto" style="width: 80%"></v-divider>
+      <v-container>
+        <div class="d-flex justify-space-between my-4 mx-1 align-center">
+          <div class="text-h6 text-capitalize">Subtotal</div>
+          <div>
+            {{
+              totalPrd.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })
+            }}
+          </div>
+        </div>
+      </v-container>
+      <div>
+        <div class="py-2 mx-auto" style="width: 90%">
+          <v-btn
+            dark
+            color="primary"
+            block
+            class="my-1"
+            @click="$router.push({ name: 'cart' })"
+          >
+            View Cart
+          </v-btn>
+        </div>
+        <div class="my-1 mx-auto" style="width: 90%">
+          <v-btn dark color="primary" block class="my-2"> checkout </v-btn>
+        </div>
       </div>
     </div>
   </div>
@@ -53,14 +78,18 @@
 <script>
 import { mapState, mapActions } from "vuex";
 export default {
-  props: ["items"],
+  props: ["items", "show"],
   data() {
     return {};
   },
+  emits: ["close"],
   methods: {
     ...mapActions("cart", ["removeItem"]),
     removePrd(id) {
       this.removeItem(id);
+    },
+    closeDrawer() {
+      this.$emit("close");
     },
   },
   computed: {

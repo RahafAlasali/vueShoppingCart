@@ -77,7 +77,12 @@
         class="px-0"
         style="font-family: cursive; font-weight: bolder"
       >
-        ${{ item.price }}
+        {{
+          item.price.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })
+        }}
       </v-card-subtitle>
     </v-card-text>
     <v-card-actions class="ma-0 pa-0">
@@ -99,7 +104,7 @@ export default {
     ...mapMutations("cart", ["increaseCount"]),
     ...mapActions("cart", ["addItemToCart"]),
     add(item) {
-      this.addItemToCart(item);
+      this.addItemToCart({ item, quantity: 1 });
       this.$toast("Added to cart successfully", {
         timeout: 1500,
         pauseOnHover: false,

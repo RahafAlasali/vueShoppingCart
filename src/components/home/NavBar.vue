@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-toolbar class="px-4 primary--text text-uppercase">
-      <!-- <v-app-bar-nav-icon
+      <v-app-bar-nav-icon
         class="d-block d-md-none"
         @click="drawer = !drawer"
-      ></v-app-bar-nav-icon> -->
+      ></v-app-bar-nav-icon>
       <v-toolbar-title class="text-h5">
         <router-link to="/" style="text-decoration: none">
           shopping
@@ -69,9 +69,6 @@
           </v-list>
         </v-menu>
 
-        <!-- <v-btn class="mx-1" v-else icon small>
-          <v-icon @click="logout"> mdi-logout</v-icon>
-        </v-btn> -->
         <v-btn class="mx-1" icon small @click="drawerCart = !drawerCart"
           ><v-badge :content="quantity" :value="quantity" color="primary">
             <v-icon> mdi-cart</v-icon>
@@ -101,15 +98,18 @@
       </v-list>
     </v-navigation-drawer>
     <v-navigation-drawer
-      width="350"
+      width="400"
       class="text-uppercase pa-2"
       v-model="drawerCart"
       absolute
-      bottom
       right
       temporary
     >
-      <Cart :items="shoppingCarts" />
+      <Cart
+        :items="shoppingCarts"
+        :show="drawerCart"
+        @close="drawerCart = false"
+      />
     </v-navigation-drawer>
   </div>
 </template>

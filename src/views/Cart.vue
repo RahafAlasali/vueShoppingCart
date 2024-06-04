@@ -7,12 +7,12 @@
             <template v-slot:default>
               <thead class="grey lighten-3">
                 <tr>
-                  <th class="text-left"></th>
-                  <th class="text-left"></th>
-                  <th class="text-left">Product</th>
-                  <th class="text-left">Price</th>
-                  <th class="text-left">Quantity</th>
-                  <th class="text-left">Subtotal</th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
+                  <th class="text-center">Product</th>
+                  <th class="text-center">Price</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Subtotal</th>
                 </tr>
               </thead>
               <tbody>
@@ -36,7 +36,7 @@
                       </v-img>
                     </div>
                   </td>
-                  <td>{{ item.title }}</td>
+                  <td class="text-center">{{ item.title }}</td>
                   <td>
                     {{
                       item.price.toLocaleString("en-US", {
@@ -45,7 +45,28 @@
                       })
                     }}
                   </td>
-                  <td>{{ item.quantity }}</td>
+                  <td>
+                    <div class="d-flex mx-2">
+                      <v-text-field
+                        dense
+                        v-model="item.quantity"
+                        hide-details
+                        outlined
+                        style="width: 110px"
+                      >
+                        <v-icon slot="append" @click="quantity = +quantity + 1">
+                          mdi-plus
+                        </v-icon>
+                        <v-icon
+                          slot="prepend-inner"
+                          @click="quantity = +quantity - 1"
+                          :disabled="quantity == 1"
+                        >
+                          mdi-minus
+                        </v-icon>
+                      </v-text-field>
+                    </div>
+                  </td>
                   <td>
                     {{
                       (item.price * item.quantity).toLocaleString("en-US", {
@@ -61,25 +82,31 @@
         </v-col>
         <v-col cols="4"
           ><v-card elevation="0" class="pb-4" style="border: 1px solid #e0e0e0">
-            <v-card-title class="grey lighten-3"> Cart Totals </v-card-title>
-            <v-card-text class="py-4">
-              <div class="py-2 body-1">
-                Subtotal :{{
-                  totalPrd.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })
-                }}
-              </div>
+            <v-card-title class="grey lighten-3"> Cart Total </v-card-title>
+            <v-card-text class="py-4 px-7">
+              <v-row class="py-2 body-1">
+                <v-col cols="4"> Subtotal </v-col>
+                <v-col cols="6">
+                  {{
+                    totalPrd.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })
+                  }}
+                </v-col>
+              </v-row>
               <v-divider></v-divider>
-              <div class="py-2 body-1">
-                Total :{{
-                  totalPrd.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })
-                }}
-              </div>
+              <v-row class="py-2 body-1">
+                <v-col cols="4"> Total </v-col>
+                <v-col cols="6">
+                  {{
+                    totalPrd.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })
+                  }}
+                </v-col>
+              </v-row>
             </v-card-text>
             <v-card-actions class="mx-3 mt-4">
               <v-btn color="primary" block> checkout</v-btn>
