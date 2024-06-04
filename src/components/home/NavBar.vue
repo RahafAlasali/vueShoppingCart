@@ -100,6 +100,7 @@
     <v-navigation-drawer
       width="400"
       class="text-uppercase pa-2"
+      :class="{ 'd-none': !drawerCart }"
       v-model="drawerCart"
       absolute
       right

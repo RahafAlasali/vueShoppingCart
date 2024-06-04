@@ -11,7 +11,14 @@
           <div>
             <div>
               <h2 class="mb-4">{{ product.title }}</h2>
-              <h4 class="mb-3 mt-2">${{ product.price }}</h4>
+              <h4 class="mb-3 mt-2">
+                {{
+                  product.price.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })
+                }}
+              </h4>
               <h3 class="mb-4 subtitle-1">{{ product.description }}</h3>
               <h3 class="mb-4 subtitle-1">
                 {{ $t("category") }} :
@@ -21,29 +28,26 @@
               <v-divider class="mb-3"></v-divider>
             </div>
 
-            <div class="d-flex justify-start my-4">
+            <div class="d-flex justify-start align-center my-4">
               <div class="d-flex mx-2">
-                <v-btn
-                  class="mx-1"
-                  icon
-                  tile
+                <v-text-field
+                  dense
+                  v-model="quantity"
+                  hide-details
                   outlined
-                  @click="() => incrementItem(product.id)"
+                  style="width: 110px"
                 >
-                  <v-icon> mdi-plus </v-icon>
-                </v-btn>
-                <v-input hide-details readonly class="align-center px-1"
-                  >8
-                </v-input>
-                <v-btn
-                  class="mx-1"
-                  icon
-                  tile
-                  outlined
-                  @click="() => decreaseItem(product.id)"
-                >
-                  <v-icon> mdi-minus </v-icon>
-                </v-btn>
+                  <v-icon slot="append" @click="quantity = +quantity + 1">
+                    mdi-plus
+                  </v-icon>
+                  <v-icon
+                    slot="prepend-inner"
+                    @click="quantity = +quantity - 1"
+                    :disabled="quantity == 1"
+                  >
+                    mdi-minus
+                  </v-icon>
+                </v-text-field>
               </div>
               <v-btn
                 class="mx-1"
@@ -125,6 +129,7 @@ export default {
     return {
       product: null,
       items: [],
+      quantity: 1,
       img: null,
       overlay: false,
       array: [
@@ -146,6 +151,7 @@ export default {
   },
   mounted() {
     const id = this.$route.params.id;
+
     // add axios into store insted
     axios
       .get(`https://fakestoreapi.com/products/${id}`)
@@ -170,8 +176,9 @@ export default {
     closed() {
       this.overlay = false;
     },
-    add(id) {
-      this.addItemToCart(id);
+    add(item) {
+      this.addItemToCart({ item, quantity: +this.quantity });
+
       this.$toast("Added to cart successfully", {
         timeout: 1500,
         pauseOnHover: false,
@@ -184,13 +191,12 @@ export default {
         pauseOnHover: false,
       });
     },
-    decreaseItem(id) {
-      this.decrease(id);
-      this.$toast("Added to cart successfully", {
-        timeout: 1500,
-        pauseOnHover: false,
-      });
-    },
   },
 };
 </script>
+
+<style>
+.v-text-field__slot input {
+  text-align: center !important;
+}
+</style>

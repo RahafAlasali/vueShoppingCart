@@ -5,14 +5,14 @@
         <v-col cols="8">
           <v-simple-table style="border: 1px solid #e0e0e0">
             <template v-slot:default>
-              <thead class="grey lighten-3">
+              <thead class="grey lighten-3 text-h4">
                 <tr>
-                  <th class="text-center"></th>
-                  <th class="text-center"></th>
-                  <th class="text-center">Product</th>
-                  <th class="text-center">Price</th>
-                  <th class="text-center">Quantity</th>
-                  <th class="text-center">Subtotal</th>
+                  <th class="text-center" style="font-size: large"></th>
+                  <th class="text-center" style="font-size: large"></th>
+                  <th class="text-center" style="font-size: large">Product</th>
+                  <th class="text-center" style="font-size: large">Price</th>
+                  <th class="text-center" style="font-size: large">Quantity</th>
+                  <th class="text-center" style="font-size: large">Subtotal</th>
                 </tr>
               </thead>
               <tbody>

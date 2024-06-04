@@ -1,10 +1,8 @@
 export default {
   namespaced: true,
   state: {
-    //  JSON.parse(localStorage.getItem("quantityCart"))
-    // JSON.parse(localStorage.getItem("shoppingCarts"))
-    quantity: 0,
-    shoppingCarts: [],
+    quantity: JSON.parse(localStorage.getItem("quantityCart")) || 0,
+    shoppingCarts: JSON.parse(localStorage.getItem("shoppingCarts")) || [],
   },
   getters: {
     getCount(state) {
@@ -43,22 +41,19 @@ export default {
         (item) => +item.id != +payload
       );
     },
-    addItemToCart: ({ state }, payload) => {
-      state.quantity += 1;
+    addItemToCart: ({ state }, { item, quantity }) => {
+      state.quantity += quantity;
+
       state.shoppingCarts = [
         ...state.shoppingCarts,
-        { ...payload, quantity: 1 },
+        { ...item, quantity: quantity },
       ];
+
+      localStorage.setItem(
+        "shoppingCarts",
+        JSON.stringify(state.shoppingCarts)
+      );
+      localStorage.setItem("quantityCart", JSON.stringify(state.quantity));
     },
-    // setTotal: (state) => {
-    //   var total = state.shoppingCarts
-    //     .map((item) => {
-    //       return item.price * item.quantity;
-    //     })
-    //     .reduce((accumulator, currentValue) => {
-    //       return accumulator + currentValue;
-    //     }, 0);
-    //   state.total = total;
-    // },
   },
 };
