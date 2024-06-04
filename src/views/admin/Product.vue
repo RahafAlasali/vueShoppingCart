@@ -57,10 +57,10 @@
 </template>
 
 <script>
-import axios from "axios";
 import EditProduct from "@/components/auth/product/editProduct.vue";
 import Delete from "@/components/auth/delete.vue";
 import CreateProduct from "@/components/auth/product/createProduct.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "products",
@@ -71,7 +71,6 @@ export default {
   },
   data() {
     return {
-      products: [],
       id: null,
       prodItem: null,
       loading: false,
@@ -92,8 +91,11 @@ export default {
       ],
     };
   },
-
+  computed: {
+    ...mapState("core", ["products"]),
+  },
   methods: {
+    ...mapActions("core", ["getProducts", "deleteProduct"]),
     deleteItem(id) {
       this.dialogDelete = true;
       this.id = id;
@@ -103,33 +105,22 @@ export default {
       this.dialog = true;
     },
     confirmDelete() {
-      axios
-        .delete(`https://fakestoreapi.com/products/${this.id}`, {
-          Headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then(() =>
-          this.$toast("Create product successfully", {
-            timeout: 1500,
-            pauseOnHover: false,
-          })
-        );
+      this.deleteProduct(this.id);
+      this.$toast("Create product successfully", {
+        timeout: 1500,
+        pauseOnHover: false,
+      });
+
       this.dialogDelete = false;
     },
-    async getProducts() {
+    getProductsArray() {
       this.loading = true;
-      await axios
-        .get("https://fakestoreapi.com/products")
-        .then((res) => {
-          return (this.products = res.data);
-        })
-        .catch((e) => {});
+      this.getProducts();
       this.loading = false;
     },
   },
   mounted() {
-    this.getProducts();
+    this.getProductsArray();
   },
 };
 </script>

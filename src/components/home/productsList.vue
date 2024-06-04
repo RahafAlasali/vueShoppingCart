@@ -61,10 +61,10 @@
 </template>
 
 <script>
-import axios from "axios";
 import productItem from "@/components/home/product.vue";
 import Loader from "@/components/home/loader.vue";
 import ImgPrd from "@/components/home/imgPrd.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
   components: {
@@ -80,12 +80,11 @@ export default {
       img: null,
       offset: true,
       filter: null,
-      products: [],
-      categories: [],
     };
   },
 
   computed: {
+    ...mapState("core", ["products", "categories"]),
     productsFilter() {
       return this.filter
         ? this.products.filter((prd) => prd.category == this.filter)
@@ -93,6 +92,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions("core", ["getProducts", "getCategories"]),
     filterBycat(item) {
       item == "all" ? (this.filter = null) : (this.filter = item);
     },
@@ -108,18 +108,8 @@ export default {
     if (this.$route.query.cat) {
       this.filterBycat(this.$route.query.cat);
     }
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => {
-        return (this.products = res.data);
-      })
-      .catch((e) => {});
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((res) => {
-        return (this.categories = res.data);
-      })
-      .catch((e) => {});
+    this.getProducts();
+    this.getCategories();
   },
 };
 </script>

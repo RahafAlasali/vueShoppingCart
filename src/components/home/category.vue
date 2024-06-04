@@ -28,23 +28,18 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      categories: [],
       imagesCategory: ["2.jpg", "7.jpg", "1.jpg", "9.jpg"],
     };
   },
+  computed: {
+    ...mapState("core", ["categories"]),
+  },
   methods: {
-    async getCategories() {
-      await axios
-        .get("https://fakestoreapi.com/products/categories")
-        .then((res) => {
-          return (this.categories = res.data);
-        })
-        .catch((e) => {});
-    },
+    ...mapActions("core", ["getCategories"]),
   },
   mounted() {
     this.getCategories();

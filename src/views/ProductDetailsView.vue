@@ -195,7 +195,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .v-text-field__slot input {
   text-align: center !important;
 }

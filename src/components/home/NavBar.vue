@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar class="px-4 primary--text text-uppercase">
+    <v-toolbar class="px-sm-4 primary--text text-uppercase">
       <v-app-bar-nav-icon
         class="d-block d-md-none"
         @click="drawer = !drawer"
@@ -81,7 +81,6 @@
       style="max-width: 180px"
       v-model="drawer"
       absolute
-      bottom
     >
       <v-list nav flat>
         <v-list-item

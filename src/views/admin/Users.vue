@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import axios from "axios";
 import Delete from "@/components/auth/delete.vue";
 import EditUser from "@/components/auth/user/editUser.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
   components: {
@@ -44,7 +44,6 @@ export default {
   },
   data() {
     return {
-      users: [],
       userItem: null,
       loading: false,
       page: 1,
@@ -62,24 +61,21 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapState("core", ["users"]),
+  },
   methods: {
+    ...mapActions("core", ["getUsers"]),
     deleteItem() {
       this.dialogDelete = false;
     },
     editItem(item) {
-      // console.log(item);
       this.userItem = item;
       this.dialog = true;
     },
     async getProducts() {
       this.loading = true;
-      await axios
-        .get("https://fakestoreapi.com/users")
-        .then((res) => {
-          console.log(res.data);
-          return (this.users = res.data);
-        })
-        .catch((e) => {});
+      this.getUsers();
       this.loading = false;
     },
   },

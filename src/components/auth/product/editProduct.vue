@@ -73,13 +73,14 @@
 
 <script>
 import axios from "axios";
+import { mapActions, mapState } from "vuex";
 export default {
   props: ["showDialog", "productEdit"],
   emits: ["colseDialog"],
   data() {
     return {
       loading: false,
-      categories: null,
+
       valid: true,
       // product: this.productEdit,
       // show: this.showDialog,
@@ -88,6 +89,7 @@ export default {
     };
   },
   computed: {
+    ...mapState("core", ["categories"]),
     show() {
       return this.showDialog;
     },
@@ -99,6 +101,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions("core", ["getCategories"]),
     closeDialog() {
       this.$emit("colseDialog");
     },
@@ -125,12 +128,7 @@ export default {
     },
   },
   mounted() {
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((res) => {
-        return (this.categories = res.data);
-      })
-      .catch((e) => {});
+    this.getCategories();
   },
 };
 </script>

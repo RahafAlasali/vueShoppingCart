@@ -2,7 +2,7 @@
   <div class="py-7 my-5">
     <v-container>
       <v-row>
-        <v-col cols="8">
+        <v-col cols="12" lg="8">
           <v-simple-table style="border: 1px solid #e0e0e0">
             <template v-slot:default>
               <thead class="grey lighten-3 text-h4">
@@ -80,7 +80,7 @@
             </template>
           </v-simple-table>
         </v-col>
-        <v-col cols="4"
+        <v-col cols="12" lg="4" sm="6"
           ><v-card elevation="0" class="pb-4" style="border: 1px solid #e0e0e0">
             <v-card-title class="grey lighten-3"> Cart Total </v-card-title>
             <v-card-text class="py-4 px-7">

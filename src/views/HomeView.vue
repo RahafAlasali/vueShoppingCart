@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import gallary from "@/components/home/gallary.vue";
 import Category from "@/components/home/category.vue";
 import Product from "@/components/home/productsList.vue";
