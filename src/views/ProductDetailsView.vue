@@ -154,7 +154,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("cart", ["addItemToCart", "increment", "decrease"]),
+    ...mapActions("cart", ["addItemToCart"]),
     ...mapActions("core", ["getProductById", "getProductsRelated"]),
     showPrd(imgP) {
       this.img = imgP;
@@ -166,17 +166,7 @@ export default {
     add(item) {
       this.addItemToCart({ item, quantity: +this.quantity });
 
-      this.$toast("Added to cart successfully", {
-        timeout: 1500,
-        pauseOnHover: false,
-      });
-    },
-    incrementItem(id) {
-      this.increment(id);
-      this.$toast("Added to cart successfully", {
-        timeout: 1500,
-        pauseOnHover: false,
-      });
+      this.$toast.info("Added to cart successfully");
     },
   },
   mounted() {

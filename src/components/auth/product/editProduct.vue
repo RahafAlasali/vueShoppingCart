@@ -111,10 +111,7 @@ export default {
         this.editProduct({ id: this.id, product: this.PrdEdite });
         this.$emit("colseDialog");
         this.loading = false;
-        this.$toast("Edit product successfully", {
-          timeout: 1500,
-          pauseOnHover: false,
-        });
+        this.$toast.info("Edit product successfully");
       }
     },
   },

@@ -110,10 +110,7 @@ export default {
     },
     confirmDelete() {
       this.deleteProduct(this.id);
-      this.$toast(" product delete successfully", {
-        timeout: 1500,
-        pauseOnHover: false,
-      });
+      this.$toast.info(" product delete successfully");
 
       this.dialogDelete = false;
     },

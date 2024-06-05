@@ -139,10 +139,7 @@ export default {
 
     logout() {
       this.setLogin(false);
-      this.$toast("Logout", {
-        timeout: 1500,
-        pauseOnHover: false,
-      });
+      this.$toast.info("Logout");
       localStorage.removeItem("token");
     },
   },

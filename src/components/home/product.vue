@@ -86,10 +86,16 @@
       </v-card-subtitle>
     </v-card-text>
     <v-card-actions class="ma-0 pa-0">
-      <v-btn class="px-0" color="primary" text>
-        <router-link style="" :to="`/product/${item.id}`">
-          {{ $t("details") }}
-        </router-link>
+      <v-btn
+        class="px-0"
+        color="primary"
+        text
+        @click="
+          $router.push(`/product/${item.id}`);
+          $router.go();
+        "
+      >
+        {{ $t("details") }}
       </v-btn>
     </v-card-actions>
   </div>
@@ -105,10 +111,7 @@ export default {
     ...mapActions("cart", ["addItemToCart"]),
     add(item) {
       this.addItemToCart({ item, quantity: 1 });
-      this.$toast("Added to cart successfully", {
-        timeout: 1500,
-        pauseOnHover: false,
-      });
+      this.$toast.info("Added to cart successfully");
     },
     view(img) {
       this.$emit("viewPrd", img);

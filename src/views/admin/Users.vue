@@ -80,11 +80,8 @@ export default {
     },
     confirmDelete() {
       this.deleteUser(this.id);
-      this.$toast("User delete successfully", {
-        timeout: 1500,
-        pauseOnHover: false,
-      }),
-        (this.dialogDelete = false);
+      this.$toast.info("User delete successfully");
+      this.dialogDelete = false;
     },
     getProducts() {
       this.loading = true;

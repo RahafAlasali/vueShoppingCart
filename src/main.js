@@ -5,6 +5,14 @@ import store from "./store";
 import vuetify, { i18n } from "./plugins/vuetify";
 import axios from "axios";
 
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+const conficToast = {
+  timeout: 1500,
+  pauseOnHover: false,
+};
+Vue.use(Toast, conficToast);
+
 Vue.config.productionTip = false;
 // Vue.use(axios);
 router.beforeEach((to, from, next) => {

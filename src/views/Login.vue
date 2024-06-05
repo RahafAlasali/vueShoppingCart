@@ -55,9 +55,9 @@ export default {
       this.$refs.form.validate();
       this.addUser(this.user);
 
-      this.$toast("Login", {
-        timeout: 1500,
-        pauseOnHover: false,
+      this.$toast.success({
+        title: "Registered Successfully!",
+        message: "You can login here",
       });
       this.$router.push({ name: "home" });
     },
