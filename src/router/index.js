@@ -10,6 +10,7 @@ import layoutHome from "@/layout/home.vue";
 import layoutDashboard from "@/layout/dashboard.vue";
 import productAdmin from "../views/admin/Product.vue";
 import Users from "../views/admin/Users.vue";
+import Dashboard from "../views/admin/Index.vue";
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,13 @@ const routes = [
     children: [
       {
         path: "",
+        component: Dashboard,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: "/products",
         component: productAdmin,
         meta: {
           requiresAuth: true,
