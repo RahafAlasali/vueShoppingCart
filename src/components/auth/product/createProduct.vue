@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapActions, mapState } from "vuex";
 export default {
   props: ["showDialog"],
   emits: ["colseDialogCreate"],
@@ -99,10 +99,13 @@ export default {
       },
       valid: true,
       loading: false,
-      categories: null,
     };
   },
+  computed: {
+    ...mapState("core", ["categories"]),
+  },
   methods: {
+    ...mapActions("core", ["addProduct", "getCategories"]),
     createProduct() {
       this.$emit("colseDialogCreate");
     },
@@ -110,32 +113,20 @@ export default {
       const validForm = this.$refs.form.validate();
       if (validForm) {
         this.loading = true;
-        axios
-          .post("https://fakestoreapi.com/products", this.product, {
-            Headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then((res) => console.log(res))
-          .finally(() => {
-            this.$emit("colseDialogCreate");
-            this.loading = false;
-            this.$refs.form.reset();
-            this.$toast("Create product successfully", {
-              timeout: 1500,
-              pauseOnHover: false,
-            });
-          });
+        this.addProduct(this.product);
+
+        this.$emit("colseDialogCreate");
+        this.loading = false;
+        this.$refs.form.reset();
+        this.$toast("Create product successfully", {
+          timeout: 1500,
+          pauseOnHover: false,
+        });
       }
     },
   },
   mounted() {
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((res) => {
-        return (this.categories = res.data);
-      })
-      .catch((e) => {});
+    this.getCategories();
   },
 };
 </script>

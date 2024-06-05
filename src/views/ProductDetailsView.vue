@@ -4,7 +4,7 @@
     <v-container class="mx-2 my-4">
       <v-row v-if="product">
         <v-col cols="12" sm="6" class="d-flex align-center justify-center">
-          <div class="mx-7 px-3">
+          <div class="mx-7 px-3" style="max-width: 80%">
             <v-img height="300px" contain :src="product.image"> </v-img></div
         ></v-col>
         <v-col cols="12" sm="6">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="d-flex justify-start align-center my-4">
-              <div class="d-flex mx-2">
+              <div class="d-flex mx-2 input-add">
                 <v-text-field
                   dense
                   v-model="quantity"
@@ -115,7 +115,7 @@
 <script>
 import productItem from "@/components/home/product.vue";
 import ImgPrd from "@/components/home/imgPrd.vue";
-import axios from "axios";
+
 import Loader from "@/components/home/loader.vue";
 import { mapActions, mapState } from "vuex";
 
@@ -127,8 +127,7 @@ export default {
   },
   data() {
     return {
-      product: null,
-      items: [],
+      prdId: this.$route.params.id,
       quantity: 1,
       img: null,
       overlay: false,
@@ -148,27 +147,15 @@ export default {
   },
   computed: {
     ...mapState("cart", ["shoppingCarts"]),
+    ...mapState("core", ["product", "prdRelated"]),
+    items() {
+      return this.prdRelated.filter((item) => item.id != this.prdId);
+    },
   },
-  mounted() {
-    const id = this.$route.params.id;
 
-    // add axios into store insted
-    axios
-      .get(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => {
-        return (this.product = res.data);
-      })
-      .then((res) => {
-        axios
-          .get(`https://fakestoreapi.com/products/category/${res.category}`)
-          .then((res) => {
-            return (this.items = res.data.filter((item) => item.id != id));
-          })
-          .catch((e) => {});
-      });
-  },
   methods: {
     ...mapActions("cart", ["addItemToCart", "increment", "decrease"]),
+    ...mapActions("core", ["getProductById", "getProductsRelated"]),
     showPrd(imgP) {
       this.img = imgP;
       this.overlay = !this.overlay;
@@ -192,11 +179,15 @@ export default {
       });
     },
   },
+  mounted() {
+    this.getProductById(this.prdId);
+    this.getProductsRelated(this.prdId);
+  },
 };
 </script>
 
-<style scoped>
-.v-text-field__slot input {
+<style>
+.input-add .v-text-field__slot input {
   text-align: center !important;
 }
 </style>

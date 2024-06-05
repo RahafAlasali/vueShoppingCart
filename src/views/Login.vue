@@ -41,8 +41,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -51,24 +50,16 @@ export default {
     };
   },
   methods: {
-    ...mapMutations("auth", ["setLogin"]),
+    ...mapActions("auth", ["addUser"]),
     submit() {
       this.$refs.form.validate();
-      axios
-        .post("https://fakestoreapi.com/auth/login", this.user, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          this.setLogin(true);
-          localStorage.setItem("token", JSON.stringify(res.data.token));
-          this.$toast("Login", {
-            timeout: 1500,
-            pauseOnHover: false,
-          });
-          this.$router.push({ name: "home" });
-        });
+      this.addUser(this.user);
+
+      this.$toast("Login", {
+        timeout: 1500,
+        pauseOnHover: false,
+      });
+      this.$router.push({ name: "home" });
     },
   },
 };

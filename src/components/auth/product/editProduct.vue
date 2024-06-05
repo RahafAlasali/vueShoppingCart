@@ -72,7 +72,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import { mapActions, mapState } from "vuex";
 export default {
   props: ["showDialog", "productEdit"],
@@ -101,7 +100,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions("core", ["getCategories"]),
+    ...mapActions("core", ["getCategories", "editProduct"]),
     closeDialog() {
       this.$emit("colseDialog");
     },
@@ -109,21 +108,13 @@ export default {
       const validForm = this.$refs.form.validate();
       if (validForm) {
         this.loading = true;
-        axios
-          .put(`https://fakestoreapi.com/products/${this.id}`, this.PrdEdite, {
-            Headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then((res) => console.log(res))
-          .finally(() => {
-            this.$emit("colseDialog");
-            this.loading = false;
-            this.$toast("Edit product successfully", {
-              timeout: 1500,
-              pauseOnHover: false,
-            });
-          });
+        this.editProduct({ id: this.id, product: this.PrdEdite });
+        this.$emit("colseDialog");
+        this.loading = false;
+        this.$toast("Edit product successfully", {
+          timeout: 1500,
+          pauseOnHover: false,
+        });
       }
     },
   },

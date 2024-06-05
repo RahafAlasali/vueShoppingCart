@@ -1,3 +1,4 @@
+import axios from "axios";
 export default {
   namespaced: true,
   state: {
@@ -14,5 +15,18 @@ export default {
       return state.isLogin;
     },
   },
-  actions: {},
+  actions: {
+    async addUser({ commit }, user) {
+      axios
+        .post("https://fakestoreapi.com/auth/login", user, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          commit("setLogin", true);
+          localStorage.setItem("token", JSON.stringify(res.data.token));
+        });
+    },
+  },
 };
