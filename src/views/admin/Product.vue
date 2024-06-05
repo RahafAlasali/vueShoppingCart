@@ -10,7 +10,11 @@
       :showDialog="dialog"
       @colseDialog="dialog = false"
     />
-    <Delete :showDialog="dialogDelete" @delete="() => confirmDelete()" />
+    <Delete
+      :showDialog="dialogDelete"
+      @delete="() => confirmDelete()"
+      @colseDialog="dialogDelete = false"
+    />
     <div class="text-h4 mb-2">Products</div>
 
     <v-data-table
@@ -106,7 +110,7 @@ export default {
     },
     confirmDelete() {
       this.deleteProduct(this.id);
-      this.$toast("Create product successfully", {
+      this.$toast(" product delete successfully", {
         timeout: 1500,
         pauseOnHover: false,
       });

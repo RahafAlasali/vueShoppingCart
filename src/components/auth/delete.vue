@@ -12,7 +12,7 @@
         >
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="DeleteItem">Cancel</v-btn>
+          <v-btn color="blue darken-1" text @click="cancel">Cancel</v-btn>
           <v-btn color="blue darken-1" text @click="DeleteItem">OK</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
@@ -24,11 +24,14 @@
 <script>
 export default {
   props: ["showDialog"],
-  emits: ["delete"],
+  emits: ["delete", "colseDialog"],
   data() {
     return {};
   },
   methods: {
+    cancel() {
+      this.$emit("colseDialog");
+    },
     DeleteItem() {
       this.$emit("delete");
     },

@@ -1,6 +1,10 @@
 <template>
   <div class="my-3">
-    <Delete :showDialog="dialogDelete" @delete="deleteItem" />
+    <Delete
+      :showDialog="dialogDelete"
+      @delete="() => confirmDelete()"
+      @colseDialog="dialogDelete = false"
+    />
     <edit-user
       :userEdit="userItem"
       :showDialog="dialog"
@@ -19,7 +23,7 @@
     >
       <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
-        <v-icon small @click="dialogDelete = true"> mdi-delete </v-icon>
+        <v-icon small @click="deleteItem(item.id)"> mdi-delete </v-icon>
       </template></v-data-table
     >
     <div class="text-center pt-2">
@@ -65,15 +69,24 @@ export default {
     ...mapState("core", ["users"]),
   },
   methods: {
-    ...mapActions("core", ["getUsers"]),
-    deleteItem() {
-      this.dialogDelete = false;
+    ...mapActions("core", ["getUsers", "deleteUser"]),
+    deleteItem(id) {
+      this.dialogDelete = true;
+      this.id = id;
     },
     editItem(item) {
       this.userItem = item;
       this.dialog = true;
     },
-    async getProducts() {
+    confirmDelete() {
+      this.deleteUser(this.id);
+      this.$toast("User delete successfully", {
+        timeout: 1500,
+        pauseOnHover: false,
+      }),
+        (this.dialogDelete = false);
+    },
+    getProducts() {
       this.loading = true;
       this.getUsers();
       this.loading = false;

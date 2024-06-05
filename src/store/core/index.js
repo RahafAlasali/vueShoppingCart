@@ -26,6 +26,13 @@ export default {
     setPrdRelated(state, data) {
       state.prdRelated = data;
     },
+    addProduct(state, data) {
+      state.products.push(data);
+    },
+    // editProduct(state, data)
+    // {
+
+    // }
   },
   getters: {},
   actions: {
@@ -42,15 +49,17 @@ export default {
         commit("setUsers", res.data);
       });
     },
-    async deleteProduct({ commit }, id) {
+    async deleteProduct({ commit, state }, id) {
       await axios
         .delete(`https://fakestoreapi.com/products/${id}`, {
           Headers: {
             "Content-Type": "application/json",
           },
         })
-        .then();
-      //delete from array then
+        .then((res) => {
+          const index = state.products.findIndex((item) => item.id == id);
+          state.products.splice(index, 1);
+        });
     },
     async getCategories({ commit }) {
       await axios
@@ -60,23 +69,28 @@ export default {
         })
         .catch((e) => {});
     },
-    async addProduct(_, product) {
+    async addProduct({ commit }, product) {
       await axios
         .post("https://fakestoreapi.com/products", product, {
           Headers: {
             "Content-Type": "application/json",
           },
         })
-        .then((res) => console.log(res));
+        .then((res) => {
+          commit("addProduct", res.data);
+        });
     },
-    async editProduct(_, { id, product }) {
+    async editProduct({ state }, { id, product }) {
       await axios
         .put(`https://fakestoreapi.com/products/${id}`, product, {
           Headers: {
             "Content-Type": "application/json",
           },
         })
-        .then((res) => console.log(res));
+        .then((res) => {
+          const index = state.products.findIndex((item) => item.id == id);
+          state.products.splice(index, 1, product);
+        });
     },
     async getProductById({ commit }, id) {
       await axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
@@ -94,6 +108,18 @@ export default {
           )
           .then((res) => commit("setPrdRelated", res.data));
       });
+    },
+    async deleteUser({ commit, state }, id) {
+      await axios
+        .delete(`https://fakestoreapi.com/users/${id}`, {
+          Headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          const index = state.users.findIndex((item) => item.id == id);
+          state.users.splice(index, 1);
+        });
     },
   },
 };
