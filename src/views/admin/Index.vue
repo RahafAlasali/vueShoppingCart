@@ -1,29 +1,33 @@
 <template>
   <div>
     <div class="mx-2">
-      <div class="text-h4 my-2">Dashboard</div>
-      <div class="my-7">
-        <v-row>
-          <v-col v-for="(item, index) in cards" :key="index" cols="3">
-            <v-card
-              class="px-2"
-              :style="`border-bottom:2px solid ; border-color:${item.bgColor}`"
-            >
-              <v-card-title class="grey--text">{{ item.title }}</v-card-title>
-              <div class="d-flex justify-space-between align-center">
-                <div>
-                  <v-card-subtitle class="text-h5 black--text"
-                    >{{ item.number }}
-                  </v-card-subtitle>
-                </div>
+      <div class="text-h4 mt-2 mb-6">Dashboard</div>
 
-                <div class="px-3">
-                  <v-btn :style="`background:${item.bgColor}`">
-                    <v-icon :class="`${item.color}--text`"> mdi-home </v-icon>
-                  </v-btn>
+      <div class="my-7 pt-7">
+        <v-row>
+          <v-col v-for="(item, index) in cards" :key="index" cols="12" md="3">
+            <v-hover v-slot="{ hover }">
+              <v-card
+                class="px-2"
+                :style="`border-bottom:2px solid ; border-color:${item.color}`"
+                :class="{ 'on-hover': hover }"
+              >
+                <v-card-title class="grey--text">{{ item.title }}</v-card-title>
+                <div class="d-flex justify-space-between align-center">
+                  <div>
+                    <v-card-subtitle class="text-h5 black--text"
+                      >{{ item.number }}
+                    </v-card-subtitle>
+                  </div>
+
+                  <div class="px-3">
+                    <v-btn :style="`background:${item.bgColor}`">
+                      <v-icon :style="`color:${item.color}`"> mdi-home </v-icon>
+                    </v-btn>
+                  </div>
                 </div>
-              </div>
-            </v-card>
+              </v-card>
+            </v-hover>
           </v-col>
         </v-row>
       </div>
@@ -39,25 +43,25 @@ export default {
         {
           title: "All Products",
           number: 1000,
-          color: "amber",
-          bgColor: "#ffae1a4d",
+          color: "#FFA726",
+          bgColor: "#ffdfa6",
         },
         {
           title: "All Orders",
           number: 1000,
-          color: "teal",
-          bgColor: "#4DB6AC",
+          color: "#00695C",
+          bgColor: "#B2DFDB",
         },
         {
           title: "All Categories",
           number: 400,
-          color: "amber",
-          bgColor: "#ffae1a4d",
+          color: "#F4511E",
+          bgColor: "#FFCCBC",
         },
         {
           title: "All Users",
           number: 30,
-          color: "blue-grey",
+          color: "#37474F",
           bgColor: "#B0BEC5",
         },
       ],
@@ -65,3 +69,18 @@ export default {
   },
 };
 </script>
+
+<style>
+.on-hover {
+  animation: move 1s forwards 1 ease-in-out;
+  position: relative;
+}
+@keyframes move {
+  0% {
+    bottom: 0px;
+  }
+  100% {
+    bottom: 9px;
+  }
+}
+</style>
