@@ -19,7 +19,7 @@
                   <v-text-field
                     dense
                     label="Title"
-                    v-model="PrdEdite.title"
+                    v-model="title"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
                     outlined
                   ></v-text-field>
@@ -29,7 +29,6 @@
                   <v-select
                     dense
                     :items="categories"
-                    v-model="PrdEdite.category"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
                     label="Category"
                     outlined
@@ -40,7 +39,6 @@
                     dense
                     type="number"
                     label="Price"
-                    v-model="PrdEdite.price"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
                     outlined
                   ></v-text-field>
@@ -48,8 +46,8 @@
                 <v-col class="py-0" cols="12" sm="6" md="12">
                   <v-textarea
                     outlined
+                    v-model="description"
                     label="Descriptiona"
-                    v-model="PrdEdite.description"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
                   ></v-textarea>
                 </v-col>
@@ -57,6 +55,7 @@
             </v-form>
           </v-container>
         </v-card-text>
+        {{ $props.productEdit.description }}
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="closeDialog()">
@@ -81,10 +80,10 @@ export default {
       loading: false,
 
       valid: true,
-      // product: this.productEdit,
+      product: this.productEdit,
       // show: this.showDialog,
-      // title: null,
-      // description: null,
+      // title: this.productEdit.title,
+      description: this.productEdit.description,
     };
   },
   computed: {
@@ -92,9 +91,7 @@ export default {
     show() {
       return this.showDialog;
     },
-    PrdEdite() {
-      return this.productEdit;
-    },
+
     id() {
       return this.productEdit.id;
     },
@@ -108,7 +105,7 @@ export default {
       const validForm = this.$refs.form.validate();
       if (validForm) {
         this.loading = true;
-        this.editProduct({ id: this.id, product: this.PrdEdite });
+        this.editProduct({ id: this.id, product: this.product });
         this.$emit("colseDialog");
         this.loading = false;
         this.$toast.info("Edit product successfully");
@@ -116,6 +113,7 @@ export default {
     },
   },
   mounted() {
+    console.log(this.productEdit.description, ".....");
     this.getCategories();
   },
 };

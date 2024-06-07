@@ -108,6 +108,7 @@ export default {
     ...mapActions("core", ["addProduct", "getCategories"]),
     createProduct() {
       this.$emit("colseDialogCreate");
+      this.$refs.form.reset();
     },
     save() {
       const validForm = this.$refs.form.validate();

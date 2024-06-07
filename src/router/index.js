@@ -64,7 +64,7 @@ const routes = [
         },
       },
       {
-        path: "/products",
+        path: "products",
         component: productAdmin,
         meta: {
           requiresAuth: true,
