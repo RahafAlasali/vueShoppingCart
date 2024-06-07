@@ -9,7 +9,7 @@
             <div class="primary--text">ABOUT US</div>
             <div class="mt-4">
               <h2
-                class="about-header"
+                class="about-header about-desc"
                 style="font-family: cursive; font-size: xx-large"
               >
                 A Few Words About Our Store
@@ -27,7 +27,7 @@
           >
             {{ $t("aboutTitle") }}
           </div>
-          <div class="subtitle-1">
+          <div class="subtitle-1 about-prgrph">
             {{ $t("aboutDescription") }}
           </div>
         </div></v-col
@@ -35,6 +35,68 @@
     </v-row>
   </div>
 </template>
+
+<script>
+import { gsap } from "gsap";
+import SplitType from "split-type";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+  mounted() {
+    const ourText = new SplitType(".about-desc ", {
+      types: "lines, words, chars",
+    });
+
+    const lines = ourText.lines;
+
+    gsap.fromTo(
+      lines,
+      {
+        x: -50,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: ".about-desc",
+          scrub: true,
+          markers: false,
+          start: "top 40%",
+          end: "top 10%",
+        },
+        x: 0,
+        opacity: 1,
+        stagger: 0.6,
+        duration: 2,
+        ease: "elastic",
+      }
+    );
+
+    gsap.fromTo(
+      ".about-prgrph",
+      {
+        y: 10,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: ".about-prgrph",
+          scrub: false,
+          markers: false,
+          start: "top 30%",
+          end: "top 20%",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power1.in",
+        stagger: 0.1,
+      }
+    );
+  },
+};
+</script>
 
 <style scoped>
 @media only screen and (min-width: 768px) {

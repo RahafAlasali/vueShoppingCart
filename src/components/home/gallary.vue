@@ -9,7 +9,7 @@
     >
       {{ $t("gallary") }}
     </div>
-    <div class="my-sm-3 gallary-header mx-auto">
+    <div class="my-sm-3 gallary-header mx-auto gallery">
       {{ $t("gallaryDesc") }}
     </div>
 
@@ -95,6 +95,45 @@
     ></v-img>
   </div>
 </template>
+
+<script>
+import { gsap } from "gsap";
+import SplitType from "split-type";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+  mounted() {
+    const ourText = new SplitType(".gallery", {
+      types: "lines, words, chars",
+    });
+
+    const chars = ourText.chars;
+
+    gsap.fromTo(
+      chars,
+      {
+        x: 10,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: ".gallery",
+          scrub: true,
+          markers: false,
+          start: "top 80%",
+          end: "top 40%",
+        },
+        x: 0,
+        opacity: 1,
+        stagger: 0.2,
+        duration: 0.1,
+        ease: "elastic",
+      }
+    );
+  },
+};
+</script>
 
 <style scoped>
 @media only screen and (min-width: 1024px) {

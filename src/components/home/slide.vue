@@ -39,14 +39,14 @@ export default {
     gsap.fromTo(
       chars,
       {
-        y: 100,
+        y: 40,
         opacity: 0,
       },
       {
         y: 0,
         opacity: 1,
         stagger: 0.1,
-        duration: 2,
+        duration: 0.1,
         ease: "elastic",
       }
     );

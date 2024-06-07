@@ -49,15 +49,25 @@
                   </v-icon>
                 </v-text-field>
               </div>
-              <v-btn
-                class="mx-1"
+              <!-- <v-btn
+                class="mx-1 add-cart"
                 depressed
                 dark
                 color="primary"
                 @click="() => add(product)"
               >
                 Add to cart
-              </v-btn>
+              </v-btn> -->
+              <div class="container">
+                <button class="checkout-btn" @click="() => add(product)">
+                  <v-icon class="checkout-btn__icon" dark>mdi-cart</v-icon>
+                  <span class="checkout-btn__text"> Add to cart </span>
+                  <span class="checkout-btn__success">
+                    <v-icon dark>mdi-check</v-icon>
+                    Thank you for your order!
+                  </span>
+                </button>
+              </div>
             </div>
             <v-card class="rounded-lg">
               <v-list>
@@ -118,6 +128,7 @@ import ImgPrd from "@/components/home/imgPrd.vue";
 
 import Loader from "@/components/home/loader.vue";
 import { mapActions, mapState } from "vuex";
+import { gsap } from "gsap";
 
 export default {
   components: {
@@ -127,6 +138,7 @@ export default {
   },
   data() {
     return {
+      checkoutTL: null,
       prdId: this.$route.params.id,
       quantity: 1,
       img: null,
@@ -166,18 +178,90 @@ export default {
     add(item) {
       this.addItemToCart({ item, quantity: +this.quantity });
 
+      this.checkoutTL
+        .to(".checkout-btn__text", {
+          opacity: 0,
+          duration: 0.75,
+          ease: "power4.in",
+        })
+        .to(".checkout-btn__icon", {
+          x: 150,
+          delay: 0.25,
+          duration: 0.75,
+          opacity: 0,
+          ease: "back.in(1.7)",
+        })
+        .to(".checkout-btn", {
+          background: "#27ae60",
+          ease: "power4.out",
+          width: 300,
+        })
+        .to(".checkout-btn__success", {
+          opacity: 1,
+          ease: "power4.out",
+          delay: 0.25,
+        });
+
+      this.checkoutTL.play();
+
+      setTimeout(() => {
+        this.checkoutTL.restart();
+        this.checkoutTL.pause();
+      }, 6000);
+
       this.$toast.info("Added to cart successfully");
     },
   },
   mounted() {
     this.getProductById(this.prdId);
     this.getProductsRelated(this.prdId);
+    // const checkoutBtns = document.querySelectorAll(".checkout-btn");
+
+    this.checkoutTL = new gsap.timeline({
+      paused: true,
+    });
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 .input-add .v-text-field__slot input {
   text-align: center !important;
+}
+.checkout-btn {
+  cursor: pointer;
+  position: relative;
+  background: #05453e;
+  width: 140px;
+  color: white;
+  border: none;
+  border-radius: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    0 100px 80px rgba(0, 0, 0, 0.07);
+
+  &:hover {
+    background: darken(#05453e, 10%);
+  }
+  &__success,
+  &__failure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    span {
+      margin-right: 0.5rem;
+    }
+  }
 }
 </style>
