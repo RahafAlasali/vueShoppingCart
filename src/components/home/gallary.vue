@@ -121,7 +121,7 @@ export default {
           trigger: ".gallery",
           scrub: true,
           markers: false,
-          start: "top 80%",
+          start: "top 70%",
           end: "top 40%",
         },
         x: 0,

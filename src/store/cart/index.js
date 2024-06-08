@@ -43,12 +43,13 @@ export default {
     },
     addItemToCart: ({ state }, { item, quantity }) => {
       state.quantity += quantity;
+      let t = state.shoppingCarts.find((prd) => prd.id == item.id);
 
-      state.shoppingCarts = [
-        ...state.shoppingCarts,
-        { ...item, quantity: quantity },
-      ];
-
+      if (!t) {
+        state.shoppingCarts.push({ ...item, quantity: quantity });
+      } else {
+        // t
+      }
       localStorage.setItem(
         "shoppingCarts",
         JSON.stringify(state.shoppingCarts)

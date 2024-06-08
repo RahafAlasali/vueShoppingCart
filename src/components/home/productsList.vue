@@ -13,13 +13,14 @@
 
     <div v-if="isFilter" class="my-3 py-2 d-flex justify-start ml-4">
       <div class="mx-3">
-        <v-btn color="primary" outlined dark @click="filterBycat('all')">
+        <v-btn color="primary" dark @click="filterBycat('all')">
           {{ $t("all") }}
         </v-btn>
       </div>
       <v-menu left offset-x>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" outlined dark v-bind="attrs" v-on="on">
+          <v-btn color="primary" dark v-bind="attrs" v-on="on">
+            <v-icon class="px-1 white--text"> mdi-filter-variant </v-icon>
             {{ $t("filterBy") }}
           </v-btn>
         </template>
@@ -73,6 +74,7 @@ export default {
     ImgPrd,
   },
   props: ["items", "isFilter"],
+  // type , required
 
   data() {
     return {
@@ -117,10 +119,20 @@ export default {
 <style>
 .v-slide-group__prev .v-icon.v-icon,
 .v-slide-group__next .v-icon.v-icon {
-  font-size: 50px !important;
+  font-size: 40px !important;
 }
 .v-slide-group__prev,
 .v-slide-group__next {
   min-width: 40px !important;
+}
+
+.mdi-chevron-left,
+.mdi-chevron-right {
+  border-radius: 50%;
+  color: white !important;
+  background-color: #05453e;
+}
+.theme--light.v-icon.v-icon.v-icon--disabled {
+  color: white !important;
 }
 </style>

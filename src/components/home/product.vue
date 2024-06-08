@@ -87,7 +87,7 @@
     </v-card-text>
     <v-card-actions class="ma-0 pa-0">
       <v-btn
-        class="px-0"
+        class="px-0 text-capitalize"
         color="primary"
         text
         @click="
