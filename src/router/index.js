@@ -1,78 +1,68 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import Register from "../views/Register.vue";
-import Login from "@/views/Login.vue";
-import ProductDetails from "../views/ProductDetailsView.vue";
-import Products from "../views/ProductsView.vue";
-import Cart from "../views/Cart.vue";
-import layoutHome from "@/layout/home.vue";
-import layoutDashboard from "@/layout/dashboard.vue";
-import productAdmin from "../views/admin/Product.vue";
-import Users from "../views/admin/Users.vue";
-import Dashboard from "../views/admin/Index.vue";
+import HomeView from "@/views/HomeView.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    component: layoutHome,
+    component: () => import("@/layout/home.vue"),
     children: [
       {
         path: "",
         name: "home",
-        component: HomeView, // use Lazy load
+        component: () => import("@/views/HomeView.vue"), // use Lazy load
       },
       {
         path: "/products",
         name: "products",
-        component: Products,
+        component: () => import("@/views/ProductsView.vue"),
       },
       {
         path: "/cart",
         name: "cart",
-        component: Cart,
+        component: () => import("@/views/Cart.vue"),
       },
       {
         path: "/product/:id",
         name: "productDetails",
-        component: ProductDetails,
+        component: () => import("@/views/ProductDetailsView.vue"),
       },
     ],
   },
   {
     path: "/login",
     name: "login",
-    component: Login,
+    component: () => import("@/views/Login.vue"),
   },
   {
     path: "/register",
     name: "register",
-    component: Register,
+    component: () => import("@/views/Register.vue"),
   },
 
   {
     path: "/dashboard",
-    component: layoutDashboard,
+    component: () => import("@/layout/dashboard.vue"),
     children: [
       {
         path: "",
-        component: Dashboard,
+        component: () => import("@/views/admin/Index.vue"),
         meta: {
           requiresAuth: true,
         },
       },
       {
         path: "products",
-        component: productAdmin,
+        component: () => import("@/views/admin/Product.vue"),
         meta: {
           requiresAuth: true,
         },
       },
       {
         path: "users",
-        component: Users,
+        component: () => import("@/views/admin/Users.vue"),
         meta: {
           requiresAuth: true,
         },

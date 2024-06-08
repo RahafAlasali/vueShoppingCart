@@ -86,6 +86,7 @@
       </v-card-subtitle>
     </v-card-text>
     <v-card-actions class="ma-0 pa-0">
+      <!-- check link  in page product -->
       <v-btn
         class="px-0 text-capitalize"
         color="primary"

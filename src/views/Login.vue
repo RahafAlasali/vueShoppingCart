@@ -1,6 +1,6 @@
 <template>
-  <div class="my-9">
-    <v-row class="justify-center">
+  <div>
+    <v-row class="justify-center align-center" style="height: 100vh">
       <v-col cols="10" md="4">
         <v-card class="pa-4" elevation="4">
           <v-container>

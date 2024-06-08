@@ -95,9 +95,9 @@
           <v-tab-item class="px-8" :transition="false">
             <v-card flat>
               <v-card-text>
-                <p>
+                <div class="text-h6">
                   {{ product.description }}
-                </p>
+                </div>
               </v-card-text>
             </v-card>
           </v-tab-item>

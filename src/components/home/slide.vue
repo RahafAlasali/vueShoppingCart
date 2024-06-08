@@ -48,6 +48,7 @@ export default {
         stagger: 0.08,
         duration: 0.1,
         ease: "elastic",
+        delay: 2,
       }
     );
   },
