@@ -20,7 +20,21 @@
       :loading="loading"
       class="elevation-1"
       @page-count="pageCount = $event"
+      :search="search"
     >
+      <template v-slot:top>
+        <div class="d-flex justify-start pa-4">
+          <div>
+            <v-text-field
+              v-model="search"
+              prepend-inner-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
+          </div>
+        </div>
+      </template>
       <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
         <v-icon small @click="deleteItem(item.id)"> mdi-delete </v-icon>
@@ -56,6 +70,7 @@ export default {
       dialog: false,
       dialogCreate: false,
       dialogDelete: false,
+      search: null,
       headers: [
         { text: "Id", value: "id", align: "center" },
         { text: "First name", value: "name.firstname", align: "center" },

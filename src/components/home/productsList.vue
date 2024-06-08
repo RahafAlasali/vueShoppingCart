@@ -39,7 +39,7 @@
     </div>
 
     <div class="mb-7">
-      <v-slide-group show-arrows class="slider" center-active>
+      <v-slide-group show-arrows class="slider slide-style" center-active>
         <v-slide-item
           v-for="(item, index) in productsFilter"
           :key="index"
@@ -125,9 +125,8 @@ export default {
 .v-slide-group__next {
   min-width: 40px !important;
 }
-
-.mdi-chevron-left,
-.mdi-chevron-right {
+.slide-style .mdi-chevron-left,
+.slide-style .mdi-chevron-right {
   border-radius: 50%;
   color: white !important;
   background-color: #05453e;

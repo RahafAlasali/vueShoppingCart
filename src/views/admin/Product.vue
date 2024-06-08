@@ -26,17 +26,29 @@
       :loading="loading"
       class="elevation-3"
       @page-count="pageCount = $event"
+      :search="search"
     >
       <template v-slot:top>
-        <div class="d-flex justify-end pa-4">
-          <v-btn
-            color="primary"
-            dark
-            class="mb-2 pa-2"
-            @click="dialogCreate = true"
-          >
-            Add
-          </v-btn>
+        <div class="d-flex justify-space-between align-center pa-4">
+          <div>
+            <v-text-field
+              v-model="search"
+              prepend-inner-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
+          </div>
+          <div>
+            <v-btn
+              color="primary"
+              dark
+              class="mb-2 pa-2"
+              @click="dialogCreate = true"
+            >
+              Add
+            </v-btn>
+          </div>
         </div>
       </template>
 
@@ -86,6 +98,7 @@ export default {
       dialogCreate: false,
       title: null,
       description: null,
+      search: null,
       headers: [
         { text: "id", value: "id", align: "center" },
         { text: "Title", value: "title", align: "center", width: "500px" },
