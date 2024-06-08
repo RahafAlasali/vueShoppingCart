@@ -19,7 +19,9 @@
                   })
                 }}
               </h4>
-              <h3 class="mb-4 subtitle-1">{{ product.description }}</h3>
+              <h3 class="mb-4 subtitle-1 prd-desc">
+                {{ product.description }}
+              </h3>
               <h3 class="mb-4 subtitle-1">
                 {{ $t("category") }} :
                 <span class="primary--text">{{ product.category }}</span>
@@ -49,26 +51,18 @@
                   </v-icon>
                 </v-text-field>
               </div>
-              <!-- <v-btn
-                class="mx-1 add-cart"
-                depressed
-                dark
-                color="primary"
-                @click="() => add(product)"
-              >
-                Add to cart
-              </v-btn> -->
               <div class="container">
                 <button class="checkout-btn" @click="() => add(product)">
                   <v-icon class="checkout-btn__icon" dark>mdi-cart</v-icon>
                   <span class="checkout-btn__text"> Add to cart </span>
                   <span class="checkout-btn__success">
-                    <v-icon dark>mdi-check</v-icon>
+                    <v-icon dark class="px-2">mdi-check</v-icon>
                     Thank you for your order!
                   </span>
                 </button>
               </div>
             </div>
+
             <v-card class="rounded-lg">
               <v-list>
                 <v-list-item v-for="(item, index) in array" :key="index">
@@ -93,6 +87,60 @@
         <Loader />
       </div>
     </v-container>
+    <div class="my-5 py-5">
+      <v-container>
+        <v-tabs vertical :transition="false" :reverse-transition="false">
+          <v-tab> {{ $t("description") }}</v-tab>
+          <v-tab> Review </v-tab>
+          <v-tab-item class="px-8" :transition="false">
+            <v-card flat>
+              <v-card-text>
+                <p>
+                  {{ product.description }}
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item class="px-8" :transition="false">
+            <v-card flat>
+              <v-form>
+                <v-row>
+                  <v-col cols="5">
+                    <v-text-field
+                      v-model="form.name"
+                      label="Name"
+                      hide-details
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="5">
+                    <v-text-field
+                      v-model="form.email"
+                      label="Email"
+                      hide-details
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="3">
+                    <v-rating
+                      color="primary"
+                      background-color="primary"
+                      hover
+                      length="5"
+                      size="30"
+                      v-model="form.rate"
+                    ></v-rating>
+                  </v-col>
+                </v-row>
+              </v-form>
+            </v-card>
+          </v-tab-item>
+        </v-tabs>
+      </v-container>
+    </div>
+
     <div class="py-5" style="background-color: #fafafa">
       <v-container>
         <div
@@ -143,6 +191,11 @@ export default {
       quantity: 1,
       img: null,
       overlay: false,
+      form: {
+        rate: null,
+        name: null,
+        email: null,
+      },
       array: [
         {
           icon: "mdi-cart",
@@ -207,16 +260,14 @@ export default {
       setTimeout(() => {
         this.checkoutTL.restart();
         this.checkoutTL.pause();
-      }, 6000);
+      }, 4000);
 
-      this.$toast.info("Added to cart successfully");
+      this.$toast.success("Added to cart successfully");
     },
   },
   mounted() {
     this.getProductById(this.prdId);
     this.getProductsRelated(this.prdId);
-    // const checkoutBtns = document.querySelectorAll(".checkout-btn");
-
     this.checkoutTL = new gsap.timeline({
       paused: true,
     });
@@ -240,10 +291,6 @@ export default {
   align-items: center;
   justify-content: space-around;
   padding: 0.75rem 1rem;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
-    0 100px 80px rgba(0, 0, 0, 0.07);
 
   &:hover {
     background: darken(#05453e, 10%);
