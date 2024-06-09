@@ -18,6 +18,8 @@
                     currency: "USD",
                   })
                 }}
+
+                <!-- {{currency(product.price)}} -->
               </h4>
               <h3 class="mb-4 subtitle-1 prd-desc">
                 {{ product.description }}

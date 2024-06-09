@@ -57,7 +57,7 @@
         <v-icon small @click="() => deleteItem(item.id)"> mdi-delete </v-icon>
       </template>
       <template v-slot:item.category="{ item }">
-        <v-chip color="primary" dark>
+        <v-chip class="primary--text" style="background: #69a49e8a" dark>
           {{ item.category }}
         </v-chip>
       </template>

@@ -4,8 +4,14 @@
       <div class="text-h4 mt-2 mb-6">Dashboard</div>
 
       <div class="my-7 pt-7">
-        <v-row>
-          <v-col v-for="(item, index) in cards" :key="index" cols="12" md="3">
+        <v-row class="justify-center">
+          <v-col
+            v-for="(item, index) in cards"
+            :key="index"
+            cols="9"
+            md="3"
+            sm="6"
+          >
             <v-hover v-slot="{ hover }">
               <v-card
                 class="px-2"

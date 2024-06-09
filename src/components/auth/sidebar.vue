@@ -1,8 +1,5 @@
 <template>
-  <div
-    style="position: fixed; height: 100vh; width: 200px"
-    class="py-4 primary"
-  >
+  <div style="position: fixed; height: 100vh" class="py-4 primary px-2">
     <v-list dark nav flat class="align-center primary my-5">
       <v-list-item
         link
@@ -11,7 +8,7 @@
         :key="index"
         class="d-flex justify-center"
       >
-        <v-list-item-icon>
+        <v-list-item-icon class="mr-3 hidden-sm-and-down">
           <v-icon>{{ link.icon }}</v-icon>
         </v-list-item-icon>
         <v-list-item-content class="font-weight-bold">

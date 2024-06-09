@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="2">
+      <v-col sm="2">
         <SideBar />
       </v-col>
-      <v-col cols="10">
+      <v-col cols="12" sm="10">
         <v-container>
           <Nav />
           <v-divider class="px-2"></v-divider>
