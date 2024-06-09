@@ -17,7 +17,12 @@
           {{ $t("all") }}
         </v-btn>
       </div>
-      <v-menu left offset-x>
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
+      >
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on">
             <v-icon class="px-1 white--text"> mdi-filter-variant </v-icon>

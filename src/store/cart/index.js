@@ -15,17 +15,14 @@ export default {
     },
   },
   actions: {
-    increment: ({ state }, payload) => {
-      state.quantity += 1;
+    increment: ({ state }, { id, quantity }) => {
       state.shoppingCarts = state.shoppingCarts.map((item) => {
-        if (item.id == +payload)
-          return { ...item, quantity: item.quantity + 1 };
+        if (item.id == +id)
+          return { ...item, quantity: item.quantity + quantity };
         else return item;
       });
-      console.log(state.shoppingCarts);
     },
     decrease: ({ state }, payload) => {
-      state.quantity -= 1;
       state.shoppingCarts = state.shoppingCarts.map((item) => {
         if (item.id == +payload)
           return { ...item, quantity: item.quantity - 1 };
@@ -41,14 +38,14 @@ export default {
         (item) => +item.id != +payload
       );
     },
-    addItemToCart: ({ state }, { item, quantity }) => {
+    addItemToCart: ({ state, dispatch }, { item, quantity }) => {
       state.quantity += quantity;
       let t = state.shoppingCarts.find((prd) => prd.id == item.id);
 
       if (!t) {
         state.shoppingCarts.push({ ...item, quantity: quantity });
       } else {
-        // t
+        dispatch("increment", { id: item.id, quantity });
       }
       localStorage.setItem(
         "shoppingCarts",

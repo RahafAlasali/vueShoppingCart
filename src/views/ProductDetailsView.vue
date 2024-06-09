@@ -2,6 +2,9 @@
   <div>
     <img-prd :img="img" :overlay="overlay" @close="closed" />
     <v-container class="mx-2 my-4">
+      <div class="d-flex justify-end">
+        <v-breadcrumbs :items="itemsBrdCrm" large></v-breadcrumbs>
+      </div>
       <v-row v-if="product">
         <v-col cols="12" sm="6" class="d-flex align-center justify-center">
           <div class="mx-7 px-3" style="max-width: 80%">
@@ -12,19 +15,12 @@
             <div>
               <h2 class="mb-4">{{ product.title }}</h2>
               <h4 class="mb-3 mt-2">
-                {{
-                  product.price.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })
-                }}
-
-                <!-- {{currency(product.price)}} -->
+                {{ currency(product.price) }}
               </h4>
               <h3 class="mb-4 subtitle-1 prd-desc">
                 {{ product.description }}
               </h3>
-              <h3 class="mb-4 subtitle-1">
+              <h3 class="mb-4 subtitle-1" style="font-weight: bold">
                 {{ $t("category") }} :
                 <span class="primary--text">{{ product.category }}</span>
               </h3>
@@ -41,21 +37,31 @@
                   outlined
                   style="width: 110px"
                 >
-                  <v-icon slot="append" @click="quantity = +quantity + 1">
+                  <v-icon
+                    slot="append"
+                    @click="
+                      quantity == 20 ? quantity : (quantity = +quantity + 1)
+                    "
+                  >
                     mdi-plus
                   </v-icon>
                   <v-icon
                     slot="prepend-inner"
-                    @click="quantity = +quantity - 1"
-                    :disabled="quantity == 1"
+                    @click="
+                      quantity == 1 ? quantity : (quantity = +quantity - 1)
+                    "
                   >
                     mdi-minus
                   </v-icon>
                 </v-text-field>
               </div>
               <div class="container">
-                <button class="checkout-btn" @click="() => add(product)">
-                  <v-icon class="checkout-btn__icon" dark>mdi-cart</v-icon>
+                <button
+                  class="checkout-btn"
+                  style="background: primary"
+                  @click="() => add(product)"
+                >
+                  <v-icon dark class="checkout-btn__icon">mdi-cart</v-icon>
                   <span class="checkout-btn__text"> Add to cart </span>
                   <span class="checkout-btn__success">
                     <v-icon dark class="px-2">mdi-check</v-icon>
@@ -189,7 +195,7 @@ export default {
   data() {
     return {
       checkoutTL: null,
-      prdId: this.$route.params.id,
+      prdId: null,
       quantity: 1,
       img: null,
       overlay: false,
@@ -208,6 +214,18 @@ export default {
           icon: "mdi-cart",
           title: "Return Delivery",
           subtitle: "Free 30 days Delivery Returns",
+        },
+      ],
+      itemsBrdCrm: [
+        {
+          text: "Home",
+          disabled: false,
+          href: "/",
+        },
+        {
+          text: "Products",
+          disabled: false,
+          href: "",
         },
       ],
     };
@@ -268,6 +286,7 @@ export default {
     },
   },
   mounted() {
+    this.prdId = this.$route.params.id;
     this.getProductById(this.prdId);
     this.getProductsRelated(this.prdId);
     this.checkoutTL = new gsap.timeline({
@@ -294,9 +313,6 @@ export default {
   justify-content: space-around;
   padding: 0.75rem 1rem;
 
-  &:hover {
-    background: darken(#05453e, 10%);
-  }
   &__success,
   &__failure {
     position: absolute;

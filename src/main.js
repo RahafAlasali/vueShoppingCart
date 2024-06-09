@@ -5,15 +5,15 @@ import store from "./store";
 import vuetify, { i18n } from "./plugins/vuetify";
 import axios from "axios";
 import loader from "vue-ui-preloader";
-Vue.use(loader);
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
+import "@/mixins/generalMixin";
 const conficToast = {
   timeout: 1500,
   pauseOnHover: false,
 };
 Vue.use(Toast, conficToast);
-
+Vue.use(loader);
 Vue.config.productionTip = false;
 // Vue.use(axios);
 router.beforeEach((to, from, next) => {

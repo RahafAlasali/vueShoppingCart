@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       valid: true,
-      user: { username: null, password: null },
+      user: { username: "mor_2314", password: "83r5^_" },
     };
   },
   methods: {

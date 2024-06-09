@@ -24,14 +24,10 @@
             <v-list-item-title style="white-space: unset">{{
               item.title
             }}</v-list-item-title>
-            <v-list-item-subtitle
-              >{{
-                item.price.toLocaleString("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                })
-              }}
-              X{{ item.quantity }}</v-list-item-subtitle
+            <v-list-item-subtitle>
+              {{ currency(item.price) }} X{{
+                item.quantity
+              }}</v-list-item-subtitle
             >
           </v-list-item-content>
           <div class="mx-1">
@@ -46,12 +42,7 @@
         <div class="d-flex justify-space-between my-4 mx-1 align-center">
           <div class="text-h6 text-capitalize">Subtotal</div>
           <div>
-            {{
-              totalPrd.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })
-            }}
+            {{ currency(totalPrd) }}
           </div>
         </div>
       </v-container>

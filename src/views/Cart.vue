@@ -1,6 +1,9 @@
 <template>
   <div class="py-7 my-5">
     <v-container>
+      <div class="d-flex justify-end">
+        <v-breadcrumbs :items="itemsBrdCrm" large></v-breadcrumbs>
+      </div>
       <v-row>
         <v-col cols="12" lg="8">
           <v-simple-table style="border: 1px solid #e0e0e0">
@@ -38,12 +41,7 @@
                   </td>
                   <td class="text-center">{{ item.title }}</td>
                   <td>
-                    {{
-                      item.price.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      })
-                    }}
+                    {{ currency(item.price) }}
                   </td>
                   <td>
                     <div class="d-flex mx-2">
@@ -52,15 +50,26 @@
                         v-model="item.quantity"
                         hide-details
                         outlined
+                        class="input-add"
                         style="width: 110px"
                       >
-                        <v-icon slot="append" @click="quantity = +quantity + 1">
+                        <v-icon
+                          slot="append"
+                          @click="
+                            item.quantity == 20
+                              ? item.quantity
+                              : (item.quantity = +item.quantity + 1)
+                          "
+                        >
                           mdi-plus
                         </v-icon>
                         <v-icon
                           slot="prepend-inner"
-                          @click="quantity = +quantity - 1"
-                          :disabled="quantity == 1"
+                          @click="
+                            item.quantity == 1
+                              ? item.quantity
+                              : (item.quantity = +item.quantity - 1)
+                          "
                         >
                           mdi-minus
                         </v-icon>
@@ -68,12 +77,7 @@
                     </div>
                   </td>
                   <td>
-                    {{
-                      (item.price * item.quantity).toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      })
-                    }}
+                    {{ currency(item.price * item.quantity) }}
                   </td>
                 </tr>
               </tbody>
@@ -87,24 +91,14 @@
               <v-row class="py-2 body-1">
                 <v-col cols="4"> Subtotal </v-col>
                 <v-col cols="6">
-                  {{
-                    totalPrd.toLocaleString("en-US", {
-                      style: "currency",
-                      currency: "USD",
-                    })
-                  }}
+                  {{ currency(totalPrd) }}
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row class="py-2 body-1">
                 <v-col cols="4"> Total </v-col>
                 <v-col cols="6">
-                  {{
-                    totalPrd.toLocaleString("en-US", {
-                      style: "currency",
-                      currency: "USD",
-                    })
-                  }}
+                  {{ currency(totalPrd) }}
                 </v-col>
               </v-row>
             </v-card-text>
@@ -122,7 +116,20 @@
 import { mapState, mapActions } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      itemsBrdCrm: [
+        {
+          text: "Home",
+          disabled: false,
+          href: "/",
+        },
+        {
+          text: "Cart",
+          disabled: false,
+          href: "",
+        },
+      ],
+    };
   },
   computed: {
     ...mapState("cart", ["shoppingCarts"]),
@@ -144,3 +151,8 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.input-add .v-text-field__slot input {
+  text-align: center !important;
+}
+</style>

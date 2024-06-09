@@ -1,18 +1,22 @@
 <template>
-  <div>
-    <v-toolbar class="px-sm-4 primary--text text-uppercase">
+  <div style="position: absolute; top: 0; width: 100%">
+    <v-toolbar
+      dark
+      class="px-sm-4 primary--text text-uppercase"
+      style="background: transparent"
+    >
       <v-app-bar-nav-icon
         class="d-block d-md-none"
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <v-toolbar-title class="text-h5">
-        <router-link to="/" style="text-decoration: none">
+        <router-link to="/" class="white--text" style="text-decoration: none">
           shopping
         </router-link>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-list color="" flat class="d-md-flex d-none">
+      <v-list class="d-md-flex d-none">
         <v-list-item
           v-for="link in links"
           :ripple="false"
@@ -46,7 +50,14 @@
             <v-icon> mdi-account</v-icon>
           </v-btn></router-link
         >
-        <v-menu v-else open-on-hover bottom offset-y>
+        <v-menu
+          v-else
+          open-on-hover
+          bottom
+          offset-y
+          origin="top center"
+          transition="scale-transition"
+        >
           <template v-slot:activator="{ on, attrs }">
             <v-btn icon v-on="on" v-bind="attrs">
               <v-avatar size="40">
@@ -103,7 +114,9 @@
       v-model="drawerCart"
       absolute
       right
+      top
       temporary
+      app
     >
       <Cart
         :items="shoppingCarts"
@@ -159,4 +172,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.theme--light.v-sheet {
+  background-color: transparent;
+}
+.theme--dark.v-list {
+  background-color: transparent;
+}
+</style>

@@ -77,23 +77,16 @@
         class="px-0"
         style="font-family: cursive; font-weight: bolder"
       >
-        {{
-          item.price.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })
-        }}
+        {{ currency(item.price) }}
       </v-card-subtitle>
     </v-card-text>
     <v-card-actions class="ma-0 pa-0">
-      <!-- check link  in page product -->
       <v-btn
         class="px-0 text-capitalize"
         color="primary"
         text
         @click="
-          $router.push(`/product/${item.id}`);
-          $router.go();
+          $router.push({ name: 'productDetails', params: { id: item.id } })
         "
       >
         {{ $t("details") }}
