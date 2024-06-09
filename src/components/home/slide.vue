@@ -1,6 +1,6 @@
 <template>
-  <div calss="">
-    <v-img height="600" src="@/assets/head.jpg"
+  <div>
+    <v-img height="100vh" src="@/assets/head.jpg"
       ><v-overlay absolute>
         <v-container>
           <div class="text-center mx-auto" style="width: 80%">

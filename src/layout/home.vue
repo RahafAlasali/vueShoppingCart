@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <nav-bar />
-
+  <div style="position: relative">
     <Slide />
-
+    <nav-bar />
     <!-- <v-container> -->
     <v-main>
       <router-view />
