@@ -2,7 +2,7 @@
   <div>
     <v-row class="justify-center align-center" style="height: 100vh">
       <v-col cols="10" md="4">
-        <v-card class="pa-4" elevation="4">
+        <v-card elevation="4" shaped class="pa-4">
           <v-container>
             <v-card-title class="text-center justify-center text-md-h4"
               >Login</v-card-title
@@ -17,18 +17,24 @@
                 v-model="user.username"
                 :rules="[(v) => !!v || $t('fieldRequired')]"
                 :label="$t('name')"
+                filled
+                rounded
               >
               </v-text-field>
 
               <v-text-field
                 v-model="user.password"
+                :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
                 :label="$t('password')"
-                type="password"
+                :type="show2 ? 'text' : 'password'"
                 :rules="[(v) => !!v || $t('fieldRequired')]"
+                @click:append="show2 = !show2"
+                filled
+                rounded
               ></v-text-field>
 
               <v-card-actions class="d-flex justify-center">
-                <v-btn dark large color="primary" width="200" type="submit">
+                <v-btn large width="200" type="submit" color="primary">
                   Login
                 </v-btn>
               </v-card-actions>
@@ -46,6 +52,7 @@ export default {
   data() {
     return {
       valid: true,
+      show2: false,
       user: { username: "mor_2314", password: "83r5^_" },
     };
   },

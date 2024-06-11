@@ -7,9 +7,13 @@
       </div>
       <v-row v-if="product">
         <v-col cols="12" sm="6" class="d-flex align-center justify-center">
-          <div class="mx-7 px-3" style="max-width: 80%">
+          <div style="width: 400px">
+            <zoom-on-hover :img-normal="product.image"></zoom-on-hover>
+          </div>
+          <!-- <div class="mx-7 px-3" style="max-width: 80%">
             <v-img height="300px" contain :src="product.image"> </v-img></div
-        ></v-col>
+        > -->
+        </v-col>
         <v-col cols="12" sm="6">
           <div>
             <div>
@@ -113,20 +117,23 @@
             <v-card flat>
               <v-form>
                 <v-row>
-                  <v-col cols="5">
+                  <v-col cols="4">
                     <v-text-field
                       v-model="form.name"
                       label="Name"
                       hide-details
+                      rounded
+                      filled
                     ></v-text-field>
                   </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="5">
+
+                  <v-col cols="4">
                     <v-text-field
                       v-model="form.email"
                       label="Email"
                       hide-details
+                      rounded
+                      filled
                     ></v-text-field>
                   </v-col>
                 </v-row>

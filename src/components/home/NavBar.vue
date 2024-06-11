@@ -42,6 +42,7 @@
         placeholder="language"
         style="max-width: 80px"
         class="d-md-flex d-none"
+        :menu-props="{ bottom: true, offsetY: true }"
       >
       </v-select>
       <div class="mx-1">
@@ -91,7 +92,9 @@
       class="text-uppercase"
       style="max-width: 180px"
       v-model="drawer"
+      app
       absolute
+      top
     >
       <v-list nav flat>
         <v-list-item
@@ -142,8 +145,8 @@ export default {
       links: [
         { title: "home", to: "/" },
         { title: "shop", to: "/products" },
-        { title: "contact", to: "/" },
-        { title: "about", to: "/" },
+        { title: "contact" },
+        { title: "about" },
       ],
     };
   },
@@ -172,8 +175,8 @@ export default {
 };
 </script>
 
-<style>
-.theme--light.v-sheet {
+<style scoped>
+.v-list .theme--light.v-sheet {
   background-color: transparent;
 }
 .theme--dark.v-list {

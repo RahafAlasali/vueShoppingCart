@@ -2,7 +2,7 @@
   <div>
     <v-row class="justify-center align-center" style="height: 100vh">
       <v-col cols="10" md="4">
-        <v-card class="pa-4" elevation="4">
+        <v-card shaped class="pa-4" elevation="4">
           <v-container>
             <v-card-title class="text-center justify-center text-md-h4"
               >Create Account</v-card-title
@@ -17,6 +17,8 @@
                 v-model="name"
                 :rules="[(v) => !!v || $t('fieldRequired')]"
                 :label="$t('name')"
+                filled
+                rounded
               >
               </v-text-field>
               <v-text-field
@@ -26,12 +28,16 @@
                   (v) => !!v || $t('fieldRequired'),
                   (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
                 ]"
+                filled
+                rounded
               ></v-text-field>
               <v-text-field
                 v-model="password"
                 :label="$t('password')"
                 type="password"
                 :rules="[(v) => !!v || $t('fieldRequired')]"
+                filled
+                rounded
               ></v-text-field>
 
               <v-card-actions class="d-flex justify-center">

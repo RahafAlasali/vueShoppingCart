@@ -3,7 +3,7 @@
     <v-row style="height: 90%">
       <v-col cols="12" sm="6">
         <div
-          class="d-sm-flex justify-sm-end justify-center px-6 text-sm-right align-center"
+          class="d-sm-flex justify-sm-end d-block justify-center px-6 text-sm-right align-center"
         >
           <div>
             <div class="primary--text">ABOUT US</div>

@@ -37,6 +37,11 @@ export default {
       state.shoppingCarts = state.shoppingCarts.filter(
         (item) => +item.id != +payload
       );
+      localStorage.setItem(
+        "shoppingCarts",
+        JSON.stringify(state.shoppingCarts)
+      );
+      localStorage.setItem("quantityCart", JSON.stringify(state.quantity));
     },
     addItemToCart: ({ state, dispatch }, { item, quantity }) => {
       state.quantity += quantity;

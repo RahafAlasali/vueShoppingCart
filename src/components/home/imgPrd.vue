@@ -15,7 +15,13 @@
         >
           <v-icon class="black--text"> mdi-close</v-icon>
         </v-btn>
-        <v-img :src="img" contain>
+        <v-img
+          :src="img"
+          contain
+          width="300"
+          height="350"
+          style="background-color: white"
+        >
           <template v-slot:placeholder>
             <v-row class="fill-height ma-0" align="center" justify="center">
               <v-progress-circular

@@ -8,12 +8,15 @@ import loader from "vue-ui-preloader";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import "@/mixins/generalMixin";
+import ZoomOnHover from "vue-zoom-on-hover";
+
 const conficToast = {
   timeout: 1500,
   pauseOnHover: false,
 };
 Vue.use(Toast, conficToast);
 Vue.use(loader);
+Vue.use(ZoomOnHover);
 Vue.config.productionTip = false;
 // Vue.use(axios);
 router.beforeEach((to, from, next) => {

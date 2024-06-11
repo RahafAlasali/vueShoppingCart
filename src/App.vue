@@ -40,12 +40,12 @@ $body-font-family: "Poppins", sans-serif;
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f9f9f9;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #616161;
+  background: #05453e;
   border-radius: 2px;
 }
 .Vue-Toastification__toast--default {
