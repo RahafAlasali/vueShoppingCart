@@ -70,7 +70,7 @@ const routes = [
     ],
   },
 
-  { path: "*", redirect: "/" },
+  { path: "*", component: () => import("@/components/notFound.vue") },
 ];
 
 const router = new VueRouter({

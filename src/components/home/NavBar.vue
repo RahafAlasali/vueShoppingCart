@@ -146,7 +146,7 @@ export default {
         { title: "home", to: "/" },
         { title: "shop", to: "/products" },
         { title: "contact" },
-        { title: "about" },
+        { title: "about", to: { name: "home", hash: "#about" } },
       ],
     };
   },

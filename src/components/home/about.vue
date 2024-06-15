@@ -1,5 +1,5 @@
 <template>
-  <div class="py-4 d-flex align-center" style="height: 600px">
+  <div class="py-4 d-flex align-center" style="height: 600px" id="about">
     <v-row style="height: 90%">
       <v-col cols="12" sm="6">
         <div
