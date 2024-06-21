@@ -72,7 +72,7 @@ export default {
     },
     confirmDelete() {
       this.deleteUser(this.id);
-      this.$toast.info("User delete successfully");
+      this.$toast.success("User delete successfully");
       this.dialogDelete = false;
     },
     async getProducts() {

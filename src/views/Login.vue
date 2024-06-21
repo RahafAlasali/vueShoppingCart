@@ -62,10 +62,7 @@ export default {
       this.$refs.form.validate();
       this.addUser(this.user);
 
-      this.$toast.success({
-        title: "Registered Successfully!",
-        message: "You can login here",
-      });
+      this.$toast.success("Registered Successfully!");
       this.$router.push({ name: "home" });
     },
   },

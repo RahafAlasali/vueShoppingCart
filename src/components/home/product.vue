@@ -105,7 +105,7 @@ export default {
     ...mapActions("cart", ["addItemToCart"]),
     add(item) {
       this.addItemToCart({ item, quantity: 1 });
-      this.$toast.info("Added to cart successfully");
+      this.$toast.success("Added to cart successfully");
     },
     view(img) {
       this.$emit("viewPrd", img);

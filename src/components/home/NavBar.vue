@@ -155,7 +155,7 @@ export default {
 
     logout() {
       this.setLogin(false);
-      this.$toast.info("Logout");
+      this.$toast.success("Logout");
       localStorage.removeItem("token");
     },
   },

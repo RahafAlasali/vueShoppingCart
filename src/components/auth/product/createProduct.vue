@@ -117,7 +117,7 @@ export default {
         this.$emit("colseDialogCreate");
         this.loading = false;
         this.$refs.form.reset();
-        this.$toast.info("Create product successfully");
+        this.$toast.success("Create product successfully");
       }
     },
   },

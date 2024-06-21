@@ -50,7 +50,6 @@ export default {
     confirmDelete() {
       this.deleteProduct(this.id);
       this.$toast.success(" product delete successfully");
-
       this.dialogDelete = false;
     },
     editItem(item) {
