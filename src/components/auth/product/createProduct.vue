@@ -65,9 +65,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="createProduct">
-            Cancel
-          </v-btn>
+          <v-btn color="blue darken-1" text @click="cancel"> Cancel </v-btn>
           <v-btn
             type="submit"
             color="blue darken-1"
@@ -106,7 +104,7 @@ export default {
   },
   methods: {
     ...mapActions("core", ["addProduct", "getCategories"]),
-    createProduct() {
+    cancel() {
       this.$emit("colseDialogCreate");
       this.$refs.form.reset();
     },

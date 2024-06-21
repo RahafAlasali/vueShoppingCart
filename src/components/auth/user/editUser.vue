@@ -69,7 +69,6 @@ export default {
   methods: {
     closeDialog() {
       this.$emit("colseDialog");
-      this.$refs.form.reset();
     },
     // save() {
     //   this.loading = true;
