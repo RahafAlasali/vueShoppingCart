@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-dialog persistent v-model="show" max-width="500px" hide-overlay>
+    <v-dialog persistent v-model="showDialog" max-width="500px" hide-overlay>
       <v-card>
         <v-card-title>
           <span class="text-h5">Edit Product</span>
@@ -19,7 +19,7 @@
                   <v-text-field
                     dense
                     label="Title"
-                    v-model="title"
+                    v-model="proEdit.title"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
                     outlined
                   ></v-text-field>
@@ -31,6 +31,7 @@
                     :items="categories"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
                     label="Category"
+                    v-model="proEdit.category"
                     outlined
                   ></v-select>
                 </v-col>
@@ -39,6 +40,7 @@
                     dense
                     type="number"
                     label="Price"
+                    v-model="proEdit.price"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
                     outlined
                   ></v-text-field>
@@ -46,8 +48,8 @@
                 <v-col class="py-0" cols="12" sm="6" md="12">
                   <v-textarea
                     outlined
-                    v-model="description"
                     label="Descriptiona"
+                    v-model="proEdit.description"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
                   ></v-textarea>
                 </v-col>
@@ -55,15 +57,13 @@
             </v-form>
           </v-container>
         </v-card-text>
-        {{ $props.productEdit.description }}
+
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="closeDialog()">
             Cancel
           </v-btn>
-          <v-btn color="blue darken-1" text :loading="loading" @click="save()">
-            Save
-          </v-btn>
+          <v-btn color="blue darken-1" text @click="save()"> Save </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -73,27 +73,24 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
-  props: ["showDialog", "productEdit"],
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+    showDialog: { type: Boolean, required: true },
+  },
   emits: ["colseDialog"],
   data() {
     return {
       loading: false,
-
       valid: true,
-      product: this.productEdit,
-      // show: this.showDialog,
-      // title: this.productEdit.title,
-      description: this.productEdit.description,
     };
   },
   computed: {
     ...mapState("core", ["categories"]),
-    show() {
-      return this.showDialog;
-    },
-
-    id() {
-      return this.productEdit.id;
+    proEdit() {
+      return this.product;
     },
   },
   methods: {
@@ -105,15 +102,14 @@ export default {
       const validForm = this.$refs.form.validate();
       if (validForm) {
         this.loading = true;
-        this.editProduct({ id: this.id, product: this.product });
+        this.editProduct({ id: this.product.id, product: this.proEdit });
         this.$emit("colseDialog");
         this.loading = false;
-        this.$toast.info("Edit product successfully");
+        this.$toast.success("Edit product successfully");
       }
     },
   },
   mounted() {
-    console.log(this.productEdit.description, ".....");
     this.getCategories();
   },
 };

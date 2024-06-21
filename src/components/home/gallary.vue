@@ -27,18 +27,39 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col tile md="4" sm="10" class="px-0 py-0"
-          ><v-card tile>
-            <v-img height="250" src="@/assets/2.jpg"
-              ><template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="primary"
-                  ></v-progress-circular>
-                </v-row> </template
-            ></v-img> </v-card
-        ></v-col>
+        <v-col tile md="4" sm="10" class="px-0 py-0">
+          <v-hover v-slot="{ hover }"
+            ><v-card tile>
+              <v-img height="250" src="@/assets/2.jpg"
+                ><template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="primary"
+                    ></v-progress-circular>
+                  </v-row> </template
+              ></v-img>
+              <v-expand-transition>
+                <div
+                  v-if="hover"
+                  class="transition-ease-in-ease-out primary v-card--reveal white--text px-2"
+                  style="height: 100%"
+                >
+                  <div class="text-h3 my-2 py-4">Title</div>
+
+                  <div class="subtitle-1 py-2">
+                    Turns out semicolon-less style is easier and safer in TS
+                    because most gotcha edge cases are type invalid as well.
+                  </div>
+                </div>
+              </v-expand-transition>
+            </v-card>
+          </v-hover></v-col
+        >
         <v-col md="4" sm="10" class="px-0 py-0">
           <v-card tile class="px-2" height="100%">
             <v-card-title class="justify-center"> Title </v-card-title>
@@ -49,17 +70,36 @@
           </v-card></v-col
         >
         <v-col tile md="4" sm="10" class="px-0 py-0">
-          <v-card tile>
-            <v-img height="250" src="@/assets/5.jpg"
-              ><template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="primary"
-                  ></v-progress-circular>
-                </v-row> </template
-            ></v-img>
-          </v-card>
+          <v-hover v-slot="{ hover }">
+            <v-card tile>
+              <v-img height="250" src="@/assets/5.jpg"
+                ><template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="primary"
+                    ></v-progress-circular>
+                  </v-row> </template
+              ></v-img>
+              <v-expand-transition>
+                <div
+                  v-if="hover"
+                  class="transition-ease-in-ease-out primary v-card--reveal white--text px-2"
+                  style="height: 100%"
+                >
+                  <div class="text-h3 my-2 py-4">Title</div>
+                  <div class="subtitle-1 py-2">
+                    Turns out semicolon-less style is easier and safer in TS
+                    because most gotcha edge cases are type invalid as well.
+                  </div>
+                </div>
+              </v-expand-transition>
+            </v-card>
+          </v-hover>
         </v-col>
         <v-col md="4" sm="10" class="px-0 py-0"
           ><v-card tile class="px-2" height="100%">
@@ -70,18 +110,38 @@
             </v-card-text>
           </v-card></v-col
         >
-        <v-col md="4" sm="10" class="px-0 py-0"
-          ><v-card>
-            <v-img height="250" src="@/assets/6.jpg"
-              ><template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="primary"
-                  ></v-progress-circular>
-                </v-row> </template
-            ></v-img> </v-card
-        ></v-col>
+        <v-col md="4" sm="10" class="px-0 py-0">
+          <v-hover v-slot="{ hover }">
+            <v-card>
+              <v-img height="250" src="@/assets/6.jpg"
+                ><template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="primary"
+                    ></v-progress-circular>
+                  </v-row> </template
+              ></v-img>
+              <v-expand-transition>
+                <div
+                  v-if="hover"
+                  class="transition-ease-in-ease-out primary v-card--reveal white--text px-2"
+                  style="height: 100%"
+                >
+                  <div class="text-h3 my-2 py-4">Title</div>
+                  <div class="subtitle-1 py-2">
+                    Turns out semicolon-less style is easier and safer in TS
+                    because most gotcha edge cases are type invalid as well.
+                  </div>
+                </div>
+              </v-expand-transition>
+            </v-card>
+          </v-hover>
+        </v-col>
       </v-row>
     </v-container>
 
@@ -148,5 +208,14 @@ export default {
   .gallary-header {
     width: 600px;
   }
+}
+
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: 1;
+  position: absolute;
+  width: 100%;
 }
 </style>

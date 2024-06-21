@@ -13,7 +13,7 @@
                 <v-text-field
                   dense
                   label="First Name"
-                  v-model="firstname"
+                  v-model="user.name.firstname"
                   hide-details
                   outlined
                 ></v-text-field>
@@ -22,7 +22,7 @@
                 <v-text-field
                   dense
                   label="Last Name"
-                  v-model="lastname"
+                  v-model="user.name.lastname"
                   hide-details
                   outlined
                 ></v-text-field>
@@ -31,7 +31,7 @@
                 <v-text-field
                   dense
                   label="Email"
-                  v-model="email"
+                  v-model="user.email"
                   hide-details
                   outlined
                 ></v-text-field>
@@ -62,15 +62,8 @@ export default {
     show() {
       return this.showDialog;
     },
-    firstname() {
-      return this.userEdit.name.firstname;
-    },
-
-    lastname() {
-      return this.userEdit.name.lastname;
-    },
-    email() {
-      return this.userEdit.email;
+    user() {
+      return this.userEdit;
     },
   },
   methods: {

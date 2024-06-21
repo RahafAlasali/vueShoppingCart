@@ -98,9 +98,9 @@ export default {
       this.$toast.info("User delete successfully");
       this.dialogDelete = false;
     },
-    getProducts() {
+    async getProducts() {
       this.loading = true;
-      this.getUsers();
+      await this.getUsers();
       this.loading = false;
     },
   },

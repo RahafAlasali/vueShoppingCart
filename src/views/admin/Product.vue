@@ -6,7 +6,7 @@
     />
 
     <edit-product
-      :productEdit="prodItem"
+      :product="prodItem"
       :showDialog="dialog"
       @colseDialog="dialog = false"
     />
@@ -119,6 +119,7 @@ export default {
     },
     editItem(item) {
       this.prodItem = item;
+      console.log(this.prodItem, "item item");
       this.dialog = true;
     },
     confirmDelete() {
@@ -127,9 +128,9 @@ export default {
 
       this.dialogDelete = false;
     },
-    getProductsArray() {
+    async getProductsArray() {
       this.loading = true;
-      this.getProducts();
+      await this.getProducts();
       this.loading = false;
     },
   },
