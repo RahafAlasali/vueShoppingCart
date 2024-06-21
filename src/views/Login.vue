@@ -39,6 +39,12 @@
                 </v-btn>
               </v-card-actions>
             </v-form>
+            <h6 class="subtitle-1 text-center mt-3">
+              Donot have an account?
+              <span>
+                <router-link :to="{ name: 'register' }"> Register</router-link>
+              </span>
+            </h6>
           </v-container>
         </v-card>
       </v-col>

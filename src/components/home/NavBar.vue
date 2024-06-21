@@ -88,28 +88,7 @@
         </v-btn>
       </div>
     </v-toolbar>
-    <v-navigation-drawer
-      class="text-uppercase"
-      style="max-width: 180px"
-      v-model="drawer"
-      app
-      absolute
-      top
-    >
-      <v-list nav flat>
-        <v-list-item
-          link
-          :to="link.to"
-          v-for="(link, index) in links"
-          :key="index"
-          class="d-flex justify-center primary--text"
-        >
-          <v-list-item-content class="text-center font-weight-bold">
-            <v-list-item-title>{{ link.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+
     <v-navigation-drawer
       width="400"
       class="text-uppercase pa-2"
@@ -117,7 +96,6 @@
       v-model="drawerCart"
       absolute
       right
-      top
       temporary
       app
     >
@@ -139,7 +117,7 @@ export default {
   },
   data() {
     return {
-      drawer: false,
+      drawer: true,
       drawerCart: false,
       lang: ["ar", "en"],
       links: [

@@ -3,9 +3,9 @@
     <Slide />
     <nav-bar />
     <!-- <v-container> -->
-    <v-main>
-      <router-view />
-    </v-main>
+
+    <router-view />
+
     <!-- </v-container> -->
     <v-btn
       class="md-5 mr-3 elevation-21"

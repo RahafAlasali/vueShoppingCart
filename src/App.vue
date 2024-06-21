@@ -15,9 +15,7 @@
     ></loader>
 
     <v-app>
-      <v-main>
-        <router-view :key="$route.path" />
-      </v-main>
+      <router-view :key="$route.path" />
     </v-app>
   </div>
 </template>
