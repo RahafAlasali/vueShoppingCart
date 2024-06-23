@@ -23,12 +23,7 @@
             ></v-text-field>
           </div>
           <div>
-            <v-btn
-              color="primary"
-              dark
-              class="mb-2 pa-2"
-              @click="dialogCreate = true"
-            >
+            <v-btn color="primary" dark class="mb-2 pa-2" @click="Create">
               Add
             </v-btn>
           </div>
@@ -61,7 +56,7 @@
 import { mapActions, mapState } from "vuex";
 
 export default {
-  emits: ["delete", "edit"],
+  emits: ["delete", "edit", "create"],
   data() {
     return {
       headers: [
@@ -85,6 +80,9 @@ export default {
     },
     edit(item) {
       this.$emit("edit", item);
+    },
+    Create() {
+      this.$emit("create");
     },
     async getProductsArray() {
       this.loading = true;

@@ -17,7 +17,7 @@
       @colseDialog="dialogDelete = false"
     />
 
-    <data-table @edit="editItem" @delete="deleteItem" />
+    <data-table @edit="editItem" @delete="deleteItem" @create="createItem" />
   </div>
 </template>
 
@@ -49,7 +49,7 @@ export default {
     ...mapActions("core", ["deleteProduct"]),
     confirmDelete() {
       this.deleteProduct(this.id);
-      this.$toast.success(" product delete successfully");
+      this.$toast.success("product delete successfully");
       this.dialogDelete = false;
     },
     editItem(item) {
@@ -59,6 +59,9 @@ export default {
     deleteItem(id) {
       this.dialogDelete = true;
       this.id = id;
+    },
+    createItem() {
+      this.dialogCreate = true;
     },
   },
 };
