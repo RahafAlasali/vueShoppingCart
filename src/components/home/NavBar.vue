@@ -73,11 +73,13 @@
 
             <v-list>
               <v-list-item link>
-                <v-list-item-title>Profile</v-list-item-title>
+                <v-list-item-title>{{ $t("profile") }}</v-list-item-title>
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item link>
-                <v-list-item-title @click="logout">log out</v-list-item-title>
+                <v-list-item-title @click="logout">{{
+                  $t("logOut")
+                }}</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -96,7 +98,7 @@
       :class="{ 'd-none': !drawerCart }"
       v-model="drawerCart"
       absolute
-      right
+      :right="!isRtl"
       temporary
       app
     >
@@ -141,6 +143,9 @@ export default {
   computed: {
     ...mapState("cart", ["quantity", "shoppingCarts"]),
     ...mapState("auth", ["isLogin"]),
+    isRtl() {
+      return this.$i18n.locale == "ar";
+    },
     totalPrd() {
       return this.shoppingCarts
         .map((item) => {

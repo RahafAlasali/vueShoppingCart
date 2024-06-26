@@ -66,10 +66,10 @@
                   @click="() => add(product)"
                 >
                   <v-icon dark class="checkout-btn__icon">mdi-cart</v-icon>
-                  <span class="checkout-btn__text"> Add to cart </span>
+                  <span class="checkout-btn__text"> {{ $t("addCart") }} </span>
                   <span class="checkout-btn__success">
                     <v-icon dark class="px-2">mdi-check</v-icon>
-                    Thank you for your order!
+                    {{ $t("thankForOrder") }}
                   </span>
                 </button>
               </div>
@@ -103,7 +103,7 @@
       <v-container>
         <v-tabs vertical :transition="false" :reverse-transition="false">
           <v-tab> {{ $t("description") }}</v-tab>
-          <v-tab> Review </v-tab>
+          <v-tab> {{ $t("review") }} </v-tab>
           <v-tab-item class="px-8" :transition="false">
             <v-card flat>
               <v-card-text>
@@ -162,7 +162,7 @@
           class="text-sm-h3 my-3 primary--text font-weight-bold"
           style="font-family: cursive"
         >
-          Related Product
+          {{ $t("relatedProduct") }}
         </div>
 
         <div>
@@ -265,7 +265,7 @@ export default {
           ease: "power4.in",
         })
         .to(".checkout-btn__icon", {
-          x: 150,
+          x: 130,
           delay: 0.25,
           duration: 0.75,
           opacity: 0,

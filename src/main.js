@@ -36,7 +36,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   setTimeout(() => {
     store.state.loadPage = false;
-  }, 1300);
+  }, 1000);
 });
 const app = new Vue({
   router,

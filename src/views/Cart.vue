@@ -12,10 +12,18 @@
                 <tr>
                   <th class="text-center" style="font-size: large"></th>
                   <th class="text-center" style="font-size: large"></th>
-                  <th class="text-center" style="font-size: large">Product</th>
-                  <th class="text-center" style="font-size: large">Price</th>
-                  <th class="text-center" style="font-size: large">Quantity</th>
-                  <th class="text-center" style="font-size: large">Subtotal</th>
+                  <th class="text-center" style="font-size: large">
+                    {{ $t("product") }}
+                  </th>
+                  <th class="text-center" style="font-size: large">
+                    {{ $t("price") }}
+                  </th>
+                  <th class="text-center" style="font-size: large">
+                    {{ $t("quantity") }}
+                  </th>
+                  <th class="text-center" style="font-size: large">
+                    {{ $t("subtotal") }}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -86,24 +94,26 @@
         </v-col>
         <v-col cols="12" lg="4" sm="6"
           ><v-card elevation="0" class="pb-4" style="border: 1px solid #e0e0e0">
-            <v-card-title class="grey lighten-3"> Cart Total </v-card-title>
+            <v-card-title class="grey lighten-3">
+              {{ $t("total") }}
+            </v-card-title>
             <v-card-text class="py-4 px-7">
               <v-row class="py-2 body-1">
-                <v-col cols="4"> Subtotal </v-col>
+                <v-col cols="4"> {{ $t("subtotal") }} </v-col>
                 <v-col cols="6">
                   {{ currency(totalPrd) }}
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row class="py-2 body-1">
-                <v-col cols="4"> Total </v-col>
+                <v-col cols="4"> {{ $t("total") }} </v-col>
                 <v-col cols="6">
                   {{ currency(totalPrd) }}
                 </v-col>
               </v-row>
             </v-card-text>
             <v-card-actions class="mx-3 mt-4">
-              <v-btn color="primary" block> checkout</v-btn>
+              <v-btn color="primary" block> {{ $t("checkout") }}</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -113,7 +123,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -145,6 +155,7 @@ export default {
   },
   methods: {
     ...mapActions("cart", ["removeItem"]),
+
     removePrd(id) {
       this.removeItem(id);
     },

@@ -40,7 +40,7 @@
                 <v-icon class="black--text" dark small> mdi-cart</v-icon>
               </v-btn>
             </template>
-            <span>Add to cart</span>
+            <span>{{ $t("addCart") }}</span>
           </v-tooltip>
         </div>
       </div>

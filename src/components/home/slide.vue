@@ -17,7 +17,9 @@
               {{ $t("intro.description") }}
             </div>
             <div class="mt-9">
-              <v-btn elevation="1" large outlined text>view collection</v-btn>
+              <v-btn elevation="1" large outlined text>{{
+                $t("viewCollection")
+              }}</v-btn>
             </div>
           </div>
         </v-container>
@@ -26,31 +28,31 @@
   </div>
 </template>
 <script>
-import { gsap } from "gsap";
-import SplitType from "split-type";
+// import { gsap } from "gsap";
+// import SplitType from "split-type";
 
 export default {
   data() {
     return {};
   },
   mounted() {
-    const ourText = new SplitType(".Gsap", { types: "chars" });
-    const chars = ourText.chars;
-    gsap.fromTo(
-      chars,
-      {
-        y: 40,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.08,
-        duration: 0.1,
-        ease: "elastic",
-        delay: 2,
-      }
-    );
+    //   const ourText = new SplitType(".Gsap", { types: "words" });
+    //   const words = ourText.words;
+    //   gsap.fromTo(
+    //     "words",
+    //     {
+    //       y: 30,
+    //       opacity: 0,
+    //     },
+    //     {
+    //       y: 0,
+    //       opacity: 1,
+    //       stagger: 0.3,
+    //       duration: 0.1,
+    //       ease: "elastic",
+    //       delay: 1.5,
+    //     }
+    //   );
   },
 };
 </script>

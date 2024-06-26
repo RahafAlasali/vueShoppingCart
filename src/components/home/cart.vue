@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-subheader class="text-h6 mt-3 font-weight-bold justify-space-between">
-      <div>My cart</div>
+      <div>{{ $t("viewCart") }}</div>
       <div>
         <v-icon @click="closeDrawer"> mdi-close </v-icon>
       </div>
@@ -40,7 +40,7 @@
       <v-divider class="mx-auto" style="width: 80%"></v-divider>
       <v-container>
         <div class="d-flex justify-space-between my-4 mx-1 align-center">
-          <div class="text-h6 text-capitalize">Subtotal</div>
+          <div class="text-h6 text-capitalize">{{ $t("subtotal") }}</div>
           <div>
             {{ currency(totalPrd) }}
           </div>
@@ -55,11 +55,13 @@
             class="my-1"
             @click="$router.push({ name: 'cart' })"
           >
-            View Cart
+            {{ $t("viewCart") }}
           </v-btn>
         </div>
         <div class="my-1 mx-auto" style="width: 90%">
-          <v-btn dark color="primary" block class="my-2"> checkout </v-btn>
+          <v-btn dark color="primary" block class="my-2">
+            {{ $t("checkout") }}
+          </v-btn>
         </div>
       </div>
     </div>

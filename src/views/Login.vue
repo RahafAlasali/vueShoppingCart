@@ -4,9 +4,9 @@
       <v-col cols="10" md="4">
         <v-card elevation="4" shaped class="pa-4">
           <v-container>
-            <v-card-title class="text-center justify-center text-md-h4"
-              >Login</v-card-title
-            >
+            <v-card-title class="text-center justify-center text-md-h4">{{
+              $t("login")
+            }}</v-card-title>
             <v-form
               @submit.prevent="submit"
               ref="form"
@@ -35,14 +35,16 @@
 
               <v-card-actions class="d-flex justify-center">
                 <v-btn large width="200" type="submit" color="primary">
-                  Login
+                  {{ $t("login") }}
                 </v-btn>
               </v-card-actions>
             </v-form>
             <h6 class="subtitle-1 text-center mt-3">
-              Donot have an account?
+              {{ $t("noAccount") }}
               <span>
-                <router-link :to="{ name: 'register' }"> Register</router-link>
+                <router-link :to="{ name: 'register' }">
+                  {{ $t("register") }}</router-link
+                >
               </span>
             </h6>
           </v-container>

@@ -1,6 +1,7 @@
 <template>
   <div class="my-3">
     <div class="text-h4 mb-2">Products</div>
+
     <create-product
       :showDialog="dialogCreate"
       @colseDialogCreate="dialogCreate = false"
@@ -53,7 +54,9 @@ export default {
       this.dialogDelete = false;
     },
     editItem(item) {
+      console.log(item, "item");
       this.prodItem = item;
+
       this.dialog = true;
     },
     deleteItem(id) {

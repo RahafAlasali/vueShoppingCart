@@ -86,7 +86,7 @@ export default {
     bottom: 0px;
   }
   100% {
-    bottom: 9px;
+    bottom: 12px;
   }
 }
 </style>

@@ -157,40 +157,38 @@
 </template>
 
 <script>
-import { gsap } from "gsap";
-import SplitType from "split-type";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+// import { gsap } from "gsap";
+// import SplitType from "split-type";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// gsap.registerPlugin(ScrollTrigger);
 
 export default {
   mounted() {
-    const ourText = new SplitType(".gallery", {
-      types: "lines, words, chars",
-    });
-
-    const chars = ourText.chars;
-
-    gsap.fromTo(
-      chars,
-      {
-        x: 10,
-        opacity: 0,
-      },
-      {
-        scrollTrigger: {
-          trigger: ".gallery",
-          scrub: true,
-          markers: false,
-          start: "top 70%",
-          end: "top 40%",
-        },
-        x: 0,
-        opacity: 1,
-        stagger: 0.2,
-        duration: 0.1,
-        ease: "elastic",
-      }
-    );
+    //   const ourText = new SplitType(".gallery", {
+    //     types: "lines, words, chars",
+    //   });
+    //   const chars = ourText.chars;
+    //   gsap.fromTo(
+    //     chars,
+    //     {
+    //       x: 10,
+    //       opacity: 0,
+    //     },
+    //     {
+    //       scrollTrigger: {
+    //         trigger: ".gallery",
+    //         scrub: true,
+    //         markers: false,
+    //         start: "top 70%",
+    //         end: "top 40%",
+    //       },
+    //       x: 0,
+    //       opacity: 1,
+    //       stagger: 0.2,
+    //       duration: 0.1,
+    //       ease: "elastic",
+    //     }
+    //   );
   },
 };
 </script>

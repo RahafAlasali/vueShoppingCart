@@ -1,8 +1,7 @@
 {
     "intro": {
         "title": "Explore our comprehensive range of products ",
-        "description": "world of endless possibilities for online shopping.",
-        "D": "Explore our vast collection of products ranging from electronics and fashion to home essentials and more. we make your online shopping experience convenient and enjoyable."
+        "description": "world of endless possibilities for online shopping."
     },
     "gallary": "gallary",
     "details": "details",
@@ -21,5 +20,26 @@
     "aboutTitle": "Our goal is to create a space where you can explore, discover and find exactly what you are looking for.",
     "aboutDescription": " Our mission  offering a diverse selection of products and exceptional customer service.  we strive to be your go-to destination for all your online shopping needs.",
     "gallaryDesc": "Find exactly what you're looking for  Find the items you need and discover new products in your area of ​​interest.",
-    "fieldRequired": "This field is required"
+    "fieldRequired": "This field is required",
+    "wordsAboutStore": "A Few Words About Our Store",
+    "checkout": "checkout",
+    "viewCart": "View Cart",
+    "logOut": "log out",
+    "profile": "profile",
+    "addCart": "Add to cart",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "price": "Price",
+    "quantity": "Quantity",
+    "login": "Login",
+    "noAccount": "Do not have an account?",
+    "register": "Register",
+    "relatedProduct": "Related Product",
+    "review": "Review",
+    "thankForOrder": "Thank you for your order!",
+    "alredyHaveAccount": "Alredy have account?",
+    "signUp": "Sign Up",
+    "createAccount": "Create Account",
+    "viewCollection": "View Collection",
+    "description": "Description"
 }

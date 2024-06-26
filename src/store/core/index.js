@@ -29,10 +29,6 @@ export default {
     addProduct(state, data) {
       state.products.push(data);
     },
-    // editProduct(state, data)
-    // {
-
-    // }
   },
   getters: {},
   actions: {

@@ -4,9 +4,9 @@
       <v-col cols="10" md="4">
         <v-card shaped class="pa-4" elevation="4">
           <v-container>
-            <v-card-title class="text-center justify-center text-md-h4"
-              >Create Account</v-card-title
-            >
+            <v-card-title class="text-center justify-center text-md-h4">{{
+              $t("createAccount")
+            }}</v-card-title>
             <v-form
               @submit.prevent="submit"
               ref="form"
@@ -42,15 +42,17 @@
 
               <v-card-actions class="d-flex justify-center">
                 <v-btn dark large color="primary" width="200" type="submit">
-                  Sign Up
+                  {{ $t("signUp") }}
                 </v-btn>
               </v-card-actions>
             </v-form>
 
             <h6 class="subtitle-1 text-center mt-3">
-              Alredy have account?
+              {{ $t("alredyHaveAccount") }}
               <span>
-                <router-link :to="{ name: 'login' }"> Login</router-link>
+                <router-link :to="{ name: 'login' }"
+                  >{{ $t("login") }}
+                </router-link>
               </span>
             </h6>
           </v-container>
