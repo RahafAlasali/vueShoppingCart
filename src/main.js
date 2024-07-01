@@ -9,6 +9,8 @@ import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import "@/mixins/generalMixin";
 import ZoomOnHover from "vue-zoom-on-hover";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const conficToast = {
   timeout: 1500,
@@ -45,4 +47,7 @@ const app = new Vue({
   i18n,
   loader: loader,
   render: (h) => h(App),
+  mounted() {
+    AOS.init();
+  },
 }).$mount("#app");

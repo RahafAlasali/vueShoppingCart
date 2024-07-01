@@ -7,7 +7,12 @@
         >
           <div>
             <div class="primary--text">{{ $t("about") }}</div>
-            <div class="mt-4">
+            <div
+              class="mt-4"
+              data-aos="fade-right"
+              data-aos-duration="700"
+              data-aos-delay="200"
+            >
               <h2
                 class="about-header about-desc"
                 style="font-family: cursive; font-size: xx-large"
@@ -27,7 +32,13 @@
           >
             {{ $t("aboutTitle") }}
           </div>
-          <div class="subtitle-1 about-prgrph">
+          <div
+            class="subtitle-1 about-prgrph"
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="800"
+            data-aos-delay="200"
+          >
             {{ $t("aboutDescription") }}
           </div>
         </div></v-col
@@ -37,61 +48,8 @@
 </template>
 
 <script>
-// import { gsap } from "gsap";
-// import SplitType from "split-type";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(ScrollTrigger);
-
 export default {
-  mounted() {
-    // const ourText = new SplitType(".about-desc ", {
-    //   types: "lines, words, chars",
-    // });
-    // const lines = ourText.lines;
-    // gsap.fromTo(
-    //   lines,
-    //   {
-    //     x: -50,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: ".about-desc",
-    //       scrub: true,
-    //       markers: false,
-    //       start: "top 40%",
-    //       end: "top 10%",
-    //     },
-    //     x: 0,
-    //     opacity: 1,
-    //     stagger: 0.6,
-    //     duration: 2,
-    //     ease: "elastic",
-    //   }
-    // );
-    // gsap.fromTo(
-    //   ".about-prgrph",
-    //   {
-    //     y: 10,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: ".about-prgrph",
-    //       scrub: false,
-    //       markers: false,
-    //       start: "top 30%",
-    //       end: "top 20%",
-    //     },
-    //     y: 0,
-    //     opacity: 1,
-    //     duration: 0.7,
-    //     ease: "power1.in",
-    //     stagger: 0.1,
-    //   }
-    // );
-  },
+  mounted() {},
 };
 </script>
 

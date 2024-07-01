@@ -1,18 +1,19 @@
 <template>
   <div class="text-center mt-7 pt-4" style="position: relative">
-    <div
-      class="text-h3 primary--text font-weight-bold"
-      style="
-        font-family: 'Cormorant Garamond', serif !important ;
-        font-style: italic;
-      "
-    >
-      {{ $t("gallary") }}
+    <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">
+      <div
+        class="text-h3 primary--text font-weight-bold"
+        style="
+          font-family: 'Cormorant Garamond', serif !important ;
+          font-style: italic;
+        "
+      >
+        {{ $t("gallary") }}
+      </div>
+      <div class="my-sm-3 gallary-header mx-auto gallery">
+        {{ $t("gallaryDesc") }}
+      </div>
     </div>
-    <div class="my-sm-3 gallary-header mx-auto gallery">
-      {{ $t("gallaryDesc") }}
-    </div>
-
     <v-container
       class="gallarypos"
       style="top: 20%; z-index: 80; right: 5%; left: 5%"
@@ -157,39 +158,8 @@
 </template>
 
 <script>
-// import { gsap } from "gsap";
-// import SplitType from "split-type";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// gsap.registerPlugin(ScrollTrigger);
-
 export default {
-  mounted() {
-    //   const ourText = new SplitType(".gallery", {
-    //     types: "lines, words, chars",
-    //   });
-    //   const chars = ourText.chars;
-    //   gsap.fromTo(
-    //     chars,
-    //     {
-    //       x: 10,
-    //       opacity: 0,
-    //     },
-    //     {
-    //       scrollTrigger: {
-    //         trigger: ".gallery",
-    //         scrub: true,
-    //         markers: false,
-    //         start: "top 70%",
-    //         end: "top 40%",
-    //       },
-    //       x: 0,
-    //       opacity: 1,
-    //       stagger: 0.2,
-    //       duration: 0.1,
-    //       ease: "elastic",
-    //     }
-    //   );
-  },
+  mounted() {},
 };
 </script>
 

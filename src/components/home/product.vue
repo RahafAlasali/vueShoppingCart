@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div
-      class="d-flex align-center justify-center"
+      class="d-flex align-center justify-center imgHover"
       style="background-color: white; height: 190px; position: relative"
     >
       <div style="right: 3px; top: 1px; position: absolute">
@@ -113,3 +113,16 @@ export default {
   },
 };
 </script>
+
+<style>
+.imgHover .v-image__image {
+  transition: transform 1s, filter 2s ease-in-out;
+
+  transform: scale(1);
+}
+
+/* The Transformation */
+.imgHover:hover .v-image__image {
+  transform: scale(1.2);
+}
+</style>

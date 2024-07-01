@@ -190,7 +190,7 @@ import productItem from "@/components/home/product.vue";
 import ImgPrd from "@/components/home/imgPrd.vue";
 
 import Loader from "@/components/home/loader.vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 import { gsap } from "gsap";
 
 export default {
@@ -225,12 +225,12 @@ export default {
       ],
       itemsBrdCrm: [
         {
-          text: "Home",
+          text: this.$i18n.t("home"),
           disabled: false,
           href: "/",
         },
         {
-          text: "Products",
+          text: this.$i18n.t("product"),
           disabled: false,
           href: "",
         },
@@ -296,6 +296,7 @@ export default {
     this.prdId = this.$route.params.id;
     this.getProductById(this.prdId);
     this.getProductsRelated(this.prdId);
+
     this.checkoutTL = new gsap.timeline({
       paused: true,
     });

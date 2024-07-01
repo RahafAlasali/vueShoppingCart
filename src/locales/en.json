@@ -6,7 +6,7 @@
     "gallary": "gallary",
     "details": "details",
     "product": "product",
-    "home": "home",
+    "home": "Home",
     "shop": "Shop",
     "contact": "Contact",
     "about": "About",
@@ -37,9 +37,10 @@
     "relatedProduct": "Related Product",
     "review": "Review",
     "thankForOrder": "Thank you for your order!",
-    "alredyHaveAccount": "Alredy have account?",
+    "alreadyHaveAccount": "Already have account?",
     "signUp": "Sign Up",
     "createAccount": "Create Account",
     "viewCollection": "View Collection",
-    "description": "Description"
+    "description": "Description",
+    "cart": "Cart"
 }

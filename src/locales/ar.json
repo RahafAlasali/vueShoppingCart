@@ -16,12 +16,12 @@
     "category": "الصنف",
     "all": "الكل",
     "filterBy": "تصنيف",
-    "exploreProduct": "! استكشف مجموعتنا الرائعة من الحقائب الآن",
+    "exploreProduct": "استكشف مجموعتنا الرائعة من الحقائب الآن!",
     "aboutTitle": "هدفنا هو إنشاء مساحة حيث يمكنك استكشاف واكتشاف والعثور على ما تبحث عنه بالضبط.",
     "aboutDescription": "مهمتنا تقديم مجموعة متنوعة من المنتجات وخدمة العملاء الاستثنائية. نحن نسعى جاهدين لنكون وجهتك المفضلة لجميع احتياجات التسوق عبر الإنترنت.",
     "gallaryDesc": "اعثر على ما تبحث عنه واكتشف منتجات جديدة في مجال اهتمامك",
     "fieldRequired": "هذا الحقل مطلوب",
-    "wordsAboutStore": "كلمات عن متجرنا",
+    "wordsAboutStore": "معلومات عن متجرنا",
     "checkout": "الدفع",
     "viewCart": "سلة التسوق",
     "logOut": "log out",
@@ -37,9 +37,10 @@
     "relatedProduct": "المنتجات المشابهة",
     "review": "التقييم",
     "thankForOrder": "Thank you for your order!",
-    "alredyHaveAccount": "لديك حساب",
+    "alreadyHaveAccount": "لديك حساب",
     "signUp": "تسجيل",
     "createAccount": "إنشاء حساب جديد",
     "viewCollection": "تسوق الان",
-    "description": "الوصف"
+    "description": "الوصف",
+    "cart": "cart"
 }

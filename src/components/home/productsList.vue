@@ -2,11 +2,14 @@
   <div class="pb-7">
     <img-prd :img="img" :overlay="overlay" @close="closed" />
     <div
-      class="text-h3 text-center my-3 primary--text font-weight-bold"
+      class="text-h3 text-center my-3 pb-6 primary--text font-weight-bold"
       style="
         font-family: 'Cormorant Garamond', serif !important ;
         font-style: italic;
       "
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-delay="400"
     >
       {{ $t("product") }}
     </div>
@@ -56,6 +59,7 @@
             :max-height="400"
             class="mx-3 my-2"
             max-width="212"
+            :ripple="false"
             @click="toggle"
           >
             <product-item :item="item" @viewPrd="showPrd" />

@@ -6,7 +6,13 @@
       width="100%"
     >
       <v-card-text>
-        <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-4 white--text"
+          icon
+          data-aos="fade-left"
+        >
           <v-icon size="24px">
             {{ icon }}
           </v-icon>

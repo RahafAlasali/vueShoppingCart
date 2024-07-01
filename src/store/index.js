@@ -11,7 +11,12 @@ export default new Vuex.Store({
     loadPage: true,
   },
   getters: {},
-  mutations: {},
+  mutations: {
+    setLoading(state, load) {
+      console.log(load, "load");
+      state.loadPage = load;
+    },
+  },
   actions: {},
   modules: {
     cart,

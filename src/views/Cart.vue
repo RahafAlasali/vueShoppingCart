@@ -129,12 +129,12 @@ export default {
     return {
       itemsBrdCrm: [
         {
-          text: "Home",
+          text: this.$i18n.t("home"),
           disabled: false,
           href: "/",
         },
         {
-          text: "Cart",
+          text: this.$i18n.t("cart"),
           disabled: false,
           href: "",
         },
