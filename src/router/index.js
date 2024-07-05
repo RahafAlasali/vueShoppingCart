@@ -48,6 +48,7 @@ const routes = [
     children: [
       {
         path: "",
+        name: "dashboard",
         component: () => import("@/views/admin/Index.vue"),
         meta: {
           requiresAuth: true,

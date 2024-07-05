@@ -50,7 +50,7 @@ export default {
     ...mapActions("core", ["deleteProduct"]),
     confirmDelete() {
       this.deleteProduct(this.id);
-      this.$toast.success("product delete successfully");
+      this.$toast.success("Deleted successfully");
       this.dialogDelete = false;
     },
     editItem(item) {

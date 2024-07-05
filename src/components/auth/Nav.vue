@@ -28,14 +28,31 @@
 
         <v-list>
           <v-list-item link>
-            <v-list-item-title>Profile</v-list-item-title>
+            <v-list-item-title>{{ $t("profile") }}</v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
           <v-list-item link>
-            <v-list-item-title>log out</v-list-item-title>
+            <v-list-item-title @click="logout">{{
+              $t("logOut")
+            }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
     </div>
   </div>
 </template>
+<script>
+import { mapMutations } from "vuex";
+export default {
+  methods: {
+    ...mapMutations("auth", ["setLogin"]),
+    logout() {
+      console.log("log");
+      this.setLogin(false);
+      this.$toast.success("Logout");
+      localStorage.removeItem("token");
+      this.$router.push("/");
+    },
+  },
+};
+</script>

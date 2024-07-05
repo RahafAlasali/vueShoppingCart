@@ -42,5 +42,6 @@
     "createAccount": "إنشاء حساب جديد",
     "viewCollection": "تسوق الان",
     "description": "الوصف",
-    "cart": "cart"
+    "cart": "cart",
+    "dashboard": "Dashboard"
 }

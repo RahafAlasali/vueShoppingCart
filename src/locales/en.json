@@ -5,7 +5,7 @@
     },
     "gallary": "gallary",
     "details": "details",
-    "product": "product",
+    "product": "Product",
     "home": "Home",
     "shop": "Shop",
     "contact": "Contact",
@@ -42,5 +42,6 @@
     "createAccount": "Create Account",
     "viewCollection": "View Collection",
     "description": "Description",
-    "cart": "Cart"
+    "cart": "Cart",
+    "dashboard": "Dashboard"
 }

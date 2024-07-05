@@ -2,12 +2,13 @@
   <div style="position: fixed; height: 100vh" class="py-4 primary px-4">
     <v-list dark nav flat class="align-center primary my-5">
       <v-list-item
-        link
+         exact         
         :to="link.to"
         v-for="(link, index) in links"
         :key="index"
-        class="d-flex justify-center"
-      >
+        class="d-flex justify-center "
+        active-class="active-item"
+      >      
         <v-list-item-icon class="mr-4 hidden-sm-and-down">
           <v-icon>{{ link.icon }}</v-icon>
         </v-list-item-icon>
@@ -34,3 +35,11 @@ export default {
   },
 };
 </script>
+<style>
+
+.active-item
+{
+  background:#1f625bc7 !important
+}
+
+</style>
