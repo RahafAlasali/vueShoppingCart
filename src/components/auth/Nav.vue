@@ -3,17 +3,9 @@
     <div class="d-flex mb-2">
       <div class="text-h5 grey--text">Welcome</div>
       <v-spacer></v-spacer>
-      <v-text-field
-        solo
-        label="Search"
-        class="mx-4"
-        prepend-inner-icon="mdi-magnify"
-        style="max-width: 200px"
-        hide-details
-        dense
-      ></v-text-field>
-      <v-btn class="mx-3" icon elevation="4"
-        ><v-badge overlap content="2" value="2">
+      <v-text-field solo label="Search" class="mx-4" prepend-inner-icon="mdi-magnify" style="max-width: 200px"
+        hide-details dense></v-text-field>
+      <v-btn class="mx-3 button-bell" icon elevation="4"><v-badge overlap content="2" value="2">
           <v-icon> mdi-bell</v-icon>
         </v-badge>
       </v-btn>
@@ -26,15 +18,19 @@
           </v-btn>
         </template>
 
-        <v-list>
+        <v-list class="text-center" style="letter-spacing:0.3px">
           <v-list-item link>
             <v-list-item-title>{{ $t("profile") }}</v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
           <v-list-item link>
-            <v-list-item-title @click="logout">{{
-              $t("logOut")
-            }}</v-list-item-title>
+            <v-list-item-title @click="logout">
+              <v-btn class="mt-1 rounded-pill " small outlined color="primary ">
+                {{
+                  $t("logOut")
+                }}
+              </v-btn>
+            </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -56,3 +52,38 @@ export default {
   },
 };
 </script>
+
+<style>
+.button-bell:hover .v-icon {
+  animation: bellRing 2s infinite;
+}
+
+
+@keyframes bellRing {
+
+  0%,
+  100% {
+    transform-origin: top;
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  30% {
+    transform: rotateZ(-10deg);
+  }
+
+  45% {
+    transform: rotateZ(5deg);
+  }
+
+  60% {
+    transform: rotateZ(-5deg);
+  }
+
+  75% {
+    transform: rotateZ(2deg);
+  }
+}
+</style>

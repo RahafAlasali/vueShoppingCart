@@ -4,34 +4,19 @@
       <v-col cols="10" md="4">
         <v-card elevation="4" shaped class="pa-4">
           <v-container>
-            <v-card-title class="text-center justify-center text-md-h4">{{
-              $t("login")
-            }}</v-card-title>
-            <v-form
-              @submit.prevent="submit"
-              ref="form"
-              v-model="valid"
-              lazy-validation
-            >
-              <v-text-field
-                v-model="user.username"
-                :rules="[(v) => !!v || $t('fieldRequired')]"
-                :label="$t('name')"
-                filled
-                rounded
-              >
+            <v-card-title class="text-center justify-center text-md-h4" style="color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #8fb9aac4, #05453e, #8fb9aac4, #05453e);font-weight: bold">{{
+      $t("login")
+    }}</v-card-title>
+            <v-form @submit.prevent="submit" ref="form" v-model="valid" lazy-validation>
+              <v-text-field v-model="user.username" :rules="[(v) => !!v || $t('fieldRequired')]" :label="$t('name')"
+                filled rounded>
               </v-text-field>
 
-              <v-text-field
-                v-model="user.password"
-                :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
-                :label="$t('password')"
-                :type="show2 ? 'text' : 'password'"
-                :rules="[(v) => !!v || $t('fieldRequired')]"
-                @click:append="show2 = !show2"
-                filled
-                rounded
-              ></v-text-field>
+              <v-text-field v-model="user.password" :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+                :label="$t('password')" :type="show2 ? 'text' : 'password'" :rules="[(v) => !!v || $t('fieldRequired')]"
+                @click:append="show2 = !show2" filled rounded></v-text-field>
 
               <v-card-actions class="d-flex justify-center">
                 <v-btn large width="200" type="submit" color="primary">
@@ -43,8 +28,7 @@
               {{ $t("noAccount") }}
               <span>
                 <router-link :to="{ name: 'register' }">
-                  {{ $t("register") }}</router-link
-                >
+                  {{ $t("register") }}</router-link>
               </span>
             </h6>
           </v-container>

@@ -1,28 +1,21 @@
 <template>
   <div>
     <div class="mx-2">
-      <div class="text-h4 mt-2 mb-6">Dashboard</div>
+      <div class="text-h4 mt-2 mb-6" style="color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #8fb9aac4, #05453e, #8fb9aac4, #05453e);font-weight: bold">Dashboard
+      </div>
 
       <div class="my-7 pt-7">
         <v-row class="justify-center">
-          <v-col
-            v-for="(item, index) in cards"
-            :key="index"
-            cols="9"
-            md="3"
-            sm="6"
-          >
+          <v-col v-for="(item, index) in cards" :key="index" cols="9" md="3" sm="6">
             <v-hover v-slot="{ hover }">
-              <v-card
-                class="px-2"
-                :style="`border-bottom:2px solid ; border-color:${item.color}`"
-                :class="{ 'on-hover': hover }"
-              >
+              <v-card class="px-2" :style="`border-bottom:2px solid ; border-color:${item.color}`"
+                :class="{ 'on-hover': hover }">
                 <v-card-title class="grey--text">{{ item.title }}</v-card-title>
                 <div class="d-flex justify-space-between align-center">
                   <div>
-                    <v-card-subtitle class="text-h5 black--text"
-                      >{{ item.number }}
+                    <v-card-subtitle class="text-h5 grey--text">{{ item.number }}
                     </v-card-subtitle>
                   </div>
 
@@ -48,7 +41,7 @@ export default {
       cards: [
         {
           title: "All Products",
-          number: 1000,
+          number: 800,
           color: "#FFA726",
           bgColor: "#ffdfa6",
         },
@@ -81,10 +74,12 @@ export default {
   animation: move 1s forwards 1 ease-in-out;
   position: relative;
 }
+
 @keyframes move {
   0% {
     bottom: 0px;
   }
+
   100% {
     bottom: 12px;
   }

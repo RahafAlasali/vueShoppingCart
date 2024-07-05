@@ -2,7 +2,7 @@
   <div class="">
     <div class="d-flex align-center justify-center imgHover"
       style="background-color: white; height: 190px; position: relative">
-  
+
       <div style="right: 3px; top: 1px; position: absolute">
         <div>
           <v-tooltip left>
@@ -30,7 +30,7 @@
           <v-row class="fill-height ma-0" align="center" justify="center">
             <v-progress-circular indeterminate color="primary"></v-progress-circular>
           </v-row> </template>
-          <!-- <v-row class="fill-height">
+        <!-- <v-row class="fill-height">
         <v-card-title>
           <v-btn
             dark
@@ -40,11 +40,11 @@
           </v-btn>
         </v-card-title>
       </v-row> -->
-    </v-img>
+      </v-img>
     </div>
 
-    <v-card-title class="py-0 px-0 " style="height: 60px"  >
-      <div style="line-height: 1" >      
+    <v-card-title class="py-0 px-0 " style="height: 60px">
+      <div style="line-height: 1">
         {{ item.title.substring(0, 35) }}
       </div>
     </v-card-title>

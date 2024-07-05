@@ -37,13 +37,7 @@
                   </td>
                   <td>
                     <div>
-                      <v-img
-                        class="my-2"
-                        max-height="80px"
-                        max-width="80px"
-                        contain
-                        :src="item.image"
-                      >
+                      <v-img class="my-2" max-height="80px" max-width="80px" contain :src="item.image">
                       </v-img>
                     </div>
                   </td>
@@ -53,35 +47,7 @@
                   </td>
                   <td>
                     <div class="d-flex mx-2">
-                      <v-text-field
-                        dense
-                        v-model="item.quantity"
-                        hide-details
-                        outlined
-                        class="input-add"
-                        style="width: 110px"
-                      >
-                        <v-icon
-                          slot="append"
-                          @click="
-                            item.quantity == 20
-                              ? item.quantity
-                              : (item.quantity = +item.quantity + 1)
-                          "
-                        >
-                          mdi-plus
-                        </v-icon>
-                        <v-icon
-                          slot="prepend-inner"
-                          @click="
-                            item.quantity == 1
-                              ? item.quantity
-                              : (item.quantity = +item.quantity - 1)
-                          "
-                        >
-                          mdi-minus
-                        </v-icon>
-                      </v-text-field>
+                      {{ item.quantity }}
                     </div>
                   </td>
                   <td>
@@ -92,8 +58,7 @@
             </template>
           </v-simple-table>
         </v-col>
-        <v-col cols="12" lg="4" sm="6"
-          ><v-card elevation="0" class="pb-4" style="border: 1px solid #e0e0e0">
+        <v-col cols="12" lg="4" sm="6"><v-card elevation="0" class="pb-4" style="border: 1px solid #e0e0e0">
             <v-card-title class="grey lighten-3">
               {{ $t("total") }}
             </v-card-title>

@@ -12,11 +12,7 @@
     <!-- <div >No products in the cart.</div> -->
     <div>
       <v-list nav flat>
-        <v-list-item
-          class="py-2 align-center"
-          v-for="(item, index) in $props.items"
-          :key="index"
-        >
+        <v-list-item class="py-2 align-center" v-for="(item, index) in $props.items" :key="index">
           <div style="width: 100px; height: 100px">
             <v-img width="100%" height="100%" contain :src="item.image"></v-img>
           </div>
@@ -27,8 +23,7 @@
             <v-list-item-subtitle>
               {{ currency(item.price) }} X{{
                 item.quantity
-              }}</v-list-item-subtitle
-            >
+              }}</v-list-item-subtitle>
           </v-list-item-content>
           <div class="mx-1">
             <v-icon @click="() => removePrd(item.id)">
@@ -48,13 +43,7 @@
       </v-container>
       <div>
         <div class="py-2 mx-auto" style="width: 90%">
-          <v-btn
-            dark
-            color="primary"
-            block
-            class="my-1"
-            @click="$router.push({ name: 'cart' })"
-          >
+          <v-btn dark color="primary" block class="my-1" @click="$router.push({ name: 'cart' })">
             {{ $t("viewCart") }}
           </v-btn>
         </div>
