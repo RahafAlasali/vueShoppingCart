@@ -7,7 +7,7 @@
 
         <v-container>
           <div>
-            <div class=" mb-6 text-center justify-center text-md-h4" style="color: transparent;
+            <div class=" mb-6 text-center  text-md-h4" style="color: transparent;
     background-clip: text;
     background-image: linear-gradient(to right, #8fb9aac4, #05453e, #8fb9aac4, #05453e);font-weight: bold">{{
       $t("login")
@@ -69,7 +69,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .shape-left {
 
   height: 100%;
