@@ -30,16 +30,7 @@
           <v-row class="fill-height ma-0" align="center" justify="center">
             <v-progress-circular indeterminate color="primary"></v-progress-circular>
           </v-row> </template>
-        <!-- <v-row class="fill-height">
-        <v-card-title>
-          <v-btn
-            dark
-            icon
-          >
-            <v-icon>mdi-chevron-left</v-icon>
-          </v-btn>
-        </v-card-title>
-      </v-row> -->
+
       </v-img>
     </div>
 

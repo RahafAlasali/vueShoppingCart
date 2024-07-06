@@ -1,16 +1,10 @@
 <template>
   <div class="pb-7">
     <img-prd :img="img" :overlay="overlay" @close="closed" />
-    <div
-      class="text-h3 text-center my-3 pb-6 primary--text font-weight-bold"
-      style="
+    <div class="text-h3 text-center my-3 pb-6 primary--text font-weight-bold" style="
         font-family: 'Cormorant Garamond', serif !important ;
         font-style: italic;
-      "
-      data-aos="zoom-in"
-      data-aos-duration="1500"
-      data-aos-delay="400"
-    >
+      " data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="400">
       {{ $t("product") }}
     </div>
 
@@ -20,12 +14,7 @@
           {{ $t("all") }}
         </v-btn>
       </div>
-      <v-menu
-        bottom
-        offset-y
-        origin="center center"
-        transition="scale-transition"
-      >
+      <v-menu bottom offset-y origin="center center" transition="scale-transition">
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on">
             <v-icon class="px-1 white--text"> mdi-filter-variant </v-icon>
@@ -34,7 +23,7 @@
         </template>
 
         <v-list>
-          <v-list-item link v-for="(item, index) in categories" :key="index">
+          <v-list-item link v-for="(item, index) in categories " :key="index" class="item-filter">
             <v-list-item-title @click="() => filterBycat(item)">{{
               item
             }}</v-list-item-title>
@@ -48,20 +37,9 @@
 
     <div class="mb-7">
       <v-slide-group show-arrows class="slider slide-style" center-active>
-        <v-slide-item
-          v-for="(item, index) in productsFilter"
-          :key="index"
-          v-slot="{ toggle }"
-        >
-          <v-card
-            flat
-            color="transparent"
-            :max-height="400"
-            class="mx-3 my-2"
-            max-width="212"
-            :ripple="false"
-            @click="toggle"
-          >
+        <v-slide-item v-for="(item, index) in productsFilter" :key="index" v-slot="{ toggle }">
+          <v-card flat color="transparent" :max-height="400" class="mx-3 my-2" max-width="212" :ripple="false"
+            @click="toggle">
             <product-item :item="item" @viewPrd="showPrd" />
           </v-card>
         </v-slide-item>
@@ -130,17 +108,31 @@ export default {
 .v-slide-group__next .v-icon.v-icon {
   font-size: 40px !important;
 }
+
 .v-slide-group__prev,
 .v-slide-group__next {
   min-width: 40px !important;
 }
+
 .slide-style .mdi-chevron-left,
 .slide-style .mdi-chevron-right {
   border-radius: 50%;
   color: white !important;
   background-color: #05453e;
 }
+
 .theme--light.v-icon.v-icon.v-icon--disabled {
   color: white !important;
+}
+
+.item-filter:hover {
+  background-color: #05453e;
+  color: #FFF !important
+}
+</style>
+<style scoped>
+.v-list-item:hover {
+  background-color: #05453e;
+  color: #FFF !important
 }
 </style>
