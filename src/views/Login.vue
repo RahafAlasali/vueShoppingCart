@@ -13,16 +13,15 @@
       $t("login")
               }}</div>
             <v-form @submit.prevent="submit" ref="form" v-model="valid" lazy-validation>
-              <v-text-field v-model="user.username" :rules="[(v) => !!v || $t('fieldRequired')]" :label="$t('name')"
-                filled rounded>
+              <v-text-field v-model="user.username" :rules="[(v) => !!v || $t('fieldRequired')]" :label="$t('name')">
               </v-text-field>
 
               <v-text-field v-model="user.password" :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
                 :label="$t('password')" :type="show2 ? 'text' : 'password'" :rules="[(v) => !!v || $t('fieldRequired')]"
-                @click:append="show2 = !show2" filled rounded></v-text-field>
+                @click:append="show2 = !show2"></v-text-field>
 
-              <div class="d-flex justify-center">
-                <v-btn x-large type="submit" color="primary" rounded style="width: 100%;">
+              <div class="d-flex justify-center mt-6">
+                <v-btn x-large type="submit" color="primary" rounded style="width: 50%;">
                   {{ $t("login") }}
                 </v-btn>
               </div>

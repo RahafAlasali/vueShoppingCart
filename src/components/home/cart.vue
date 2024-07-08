@@ -6,54 +6,67 @@
         <v-icon @click="closeDrawer"> mdi-close </v-icon>
       </div>
     </v-subheader>
+    <v-container>
+      <v-divider class="mx-auto" style="width: 90%"></v-divider>
 
-    <v-divider class="mx-auto" style="width: 90%"></v-divider>
+      <div v-if="items.length != 0">
+        <v-list nav flat>
+          <v-list-item class="py-2 align-center" v-for="(item, index) in $props.items" :key="index">
+            <div style="width: 100px; height: 100px">
+              <v-img width="100%" height="100%" contain :src="item.image"></v-img>
+            </div>
+            <v-list-item-content class="font-weight-bold mx-1">
+              <v-list-item-title style="white-space: unset">{{
+                item.title
+              }}</v-list-item-title>
+              <v-list-item-subtitle>
+                {{ currency(item.price) }} X{{
+                  item.quantity
+                }}</v-list-item-subtitle>
+            </v-list-item-content>
+            <div class="mx-1">
+              <v-icon @click="() => removePrd(item.id)">
+                mdi-close-circle-outline
+              </v-icon>
+            </div>
+          </v-list-item>
+        </v-list>
+        <v-divider class="mx-auto" style="width: 80%"></v-divider>
 
-    <!-- <div >No products in the cart.</div> -->
-    <div>
-      <v-list nav flat>
-        <v-list-item class="py-2 align-center" v-for="(item, index) in $props.items" :key="index">
-          <div style="width: 100px; height: 100px">
-            <v-img width="100%" height="100%" contain :src="item.image"></v-img>
-          </div>
-          <v-list-item-content class="font-weight-bold mx-1">
-            <v-list-item-title style="white-space: unset">{{
-              item.title
-            }}</v-list-item-title>
-            <v-list-item-subtitle>
-              {{ currency(item.price) }} X{{
-                item.quantity
-              }}</v-list-item-subtitle>
-          </v-list-item-content>
-          <div class="mx-1">
-            <v-icon @click="() => removePrd(item.id)">
-              mdi-close-circle-outline
-            </v-icon>
-          </div>
-        </v-list-item>
-      </v-list>
-      <v-divider class="mx-auto" style="width: 80%"></v-divider>
-      <v-container>
         <div class="d-flex justify-space-between my-4 mx-1 align-center">
           <div class="text-h6 text-capitalize">{{ $t("subtotal") }}</div>
           <div>
             {{ currency(totalPrd) }}
           </div>
         </div>
-      </v-container>
-      <div>
-        <div class="py-2 mx-auto" style="width: 90%">
-          <v-btn dark color="primary" block class="my-1" @click="$router.push({ name: 'cart' })">
-            {{ $t("viewCart") }}
-          </v-btn>
-        </div>
-        <div class="my-1 mx-auto" style="width: 90%">
-          <v-btn dark color="primary" block class="my-2">
-            {{ $t("checkout") }}
-          </v-btn>
+
+        <div>
+          <div class="py-2 mx-auto" style="width: 90%">
+            <v-btn dark color="primary" block class="my-1" @click="$router.push({ name: 'cart' })">
+              {{ $t("viewCart") }}
+            </v-btn>
+          </div>
+          <div class="my-1 mx-auto" style="width: 90%">
+            <v-btn dark color="primary" block class="my-2">
+              {{ $t("checkout") }}
+            </v-btn>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div v-else>
+
+        <div class="text-h5 my-3">
+          No products in the cart.
+        </div>
+        <div class="my-3 mx-auto" style="width: 90%">
+          <v-btn dark color="primary" block class="my-2" @click="$router.push({ name: 'products' })">
+            shop
+          </v-btn>
+        </div>
+
+      </div>
+    </v-container>
   </div>
 </template>
 

@@ -12,7 +12,9 @@
         <Product :isFilter="false" />
       </v-container>
     </div>
+
     <Section />
+    <Connect />
   </div>
 </template>
 
@@ -22,10 +24,10 @@ import Category from "@/components/home/category.vue";
 import Product from "@/components/home/productsList.vue";
 import About from "@/components/home/about.vue";
 import Section from "@/components/home/section.vue";
-
+import Connect from "@/components/home/connect.vue";
 export default {
   name: "Home",
-  components: { gallary, Category, Product, About, Section },
+  components: { gallary, Category, Product, About, Section, Connect },
   data() {
     return {
       data: [],

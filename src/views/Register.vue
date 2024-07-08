@@ -10,18 +10,17 @@
       $t("createAccount")
               }}</h4>
             <v-form @submit.prevent="submit" ref="form" v-model="valid" lazy-validation>
-              <v-text-field v-model="name" :rules="[(v) => !!v || $t('fieldRequired')]" :label="$t('name')" filled
-                rounded>
+              <v-text-field v-model="name" :rules="[(v) => !!v || $t('fieldRequired')]" :label="$t('name')">
               </v-text-field>
               <v-text-field v-model="email" :label="$t('email')" :rules="[
                 (v) => !!v || $t('fieldRequired'),
                 (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-              ]" filled rounded></v-text-field>
+              ]"></v-text-field>
               <v-text-field v-model="password" :label="$t('password')" type="password"
-                :rules="[(v) => !!v || $t('fieldRequired')]" filled rounded></v-text-field>
+                :rules="[(v) => !!v || $t('fieldRequired')]"></v-text-field>
 
               <v-card-actions class="d-flex justify-center">
-                <v-btn x-large color="primary" type="submit" rounded style="width: 100%;">
+                <v-btn x-large color="primary" type="submit" rounded style="width: 50%;">
                   {{ $t("signUp") }}
                 </v-btn>
               </v-card-actions>
