@@ -4,7 +4,8 @@
       <div class="text-h3 primary--text font-weight-bold" style="
           font-family: 'Cormorant Garamond', serif !important ;
           font-style: italic;
-          text-decoration: underline #ff9633; text-underline-offset: 15px;
+          text-decoration: underline #f4631b; text-underline-offset: 15px; 
+          
         ">
         {{ $t("gallary") }}
       </div>

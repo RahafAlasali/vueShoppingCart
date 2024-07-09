@@ -4,7 +4,9 @@
       <v-col cols="12" sm="6">
         <div class="d-sm-flex justify-sm-end d-block justify-center px-6 text-sm-right align-center">
           <div>
-            <div class="primary--text">{{ $t("about") }}</div>
+            <div class="primary--text" style="text-decoration: underline #f4631b;
+    text-underline-offset: 5px;
+    font-size: x-large;">{{ $t("about") }}</div>
             <div class="mt-4" data-aos="fade-right" data-aos-duration="700" data-aos-delay="100">
               <h2 class="about-header about-desc" style="font-family: cursive; font-size: xx-large">
                 {{ $t("wordsAboutStore") }}

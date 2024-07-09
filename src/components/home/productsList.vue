@@ -4,7 +4,7 @@
     <div class="text-h3 text-center my-3 pb-6 primary--text font-weight-bold" style="
         font-family: 'Cormorant Garamond', serif !important ;
         font-style: italic;
-        text-decoration: underline #ff9633; text-underline-offset: 10px;
+        text-decoration: underline #f4631b; text-underline-offset: 10px;
       " data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="400">
       {{ $t("product") }}
     </div>

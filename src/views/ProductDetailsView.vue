@@ -170,9 +170,9 @@ export default {
       },
       array: [
         {
-          icon: "mdi-cart",
-          title: "Return Delivery",
-          subtitle: "Free 30 days Delivery Returns",
+          icon: "mdi-van-utility",
+          title: "Fast shipping",
+          subtitle: "Get your product fast",
         },
         {
           icon: "mdi-cart",

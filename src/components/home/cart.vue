@@ -56,11 +56,11 @@
 
       <div v-else>
 
-        <div class="text-h5 my-3">
+        <div class="text-h5 my-3 py-6">
           No products in the cart.
         </div>
-        <div class="my-3 mx-auto" style="width: 90%">
-          <v-btn dark color="primary" block class="my-2" @click="$router.push({ name: 'products' })">
+        <div class="my-3 mx-auto " style="width: 90%">
+          <v-btn dark color="primary" block class="my-5" @click="$router.push({ name: 'products' })">
             shop
           </v-btn>
         </div>
