@@ -56,7 +56,6 @@
                     label="Description"
                     v-model="product.description"
                     :rules="[(v) => !!v || $t('fieldRequired')]"
-                    hide-details
                   ></v-textarea>
                 </v-col>
               </v-row>

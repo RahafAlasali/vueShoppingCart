@@ -1,14 +1,24 @@
 <template>
   <div class="my-3">
-    <div class="text-h4 mb-2" style="color: transparent;
-    background-clip: text;
-    background-image: linear-gradient(to right, #8fb9aac4, #05453e, #8fb9aac4, #05453e);font-weight: bold">Products
+    <div class="text-h4 mb-2 primary--text" style="font-weight: bold">
+      Products
     </div>
 
-    <create-product :showDialog="dialogCreate" @colseDialogCreate="dialogCreate = false" />
+    <create-product
+      :showDialog="dialogCreate"
+      @colseDialogCreate="dialogCreate = false"
+    />
 
-    <edit-product :product="prodItem" :showDialog="dialog" @colseDialog="dialog = false" />
-    <Delete :showDialog="dialogDelete" @delete="() => confirmDelete()" @colseDialog="dialogDelete = false" />
+    <edit-product
+      :product="prodItem"
+      :showDialog="dialog"
+      @colseDialog="dialog = false"
+    />
+    <Delete
+      :showDialog="dialogDelete"
+      @delete="() => confirmDelete()"
+      @colseDialog="dialogDelete = false"
+    />
 
     <data-table @edit="editItem" @delete="deleteItem" @create="createItem" />
   </div>

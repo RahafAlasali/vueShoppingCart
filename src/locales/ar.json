@@ -24,8 +24,8 @@
     "wordsAboutStore": "معلومات عن متجرنا",
     "checkout": "الدفع",
     "viewCart": "سلة التسوق",
-    "logOut": "log out",
-    "profile": "profile",
+    "logOut": "نسجيل الخروج",
+    "profile": "الملف الشخصي",
     "addCart": "إضافة للسلة",
     "total": "المجموع",
     "subtotal": "المجموع الفرعي",
@@ -39,9 +39,11 @@
     "thankForOrder": "Thank you for your order!",
     "alreadyHaveAccount": "لديك حساب",
     "signUp": "تسجيل",
-    "createAccount": "إنشاء حساب جديد",
+    "createAccount": "إنشاء حساب",
     "viewCollection": "تسوق الان",
     "description": "الوصف",
-    "cart": "cart",
-    "dashboard": "Dashboard"
+    "cart": "Cart",
+    "dashboard": "Dashboard",
+    "cartDetails": "التفاصيل",
+    "title": "الوصف"
 }

@@ -6,7 +6,6 @@
           <!-- <template v-slot:item="{ item }">
             <v-icon class="black--text" dark> {{ item.icon }}</v-icon>
           </template> -->
-
         </v-breadcrumbs>
       </div>
       <Product :isFilter="true" />
@@ -34,7 +33,6 @@ export default {
           text: this.$i18n.t("product"),
           disabled: false,
           href: "",
-
         },
       ],
     };

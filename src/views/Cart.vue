@@ -11,9 +11,11 @@
               <thead class="grey lighten-3 text-h4">
                 <tr>
                   <th class="text-center" style="font-size: large"></th>
-                  <th class="text-center" style="font-size: large"></th>
                   <th class="text-center" style="font-size: large">
                     {{ $t("product") }}
+                  </th>
+                  <th class="text-center" style="font-size: large">
+                    {{ $t("title") }}
                   </th>
                   <th class="text-center" style="font-size: large">
                     {{ $t("price") }}
@@ -37,7 +39,13 @@
                   </td>
                   <td>
                     <div>
-                      <v-img class="my-2" max-height="80px" max-width="80px" contain :src="item.image">
+                      <v-img
+                        class="my-2"
+                        max-height="80px"
+                        max-width="80px"
+                        contain
+                        :src="item.image"
+                      >
                       </v-img>
                     </div>
                   </td>
@@ -58,9 +66,10 @@
             </template>
           </v-simple-table>
         </v-col>
-        <v-col cols="12" lg="4" sm="6"><v-card elevation="0" class="pb-4" style="border: 1px solid #e0e0e0">
+        <v-col cols="12" lg="4" sm="6"
+          ><v-card elevation="0" class="pb-4" style="border: 1px solid #e0e0e0">
             <v-card-title class="grey lighten-3">
-              {{ $t("total") }}
+              {{ $t("cartDetails") }}
             </v-card-title>
             <v-card-text class="py-4 px-7">
               <v-row class="py-2 body-1">

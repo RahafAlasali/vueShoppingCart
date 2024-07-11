@@ -34,21 +34,37 @@
 
             <div class="d-flex justify-start align-center my-4">
               <div class="d-flex mx-2 input-add">
-                <v-text-field dense v-model="quantity" hide-details outlined style="width: 110px">
-                  <v-icon slot="append" @click="
-                    quantity == 20 ? quantity : (quantity = +quantity + 1)
-                    ">
+                <v-text-field
+                  dense
+                  v-model="quantity"
+                  hide-details
+                  outlined
+                  style="width: 110px"
+                >
+                  <v-icon
+                    slot="append"
+                    @click="
+                      quantity == 20 ? quantity : (quantity = +quantity + 1)
+                    "
+                  >
                     mdi-plus
                   </v-icon>
-                  <v-icon slot="prepend-inner" @click="
-                    quantity == 1 ? quantity : (quantity = +quantity - 1)
-                    ">
+                  <v-icon
+                    slot="prepend-inner"
+                    @click="
+                      quantity == 1 ? quantity : (quantity = +quantity - 1)
+                    "
+                  >
                     mdi-minus
                   </v-icon>
                 </v-text-field>
               </div>
               <div class="container">
-                <button class="checkout-btn" style="background: primary" @click="() => add(product)">
+                <button
+                  class="checkout-btn"
+                  style="background: primary"
+                  @click="() => add(product)"
+                >
                   <v-icon dark class="checkout-btn__icon">mdi-cart</v-icon>
                   <span class="checkout-btn__text"> {{ $t("addCart") }} </span>
                   <span class="checkout-btn__success">
@@ -102,17 +118,35 @@
               <v-form>
                 <v-row>
                   <v-col cols="4">
-                    <v-text-field v-model="form.name" label="Name" hide-details rounded filled></v-text-field>
+                    <v-text-field
+                      v-model="form.name"
+                      label="Name"
+                      hide-details
+                      rounded
+                      filled
+                    ></v-text-field>
                   </v-col>
 
                   <v-col cols="4">
-                    <v-text-field v-model="form.email" label="Email" hide-details rounded filled></v-text-field>
+                    <v-text-field
+                      v-model="form.email"
+                      label="Email"
+                      hide-details
+                      rounded
+                      filled
+                    ></v-text-field>
                   </v-col>
                 </v-row>
                 <v-row>
                   <v-col cols="3">
-                    <v-rating color="primary" background-color="primary" hover length="5" size="30"
-                      v-model="form.rate"></v-rating>
+                    <v-rating
+                      color="primary"
+                      background-color="primary"
+                      hover
+                      length="5"
+                      size="30"
+                      v-model="form.rate"
+                    ></v-rating>
                   </v-col>
                 </v-row>
               </v-form>
@@ -124,14 +158,23 @@
 
     <div class="py-5" style="background-color: #fafafa">
       <v-container>
-        <div class="text-sm-h3 my-3 primary--text font-weight-bold" style="font-family: cursive">
+        <div
+          class="text-sm-h3 my-3 primary--text font-weight-bold"
+          style="font-family: cursive"
+        >
           {{ $t("relatedProduct") }}
         </div>
 
         <div>
           <v-slide-group show-arrows>
             <v-slide-item v-for="(item, index) in items" :key="index">
-              <v-card flat color="transparent" :height="500" class="mx-3 my-2" max-width="212">
+              <v-card
+                flat
+                color="transparent"
+                :height="500"
+                class="mx-3 my-2"
+                max-width="212"
+              >
                 <product-item :item="item" @viewPrd="showPrd" />
               </v-card>
             </v-slide-item>
@@ -246,7 +289,7 @@ export default {
         this.checkoutTL.pause();
       }, 4000);
 
-      this.$toast.success("Added to cart successfully");
+      this.$toast.success("Added to cart");
     },
   },
   mounted() {

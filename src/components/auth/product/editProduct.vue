@@ -118,7 +118,7 @@ export default {
         this.editProduct({ id: this.product.id, product: proEdit });
         this.$emit("colseDialog");
         this.loading = false;
-        this.$toast.success(" successfully");
+        this.$toast.success("successfully");
       }
     },
   },

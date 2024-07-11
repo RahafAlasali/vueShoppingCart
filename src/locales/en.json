@@ -3,7 +3,7 @@
         "title": "Explore our comprehensive range of products ",
         "description": "world of endless possibilities for online shopping."
     },
-    "gallary": "gallary",
+    "gallary": "Gallary",
     "details": "details",
     "product": "Product",
     "home": "Home",
@@ -43,5 +43,7 @@
     "viewCollection": "View Collection",
     "description": "Description",
     "cart": "Cart",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "cartDetails": "Cart Details",
+    "title": "Title"
 }
