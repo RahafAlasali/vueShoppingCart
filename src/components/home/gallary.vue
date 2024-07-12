@@ -1,6 +1,6 @@
 <template>
   <div class="text-center mt-7 pt-4" style="position: relative">
-    <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">
+    <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="50">
       <div class="text-h3 primary--text font-weight-bold header-text">
         {{ $t("gallary") }}
       </div>

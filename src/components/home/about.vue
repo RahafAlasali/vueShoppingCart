@@ -16,7 +16,7 @@
               class="mt-4"
               data-aos="fade-right"
               data-aos-duration="700"
-              data-aos-delay="100"
+              data-aos-delay="50"
             >
               <h2
                 class="about-header about-desc"
@@ -38,11 +38,11 @@
             {{ $t("aboutTitle") }}
           </div>
           <div
-            class="subtitle-1 about-prgrph"
+            class="subtitle-1"
             data-aos="fade-up"
             data-aos-easing="linear"
-            data-aos-duration="800"
-            data-aos-delay="200"
+            data-aos-duration="400"
+            data-aos-delay="80"
           >
             {{ $t("aboutDescription") }}
           </div>

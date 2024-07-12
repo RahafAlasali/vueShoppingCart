@@ -4,7 +4,7 @@
       <div
         data-aos="zoom-in"
         data-aos-duration="1500"
-        data-aos-delay="100"
+        data-aos-delay="50"
         class="text-h3 my-6 text-center primary--text font-weight-bold header-text"
       >
         Get In Touch

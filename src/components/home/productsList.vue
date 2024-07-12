@@ -1,21 +1,33 @@
 <template>
   <div class="pb-7">
     <img-prd :img="img" :overlay="overlay" @close="closed" />
-    <div class="text-h3 text-center my-3 pb-6 primary--text font-weight-bold" style="
+    <div
+      class="text-h3 text-center my-3 pb-6 primary--text font-weight-bold"
+      style="
         font-family: 'Cormorant Garamond', serif !important ;
         font-style: italic;
-        text-decoration: underline #f4631b; text-underline-offset: 10px;
-      " data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="400">
+        text-decoration: underline #f4631b;
+        text-underline-offset: 10px;
+      "
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-delay="50"
+    >
       {{ $t("product") }}
     </div>
 
-    <div v-if="isFilter" class="my-3 py-2 d-flex justify-start ml-4">
+    <div class="my-3 py-2 d-flex justify-start ml-4">
       <div class="mx-3">
         <v-btn color="primary" dark @click="filterBycat('all')">
           {{ $t("all") }}
         </v-btn>
       </div>
-      <v-menu bottom offset-y origin="center center" transition="scale-transition">
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
+      >
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on">
             <v-icon class="px-1 white--text"> mdi-filter-variant </v-icon>
@@ -24,7 +36,12 @@
         </template>
 
         <v-list>
-          <v-list-item link v-for="(item, index) in categories " :key="index" class="item-filter">
+          <v-list-item
+            link
+            v-for="(item, index) in categories"
+            :key="index"
+            class="item-filter"
+          >
             <v-list-item-title @click="() => filterBycat(item)">{{
               item
             }}</v-list-item-title>
@@ -38,9 +55,20 @@
 
     <div class="mb-7">
       <v-slide-group show-arrows class="slider slide-style" center-active>
-        <v-slide-item v-for="(item, index) in productsFilter" :key="index" v-slot="{ toggle }">
-          <v-card flat color="transparent" :max-height="400" class="mx-3 my-2" max-width="212" :ripple="false"
-            @click="toggle">
+        <v-slide-item
+          v-for="(item, index) in productsFilter"
+          :key="index"
+          v-slot="{ toggle }"
+        >
+          <v-card
+            flat
+            color="transparent"
+            :max-height="400"
+            class="mx-3 my-2"
+            max-width="212"
+            :ripple="false"
+            @click="toggle"
+          >
             <product-item :item="item" @viewPrd="showPrd" />
           </v-card>
         </v-slide-item>
@@ -61,7 +89,7 @@ export default {
     Loader,
     ImgPrd,
   },
-  props: ["items", "isFilter"],
+  props: ["items"],
   // type , required
 
   data() {
@@ -128,12 +156,12 @@ export default {
 
 .item-filter:hover {
   background-color: #05453e;
-  color: #FFF !important
+  color: #fff !important;
 }
 </style>
 <style scoped>
 .v-list-item:hover {
   background-color: #05453e;
-  color: #FFF !important
+  color: #fff !important;
 }
 </style>

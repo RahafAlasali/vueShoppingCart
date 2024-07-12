@@ -9,7 +9,7 @@
     <Category />
     <div class="py-5" style="background-color: #f1eeea">
       <v-container>
-        <Product :isFilter="false" />
+        <Product />
       </v-container>
     </div>
 
