@@ -153,7 +153,7 @@ export default {
           datasets: [{
             label: 'New Customers',
             data: [50, 75, 60, 90],
-            backgroundColor: '#673AB7'
+            backgroundColor: '#3d5a80'
           }]
         },
         options: {

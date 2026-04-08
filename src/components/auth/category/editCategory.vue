@@ -13,14 +13,6 @@
                                     <v-text-field dense label="Name" v-model="cat.name"
                                         :rules="[(v) => !!v || 'Field is required']" outlined></v-text-field>
                                 </v-col>
-
-                                <v-col class="py-0" cols="12">
-                                    <v-textarea dense label="Description" v-model="cat.description" rows="3"
-                                        outlined></v-textarea>
-                                </v-col>
-                                <v-col class="py-0" cols="12">
-                                    <v-text-field dense label="Image URL" v-model="cat.image" outlined></v-text-field>
-                                </v-col>
                             </v-row>
                         </v-form>
                     </v-container>
@@ -55,8 +47,6 @@ export default {
             valid: false,
             cat: {
                 name: "",
-                description: "",
-                image: "",
             },
         };
     },

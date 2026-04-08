@@ -14,14 +14,6 @@
                                     <v-text-field dense label="Name" v-model="category.name"
                                         :rules="[(v) => !!v || 'Field is required']" outlined></v-text-field>
                                 </v-col>
-                                <v-col class="py-0" cols="12">
-                                    <v-textarea dense label="Description" v-model="category.description" rows="3"
-                                        outlined></v-textarea>
-                                </v-col>
-                                <v-col class="py-0" cols="12">
-                                    <v-text-field dense label="Image URL" v-model="category.image"
-                                        outlined></v-text-field>
-                                </v-col>
                             </v-row>
                         </v-form>
                     </v-container>
@@ -52,8 +44,6 @@ export default {
             valid: false,
             category: {
                 name: "",
-                description: "",
-                image: "",
             },
         };
     },
@@ -66,8 +56,6 @@ export default {
         resetForm() {
             this.category = {
                 name: "",
-                description: "",
-                image: "",
             };
             this.valid = false;
             if (this.$refs.form) {

@@ -40,10 +40,8 @@ export default {
     data() {
         return {
             headers: [
-                { text: "id", value: "id", align: "center" },
-
+                { text: "ID", value: "id", align: "center" },
                 { text: "Name", value: "name", align: "center" },
-                { text: "Description", value: "description", align: "center" },
                 { text: "Actions", value: "actions", sortable: false },
             ],
             search: null,

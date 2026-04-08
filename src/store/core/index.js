@@ -38,7 +38,7 @@ export default {
         .then((res) => {
           commit("setProducts", res.data);
         })
-        .catch((e) => {});
+        .catch((e) => { });
     },
     async getUsers({ commit }) {
       await axios.get("https://fakestoreapi.com/users").then((res) => {
@@ -61,9 +61,14 @@ export default {
       await axios
         .get("https://fakestoreapi.com/products/categories")
         .then((res) => {
-          commit("setCategories", res.data);
+          const categories = res.data.map((name, index) => ({
+            id: index + 1,
+            name: name,
+            description: ''
+          }));
+          commit("setCategories", categories);
         })
-        .catch((e) => {});
+        .catch((e) => { });
     },
     async addProduct({ commit }, product) {
       await axios
@@ -117,38 +122,27 @@ export default {
           state.users.splice(index, 1);
         });
     },
-    async addCategory({ commit }, category) {
-      await axios
-        .post("https://fakestoreapi.com/products/categories", category, {
-          Headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          commit("setCategories", res.data);
-        });
+    async addCategory({ commit, state }, category) {
+      // Mock add: FakeStoreAPI doesn't support POST categories, add locally
+      const newCat = {
+        id: state.categories.length + 1,
+        name: category.name
+      };
+      state.categories.push(newCat);
+      commit("setCategories", [...state.categories]);
     },
     async editCategory({ commit, state }, { name, category }) {
-      await axios
-        .put(`https://fakestoreapi.com/products/categories/${name}`, category, {
-          Headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          commit("setCategories", res.data);
-        });
+      // Optimistic update: FakeStoreAPI doesn't support category edits, update local state
+      const index = state.categories.findIndex(cat => cat === name);
+      if (index !== -1) {
+        state.categories[index] = category;
+        commit("setCategories", [...state.categories]);
+      }
     },
     async deleteCategory({ commit, state }, name) {
-      await axios
-        .delete(`https://fakestoreapi.com/products/categories/${name}`, {
-          Headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          commit("setCategories", res.data);
-        });
+      // Mock delete: FakeStoreAPI doesn't support DELETE categories, remove locally  
+      state.categories = state.categories.filter(cat => cat.name !== name);
+      commit("setCategories", state.categories);
     },
   },
 };
