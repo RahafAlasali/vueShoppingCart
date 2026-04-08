@@ -138,7 +138,7 @@ export default {
           labels: ['Electronics', 'Clothing', 'Home', 'Books'],
           datasets: [{
             data: [30, 20, 15, 35],
-            backgroundColor: ['#2196F3', '#FF9800', '#9C27B0', '#4CAF50']
+            backgroundColor: ['#a5a58d', '#98c1d9', '#2c7da0', '#4f5d75']
           }]
         },
         options: { responsive: true, maintainAspectRatio: false }
