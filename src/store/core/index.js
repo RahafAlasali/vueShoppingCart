@@ -61,18 +61,9 @@ export default {
       await axios
         .get("https://fakestoreapi.com/products/categories")
         .then((res) => {
-          // API returns array of strings, transform to objects with id, name, image, description
-          const transformedData = res.data.map((cat, index) => ({
-            id: index + 1,
-            name: cat,
-            image: `https://via.placeholder.com/150?text=${encodeURIComponent(cat)}`,
-            description: `${cat} category`,
-          }));
-          commit("setCategories", transformedData);
+          commit("setCategories", res.data);
         })
-        .catch((e) => {
-          console.error("Error fetching categories:", e);
-        });
+        .catch((e) => {});
     },
     async addProduct({ commit }, product) {
       await axios
@@ -126,7 +117,7 @@ export default {
           state.users.splice(index, 1);
         });
     },
-    async addCategory({ commit, state }, category) {
+    async addCategory({ commit }, category) {
       await axios
         .post("https://fakestoreapi.com/products/categories", category, {
           Headers: {
@@ -134,14 +125,7 @@ export default {
           },
         })
         .then((res) => {
-          // Add the new category to state with transformed structure
-          const newCat = {
-            id: state.categories.length + 1,
-            name: res.data.name || category.name,
-            image: res.data.image || category.image || `https://via.placeholder.com/150?text=${encodeURIComponent(category.name)}`,
-            description: res.data.description || category.description || `${category.name} category`,
-          };
-          state.categories.push(newCat);
+          commit("setCategories", res.data);
         });
     },
     async editCategory({ commit, state }, { name, category }) {
@@ -152,14 +136,7 @@ export default {
           },
         })
         .then((res) => {
-          // Update the category in state
-          const index = state.categories.findIndex((item) => item.name === name);
-          if (index !== -1) {
-            state.categories.splice(index, 1, {
-              ...state.categories[index],
-              ...category,
-            });
-          }
+          commit("setCategories", res.data);
         });
     },
     async deleteCategory({ commit, state }, name) {
@@ -170,18 +147,7 @@ export default {
           },
         })
         .then((res) => {
-          // Remove the deleted category from state
-          const index = state.categories.findIndex((item) => item.name === name);
-          if (index !== -1) {
-            state.categories.splice(index, 1);
-          }
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            console.error("Category not found");
-          } else {
-            console.error("Error deleting category:", error);
-          }
+          commit("setCategories", res.data);
         });
     },
   },
