@@ -68,6 +68,13 @@ const routes = [
           requiresAuth: true,
         },
       },
+      {
+        path: "categories",
+        component: () => import("@/views/admin/Category.vue"),
+        meta: {
+          requiresAuth: true,
+        },
+      },
     ],
   },
 

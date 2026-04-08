@@ -21,7 +21,7 @@ export default {
       links: [
         { title: "Dashboard", icon: "mdi-home-outline", to: "/dashboard" },
         { title: "Products", icon: "mdi-view-quilt", to: "/dashboard/products" },
-        { title: "categories", icon: "mdi-tag-outline" },
+        { title: "Categories", icon: "mdi-tag-outline", to: "/dashboard/categories" },
         { title: "Users", icon: "mdi-account-outline", to: "/dashboard/users" },
         { title: "Settings", icon: "mdi-cog-outline" },
       ],

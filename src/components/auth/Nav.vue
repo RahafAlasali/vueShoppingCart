@@ -3,20 +3,58 @@
     <div class="d-flex mb-2">
       <div class="text-h5 grey--text">Welcome</div>
       <v-spacer></v-spacer>
-      <v-text-field
-        solo
-        label="Search"
-        class="mx-4"
-        prepend-inner-icon="mdi-magnify"
-        style="max-width: 200px"
-        hide-details
-        dense
-      ></v-text-field>
-      <v-btn class="mx-3 button-bell" icon elevation="4"
+      <v-text-field solo label="Search" class="mx-4" prepend-inner-icon="mdi-magnify" style="max-width: 200px"
+        hide-details dense></v-text-field>
+      <!-- <v-btn class="mx-3 button-bell" icon elevation="4"
         ><v-badge overlap content="2" value="2">
           <v-icon> mdi-bell</v-icon>
         </v-badge>
-      </v-btn>
+      </v-btn> -->
+      <!-- ADD THIS NEW BLOCK immediately after the Cart button -->
+      <v-menu v-model="notificationMenu" bottom offset-y origin="top center" transition="scale-transition"
+        min-width="300">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-on="on" v-bind="attrs" class="mx-3">
+            <v-badge :content="notifications.length" :value="notifications.length" color="error">
+              <v-icon>mdi-bell</v-icon>
+            </v-badge>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <!-- Empty State -->
+          <v-list-item v-if="notifications.length === 0">
+            <v-list-item-title class="text-center grey--text">
+              No notifications
+            </v-list-item-title>
+          </v-list-item>
+
+          <!-- Notification Items -->
+          <v-list-item v-for="(notification, index) in notifications" :key="index" link
+            @click="handleNotification(notification)">
+            <v-list-item-avatar>
+              <v-icon
+                :color="notification.type === 'success' ? 'green' : notification.type === 'warning' ? 'orange' : 'blue'">
+                {{ notification.icon || 'mdi-information' }}
+              </v-icon>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title>{{ notification.title }}</v-list-item-title>
+              <v-list-item-subtitle>{{ notification.message }}</v-list-item-subtitle>
+              <v-list-item-subtitle class="caption grey--text">{{ notification.time }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+
+          <!-- Clear All Button -->
+          <v-divider v-if="notifications.length > 0"></v-divider>
+          <v-list-item v-if="notifications.length > 0" link @click="clearNotifications">
+            <v-list-item-title class="text-center primary--text">
+              Clear All
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <v-menu open-on-hover bottom offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-on="on" v-bind="attrs">
@@ -55,8 +93,49 @@ export default {
       localStorage.removeItem("token");
       this.$router.push("/");
     },
+    handleNotification(notification) {
+      console.log("Clicked:", notification);
+      this.notificationMenu = false;
+      // Add navigation logic here if needed
+    },
+    clearNotifications() {
+      this.notifications = [];
+      this.notificationMenu = false;
+    },
   },
-};
+  data() {
+    return {
+      drawer: true,
+      drawerCart: false,
+
+      // ADD THESE TWO LINES:
+      notificationMenu: false,
+      notifications: [
+        {
+          title: "New Order",
+          message: "You have a new order #1234",
+          time: "5 mins ago",
+          type: "success",
+          icon: "mdi-cart-check"
+        },
+        {
+          title: "Low Stock",
+          message: "Product XYZ is running low",
+          time: "1 hour ago",
+          type: "warning",
+          icon: "mdi-alert"
+        },
+        {
+          title: "Welcome",
+          message: "Welcome to Shop Hub!",
+          time: "2 hours ago",
+          type: "info",
+          icon: "mdi-information"
+        }
+      ],
+    }
+  }
+}
 </script>
 
 <style>
@@ -65,6 +144,7 @@ export default {
 }
 
 @keyframes bellRing {
+
   0%,
   100% {
     transform-origin: top;
