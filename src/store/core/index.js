@@ -117,5 +117,38 @@ export default {
           state.users.splice(index, 1);
         });
     },
+    async addCategory({ commit }, category) {
+      await axios
+        .post("https://fakestoreapi.com/products/categories", category, {
+          Headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          commit("setCategories", res.data);
+        });
+    },
+    async editCategory({ commit, state }, { name, category }) {
+      await axios
+        .put(`https://fakestoreapi.com/products/categories/${name}`, category, {
+          Headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          commit("setCategories", res.data);
+        });
+    },
+    async deleteCategory({ commit, state }, name) {
+      await axios
+        .delete(`https://fakestoreapi.com/products/categories/${name}`, {
+          Headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          commit("setCategories", res.data);
+        });
+    },
   },
 };

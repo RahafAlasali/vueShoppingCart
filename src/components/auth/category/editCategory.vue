@@ -71,13 +71,13 @@ export default {
         },
     },
     methods: {
-        ...mapActions("core", ["updateCategory"]),
+        ...mapActions("core", ["editCategory"]),
         closeDialog() {
             this.$emit("colseDialog");
         },
         save() {
             if (this.$refs.form.validate()) {
-                this.updateCategory({ ...this.cat });
+                this.editCategory({ name: this.cat.name, category: { ...this.cat } });
                 this.$toast.success("Category updated successfully");
                 this.closeDialog();
             }
