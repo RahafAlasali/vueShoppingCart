@@ -17,11 +17,7 @@
                 </div>
             </template>
 
-            <template v-slot:item.image="{ item }">
-                <v-avatar size="40">
-                    <v-img :src="item.image || 'https://via.placeholder.com/40'" contain></v-img>
-                </v-avatar>
-            </template>
+
 
             <template v-slot:item.actions="{ item }">
                 <v-icon small class="mr-2" @click="() => edit(item)">
@@ -45,7 +41,7 @@ export default {
         return {
             headers: [
                 { text: "id", value: "id", align: "center" },
-                { text: "Image", value: "image", align: "center" },
+
                 { text: "Name", value: "name", align: "center" },
                 { text: "Description", value: "description", align: "center" },
                 { text: "Actions", value: "actions", sortable: false },
