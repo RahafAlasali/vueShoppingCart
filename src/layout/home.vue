@@ -1,26 +1,14 @@
 <template>
   <div style="position: relative">
-    <Slide />
+    <Slide v-if="showSlide" />
     <nav-bar />
     <!-- <v-container> -->
 
     <router-view />
 
     <!-- </v-container> -->
-    <v-btn
-      class="md-5 mr-3 elevation-21"
-      dark
-      fab
-      button
-      bottom
-      right
-      color="primary"
-      fixed
-      v-show="showGoToTop"
-      v-scroll="onScroll"
-      @click="top"
-      ><v-icon> mdi-chevron-up</v-icon></v-btn
-    >
+    <v-btn class="md-5 mr-3 elevation-21" dark fab button bottom right color="primary" fixed v-show="showGoToTop"
+      v-scroll="onScroll" @click="top"><v-icon> mdi-chevron-up</v-icon></v-btn>
     <Footer />
   </div>
 </template>
@@ -43,6 +31,9 @@ export default {
     },
     showGoToTop() {
       return this.offsetTop > 600;
+    },
+    showSlide() {
+      return this.$route.name === "home" || this.$route.name === "products";
     },
   },
   watch: {

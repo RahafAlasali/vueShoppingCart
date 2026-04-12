@@ -3,6 +3,10 @@
     <div class="d-flex mb-2">
       <div class="text-h5 grey--text">Welcome</div>
       <v-spacer></v-spacer>
+      <v-btn outlined small rounded class="mr-2" to="/about">
+        <v-icon left small>mdi-information</v-icon>
+        About
+      </v-btn>
       <v-text-field solo label="Search" class="mx-4" prepend-inner-icon="mdi-magnify" style="max-width: 200px"
         hide-details dense></v-text-field>
       <!-- <v-btn class="mx-3 button-bell" icon elevation="4"
@@ -169,5 +173,10 @@ export default {
   75% {
     transform: rotateZ(2deg);
   }
+}
+
+::v-deep .v-badge__badge {
+  border-width: 1px !important;
+  border-style: solid !important;
 }
 </style>

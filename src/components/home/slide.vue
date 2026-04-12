@@ -1,16 +1,12 @@
 <template>
   <div>
-    <v-img height="100vh" src="@/assets/head.jpg"
-      ><v-overlay absolute>
+    <v-img height="100vh" src="@/assets/head.jpg"><v-overlay absolute>
         <v-container>
           <div class="text-center mx-auto" style="width: 80%">
-            <div
-              class="my-5 text-sm-h3 text-h5 Gsap"
-              style="
+            <div class="my-5 text-sm-h3 text-h5 Gsap" style="
                 font-family: 'Cormorant Garamond', serif !important ;
                 font-style: italic;
-              "
-            >
+              ">
               {{ $t("intro.title") }}
             </div>
             <div class="my-5">

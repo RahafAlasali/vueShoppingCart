@@ -45,5 +45,22 @@
     "cart": "Cart",
     "dashboard": "Dashboard",
     "cartDetails": "Cart Details",
-    "title": "Title"
+    "title": "Title",
+    "welcomeTo": "Welcome To",
+    "aboutUs": "About Us",
+    "aboutHeroDesc": "Shop Hub is your one-stop destination for quality products at competitive prices. We believe in providing an exceptional shopping experience.",
+    "aboutSubtitle": "LEARN MORE ABOUT US",
+    "missionVision": "Mission & Vision",
+    "ourMission": "Our Mission",
+    "missionDesc": "Providing a diverse selection of products and exceptional customer service to be your go-to destination for all your online shopping needs.",
+    "ourVision": "Our Vision",
+    "visionDesc": "To revolutionize online shopping by creating a space where you can explore, discover and find exactly what you are looking for.",
+    "readMore": "Read More",
+    "ourServices": "Services",
+    "onlineShopping": "Online Shopping",
+    "onlineShoppingDesc": "Browse and purchase a wide range of quality products from the comfort of your home",
+    "fastDelivery": "Fast Delivery",
+    "fastDeliveryDesc": "Quick and reliable shipping to your doorstep with real-time order tracking",
+    "customerSupport": "Customer Support",
+    "customerSupportDesc": "24/7 dedicated support team ready to assist you with any queries or concerns"
 }

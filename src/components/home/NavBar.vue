@@ -1,25 +1,16 @@
 <template>
   <div>
-    <div style="position: absolute; top: 0; width: 100%">
-      <v-toolbar
-        dark
-        class="px-sm-4 primary--text text-uppercase"
-        style="background: transparent"
-      >
-        <v-app-bar-nav-icon
-          class="d-block d-md-none"
-          @click="drawer = !drawer"
-        ></v-app-bar-nav-icon>
+    <div style="position: fixed; top: 0; width: 100%; z-index: 1000; transition: background 0.3s"
+      :class="{ 'navbar-scrolled': isScrolled }">
+      <v-toolbar dark class="px-sm-4 primary--text text-uppercase"
+        :style="{ background: isScrolled ? '#05453e' : 'transparent' }">
+        <v-app-bar-nav-icon class="d-block d-md-none" @click="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title class="text-h5">
-          <router-link
-            to="/"
-            class="white--text"
-            style="
+          <router-link to="/" class="white--text" style="
               text-decoration: none;
               font-family: cursive;
               font-size: large;
-            "
-          >
+            ">
             Shop
             <span class="primary--text"> Hub</span>
           </router-link>
@@ -27,15 +18,8 @@
 
         <v-spacer></v-spacer>
         <v-list class="d-md-flex d-none">
-          <v-list-item
-            v-for="link in links"
-            :ripple="false"
-            link
-            :to="link.to"
-            :key="link.title"
-          >
-            <v-list-item-content
-              ><v-list-item-title>
+          <v-list-item v-for="link in links" :ripple="false" link :to="link.to" :key="link.title">
+            <v-list-item-content><v-list-item-title>
                 {{ $t(link.title) }}
               </v-list-item-title>
             </v-list-item-content>
@@ -43,49 +27,27 @@
         </v-list>
         <v-spacer></v-spacer>
 
-        <v-select
-          hide-details="auto"
-          dense
-          outlined
-          v-model="$i18n.locale"
-          :items="lang"
-          placeholder="language"
-          style="max-width: 80px"
-          class="d-md-flex d-none"
-          :menu-props="{ bottom: true, offsetY: true }"
-        >
+        <v-select hide-details="auto" dense outlined v-model="$i18n.locale" :items="lang" placeholder="language"
+          style="max-width: 80px" class="d-md-flex d-none" :menu-props="{ bottom: true, offsetY: true }">
         </v-select>
         <div class="mx-1">
           <router-link class="mx-1" v-if="!isLogin" :to="{ name: 'login' }">
             <v-btn icon small>
               <v-icon> mdi-account</v-icon>
-            </v-btn></router-link
-          >
-          <v-menu
-            v-else
-            open-on-hover
-            bottom
-            offset-y
-            origin="top center"
-            transition="scale-transition"
-          >
+            </v-btn></router-link>
+          <v-menu v-else open-on-hover bottom offset-y origin="top center" transition="scale-transition">
             <template v-slot:activator="{ on, attrs }">
               <v-btn icon v-on="on" v-bind="attrs">
                 <v-avatar size="40">
-                  <img
-                    src="https://cdn.vuetifyjs.com/images/john.jpg"
-                    alt="John"
-                  />
+                  <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
                 </v-avatar>
               </v-btn>
             </template>
 
             <v-list>
               <v-list-item link>
-                <v-list-item-title
-                  @click="$router.push({ name: 'dashboard' })"
-                  >{{ $t("dashboard") }}</v-list-item-title
-                >
+                <v-list-item-title @click="$router.push({ name: 'dashboard' })">{{ $t("dashboard")
+                }}</v-list-item-title>
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item link>
@@ -96,29 +58,17 @@
             </v-list>
           </v-menu>
 
-          <v-btn class="mx-1" icon small @click="drawerCart = !drawerCart"
-            ><v-badge :content="quantity" :value="quantity" color="primary">
+          <v-btn class="mx-1" icon small @click="drawerCart = !drawerCart"><v-badge :content="quantity"
+              :value="quantity" color="primary">
               <v-icon> mdi-cart</v-icon>
             </v-badge>
           </v-btn>
         </div>
       </v-toolbar>
     </div>
-    <v-navigation-drawer
-      width="400"
-      class="text-uppercase pa-2"
-      :class="{ 'd-none': !drawerCart }"
-      v-model="drawerCart"
-      absolute
-      :right="!isRtl"
-      temporary
-      app
-    >
-      <Cart
-        :items="shoppingCarts"
-        :show="drawerCart"
-        @close="drawerCart = false"
-      />
+    <v-navigation-drawer width="400" class="text-uppercase pa-2" :class="{ 'd-none': !drawerCart }" v-model="drawerCart"
+      absolute :right="!isRtl" temporary app>
+      <Cart :items="shoppingCarts" :show="drawerCart" @close="drawerCart = false" />
     </v-navigation-drawer>
   </div>
 </template>
@@ -136,16 +86,27 @@ export default {
       drawer: true,
       drawerCart: false,
       lang: ["ar", "en"],
+      isScrolled: false,
       links: [
         { title: "home", to: "/" },
         { title: "shop", to: "/products" },
+        { title: "about", to: "/about" },
         { title: "contact" },
-        { title: "about" },
       ],
     };
   },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
   methods: {
     ...mapMutations("auth", ["setLogin"]),
+
+    handleScroll() {
+      this.isScrolled = window.scrollY > 50;
+    },
 
     logout() {
       this.setLogin(false);
@@ -179,5 +140,9 @@ export default {
 
 .theme--dark.v-list {
   background-color: transparent;
+}
+
+.navbar-scrolled {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 </style>
