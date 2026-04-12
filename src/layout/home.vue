@@ -33,7 +33,7 @@ export default {
       return this.offsetTop > 600;
     },
     showSlide() {
-      return this.$route.name === "home" || this.$route.name === "products";
+      return this.$route.name === "home" || this.$route.name === "products" || this.$route.name === "cart";
     },
   },
   watch: {

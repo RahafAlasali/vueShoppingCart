@@ -11,28 +11,18 @@
 
       <div v-if="items.length != 0">
         <v-list nav flat>
-          <v-list-item
-            class="py-2 align-center"
-            v-for="(item, index) in $props.items"
-            :key="index"
-          >
+          <v-list-item class="py-2 align-center" v-for="(item, index) in $props.items" :key="index">
             <div style="width: 100px; height: 100px">
-              <v-img
-                width="100%"
-                height="100%"
-                contain
-                :src="item.image"
-              ></v-img>
+              <v-img width="100%" height="100%" contain :src="item.image"></v-img>
             </div>
             <v-list-item-content class="font-weight-bold mx-1">
               <v-list-item-title style="white-space: unset">{{
                 item.title
               }}</v-list-item-title>
               <v-list-item-subtitle>
-                {{ currency(item.price) }} X{{
+                {{ currency(item.price || 0) }} X{{
                   item.quantity
-                }}</v-list-item-subtitle
-              >
+                }}</v-list-item-subtitle>
             </v-list-item-content>
             <div class="mx-1">
               <v-icon @click="() => removePrd(item.id)">
@@ -52,13 +42,7 @@
 
         <div>
           <div class="py-2 mx-auto" style="width: 90%">
-            <v-btn
-              dark
-              color="primary"
-              block
-              class="my-1"
-              @click="$router.push({ name: 'cart' })"
-            >
+            <v-btn dark color="primary" block class="my-1" @click="$router.push({ name: 'cart' })">
               {{ $t("viewCart") }}
             </v-btn>
           </div>
@@ -75,13 +59,7 @@
           Your cart is empty
         </div>
         <div class="my-3 mx-auto" style="width: 90%">
-          <v-btn
-            dark
-            color="primary"
-            block
-            class="my-5 text-capitalize"
-            @click="$router.push({ name: 'products' })"
-          >
+          <v-btn dark color="primary" block class="my-5 text-capitalize" @click="$router.push({ name: 'products' })">
             start shopping
           </v-btn>
         </div>
